@@ -82,6 +82,7 @@ Newman, M. J. (2003) "Mixing patterns in networks" arXiv:cond-mat/0209450v2
 Mixing matrices: \code{\link{mixingm}}
 
 Other segregation measures: 
+\code{\link{coleman}()},
 \code{\link{ei}()},
 \code{\link{ssi}()}
 }

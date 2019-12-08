@@ -59,6 +59,7 @@ quarterly, 123-140.
 \seealso{
 Other segregation measures: 
 \code{\link{assort}()},
+\code{\link{coleman}()},
 \code{\link{ssi}()}
 }
 \concept{segregation measures}
