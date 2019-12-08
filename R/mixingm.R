@@ -89,6 +89,9 @@ mixingm <- function(object, ...) UseMethod("mixingm")
 #' whenever there is at least one loop in \code{object}.
 #'
 #' @method mixingm igraph
+#'
+#' @importFrom igraph is.directed is.loop vcount
+#'
 #' @export
 #' @rdname mixingm
 mixingm.igraph <- function(object, rattr, cattr=rattr, full=FALSE,
@@ -189,10 +192,7 @@ valid_mm <- function(m, square=TRUE, verbose=FALSE)
 # @return
 # \code{full_mm} returns a full three-dimenstional mixing matrix as an array
 # with \code{dim} attribute equal to \code{c( nrow(cl), ncol(cl), 2 )}.
-#
-# @export
-#
-# @example examples/full_mm.R
+
 
 full_mm <- function(cl, gsizes, directed=TRUE, loops=FALSE)
 {
