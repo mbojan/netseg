@@ -38,7 +38,7 @@ the sample.
 }
 \examples{
 if( require(igraph, quietly = TRUE) ) {
-data(Wnet)
+data(WhiteKinship)
 set.seed(2992)
 plot(
   WhiteKinship, layout=layout.fruchterman.reingold,

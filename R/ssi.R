@@ -36,15 +36,15 @@
 #' if( require(igraph, quietly = TRUE)) {
 #'
 #' ### artificial EF data
-#' x <- ssi(EF3, "type")
+#' x <- ssi(EF3, "race")
 #' x
 #'
 #'
 #' # show it on picture
-#' a <- V(EFnet)$type
+#' a <- V(EF3)$race
 #' # rescale SSI values to use as shades of gray
 #' k <- 1 - scale(x, center=min(x), scale=max(x) - min(x))
-#' plot( EFnet, layout=layout.fruchterman.reingold,
+#' plot( EF3, layout=layout.fruchterman.reingold,
 #' vertex.color= gray(k),
 #' vertex.label.family="",
 #' vertex.shape=c("circle", "square")[a],
@@ -52,17 +52,17 @@
 #' )
 #'
 #' ### For White's kinship data
-#' x <- ssi(Wnet, "gender")
+#' x <- ssi(WhiteKinship, "gender")
 #' x
 #'
 #' # plot it
-#' a <- V(Wnet)$gender
+#' a <- match(V(WhiteKinship)$gender, unique(V(WhiteKinship)$gender))
 #' k <- 1 - scale(x, center=min(x), scale=max(x) - min(x))
 #' set.seed(1234)
-#' plot( Wnet, layout=layout.fruchterman.reingold,
+#' plot( WhiteKinship, layout=layout.fruchterman.reingold,
 #' main="Node segregation in White's kinship data",
 #' vertex.label.family="",
-#' vertex.label=V(Wnet)$name,
+#' vertex.label=V(WhiteKinship)$name,
 #' vertex.color= gray(k),
 #' vertex.shape=c("circle", "csquare")[a],
 #' vertex.label.color="black")
