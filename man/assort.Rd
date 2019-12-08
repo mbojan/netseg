@@ -85,6 +85,7 @@ Other segregation measures:
 \code{\link{coleman}()},
 \code{\link{ei}()},
 \code{\link{gamix}()},
+\code{\link{orwg}()},
 \code{\link{ssi}()}
 }
 \concept{segregation measures}
