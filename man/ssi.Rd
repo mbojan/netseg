@@ -80,6 +80,7 @@ social interactions. The Quarterly Journal of Economics, 122(2), 441-485.
 Other segregation measures: 
 \code{\link{assort}()},
 \code{\link{coleman}()},
-\code{\link{ei}()}
+\code{\link{ei}()},
+\code{\link{gamix}()}
 }
 \concept{segregation measures}

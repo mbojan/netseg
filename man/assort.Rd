@@ -84,6 +84,7 @@ Mixing matrices: \code{\link{mixingm}}
 Other segregation measures: 
 \code{\link{coleman}()},
 \code{\link{ei}()},
+\code{\link{gamix}()},
 \code{\link{ssi}()}
 }
 \concept{segregation measures}

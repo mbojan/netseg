@@ -59,6 +59,7 @@ with survey methods", Human Organization 17:28--36.
 Other segregation measures: 
 \code{\link{assort}()},
 \code{\link{ei}()},
+\code{\link{gamix}()},
 \code{\link{ssi}()}
 }
 \concept{segregation measures}
