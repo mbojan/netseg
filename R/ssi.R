@@ -30,6 +30,7 @@
 #' social interactions. The Quarterly Journal of Economics, 122(2), 441-485.
 #'
 #' @family segregation measures
+#' @importFrom igraph V 'V<-' E 'E<-'
 #' @export
 #' @examples
 #' if( require(igraph, quietly = TRUE)) {
