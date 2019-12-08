@@ -10,6 +10,8 @@ Authors@R:
 Description: Implementations of measures of (social) network segregation and
 	homophily. See Bojanowski & Corten (2014) <doi:10.1016/j.socnet.2014.04.01> for
 	details.
+Depends: R (>= 2.10)
+Imports: igraph (>= 0.6-0)
 License: GPL-2
 Encoding: UTF-8
 Roxygen: list(markdown=TRUE)
