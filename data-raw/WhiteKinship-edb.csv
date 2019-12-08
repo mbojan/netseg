@@ -1,0 +1,23 @@
+from,to
+Mother,Sister
+Mother,Sister's Daughter
+Mother,Brother's Daughter
+Mother,Father
+Mother,Brother
+Mother,Brother's Son
+Mother,Sister's Son
+Sister,Sister's Daughter
+Sister,Brother's Daughter
+Sister,Father
+Sister,Sister's Son
+Brother's Wife,Brother's Daughter
+Sister's Daughter,Father
+Brother's Daughter,Father
+Brother's Daughter,Brother
+Father,Brother
+Father,Brother's Son
+Father,Sister's Son
+Brother,Brother's Son
+Brother,Sister's Son
+Sister's Husband,Brother's Son
+Sister's Husband,Sister's Son
