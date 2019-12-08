@@ -1,0 +1,83 @@
+---
+output: github_document
+editor_options: 
+  chunk_output_type: console
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# `netseg`: Measures of Network Segregation and Homophily
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+This package implements most important descriptive measures of homophily and segregation in social networks. See Bojanowski & Corten (2014) for a review.
+
+## Installation
+
+<!--
+You can install the released version of netseg from [CRAN](https://CRAN.R-project.org) with:
+
+``` r
+install.packages("netseg")
+```
+-->
+
+The development version from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("remotes")
+remotes::install_github("mbojan/netseg")
+```
+
+
+
+
+
+
+
+## Example
+
+To illustrate, consider the network below which comes from White (1975)
+
+
+```{r data-white}
+library(netseg)
+library(igraph)
+
+data("WhiteKinship")
+
+plot(
+  WhiteKinship,
+  vertex.color = "white",
+  vertex.shape = c("circle", "square")[match(V(WhiteKinship)$gender, c("female", "male"))]
+)
+```
+
+The extent of segregation in this network can be assessed using one of the indices provided in the package, for example:
+
+```{r segregation}
+# network-level
+freeman(WhiteKinship, "gender")
+
+# node-level
+ssi(WhiteKinship, "gender")
+```
+
+
+
+
+## References
+
+Bojanowski, M., & Corten, R. (2014). Measuring segregation in social networks. *Social Networks*, 39, 14-32.
+
+White, D. R. (1975) "Communicative Avoidance in Social Networks". University of California, Irvine. (mimeo) 
