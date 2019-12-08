@@ -55,6 +55,7 @@ Other segregation measures:
 \code{\link{coleman}()},
 \code{\link{ei}()},
 \code{\link{orwg}()},
+\code{\link{smi}()},
 \code{\link{ssi}()}
 }
 \concept{segregation measures}
