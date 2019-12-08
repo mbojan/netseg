@@ -60,6 +60,7 @@ quarterly, 123-140.
 Other segregation measures: 
 \code{\link{assort}()},
 \code{\link{coleman}()},
+\code{\link{freeman}()},
 \code{\link{gamix}()},
 \code{\link{orwg}()},
 \code{\link{smi}()},
