@@ -26,8 +26,8 @@
 #' ids in \code{g}.
 #'
 #' @references
-#' Echenique, Federico and Roland G. Fryer, Jr. (2006) A Measure of Segregation
-#' Based On Social Interactions
+#' Echenique, F., & Fryer Jr, R. G. (2007). A measure of segregation based on
+#' social interactions. The Quarterly Journal of Economics, 122(2), 441-485.
 #'
 #' @family segregation measures
 #' @export
