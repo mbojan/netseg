@@ -1,5 +1,3 @@
-library(isnar)
-
 context("Assortativity coefficient")
 
 test_that("AC for Catania (2d mm) data is equal to the value from the paper", {
@@ -10,7 +8,7 @@ test_that("AC for Catania (2d mm) data is equal to the value from the paper", {
 } )
 
 test_that("AC for White data (igraph) gives correct result", {
-          r <- assort(Wnet, "gender")
+          r <- assort(WhiteKinship, "gender")
           expect_equal( round(r, 6), 0.180124 )
 } )
 
