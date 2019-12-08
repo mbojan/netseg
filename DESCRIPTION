@@ -1,0 +1,13 @@
+Package: netseg
+Title: What the Package Does (One Line, Title Case)
+Version: 0.1-0
+Authors@R: 
+    person(given = "Michal",
+           family = "Bojanowski",
+           role = c("aut", "cre"),
+           email = "michal2992@gmail.com",
+           comment = c(ORCID = "0000-0001-7503-852X"))
+Description: What the package does (one paragraph).
+License: What license it uses
+Encoding: UTF-8
+LazyData: true
