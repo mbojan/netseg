@@ -1,0 +1,17 @@
+male,female,n
+black,black,506
+hispanic,black,23
+white,black,26
+other,black,10
+black,hispanic,32
+hispanic,hispanic,308
+white,hispanic,46
+other,hispanic,14
+black,white,69
+hispanic,white,114
+white,white,599
+other,white,47
+black,other,26
+hispanic,other,38
+white,other,68
+other,other,32
