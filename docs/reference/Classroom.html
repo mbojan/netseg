@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Segregation Matrix Index — smi • netseg</title>
+<title>Classroom network — Classroom • netseg</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,9 +42,10 @@
 
 
 
-<meta property="og:title" content="Segregation Matrix Index — smi" />
-<meta property="og:description" content="Segregation Matrix Index due to Freshtman (1997). A measure of network
-segregation.  Currently (and originally) supports only two groups." />
+<meta property="og:title" content="Classroom network — Classroom" />
+<meta property="og:description" content="A directed network of ties &quot;with whom do you like to play with?&quot; collected in
+a school class of 9-year olds. The data comes from a study undertook by
+Educational Research Institute (Dolata 2014)." />
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -109,92 +110,36 @@ segregation.  Currently (and originally) supports only two groups." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Segregation Matrix Index</h1>
+    <h1>Classroom network</h1>
     
-    <div class="hidden name"><code>smi.Rd</code></div>
+    <div class="hidden name"><code>Classroom.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Segregation Matrix Index due to Freshtman (1997). A measure of network
-segregation.  Currently (and originally) supports only two groups.</p>
+    <p>A directed network of ties "with whom do you like to play with?" collected in
+a school class of 9-year olds. The data comes from a study undertook by
+Educational Research Institute (Dolata 2014).</p>
     </div>
 
-    <pre class="usage"><span class='fu'>smi</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='no'>Classroom</span></pre>
 
-<span class='co'># S3 method for table</span>
-<span class='fu'>smi</span>(<span class='no'>object</span>, <span class='kw'>normalize</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)
 
-<span class='co'># S3 method for igraph</span>
-<span class='fu'>smi</span>(<span class='no'>object</span>, <span class='no'>vattr</span>, <span class='no'>...</span>)
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-<span class='co'># S3 method for default</span>
-<span class='fu'>smi</span>(<span class='no'>object</span>, <span class='no'>...</span>)</pre>
-
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>object</th>
-      <td><p>R object, see Details for available methods</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>other arguments passed to/from other methods</p></td>
-    </tr>
-    <tr>
-      <th>normalize</th>
-      <td><p>logical, whether normalized values should be returned,
-defaults to <code>TRUE</code></p></td>
-    </tr>
-    <tr>
-      <th>vattr</th>
-      <td><p>character, name of the node attribute designating groups</p></td>
-    </tr>
-    </table>
-
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>Numeric vector of length equal to the number of groups in <code>g</code> according
-to <code>vattr</code> with the values of SMI for the groups.</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>The Segregation Matrix Index (SMI) is calculated for every group separately.
-It compares the density within group to the density of between group ties of
-nodes belonging to that group.</p>
-<p>Non-normalized version is the ratio of the within-group density to the
-between-group density, so vary between 0 and infinity. The normalized
-version varies between 0 and 1.</p>
-<p>Method for mixing matrices.</p>
-<p>Method for igraphs</p>
+    <p>Object of class "igraph" with a directed network of size 26. Vertex
+attribute <code>gender</code>, takes values "Boy" or "Girl".</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>Freshtman, M. (1997) "Cohesive Group Segregation Detection in a Social
-Network by the Segregation Matrix Index", Social Networks, 19:193--207</p>
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+    <p>Dolata, Roman (ed). (2014). <em>Czy szkoła ma znaczenie? Zróżnicowanie wyników
+nauczania po pierwszym etapie edukacyjnym oraz jego pozaszkolne i szkolne
+uwarunkowania</em>. Vol. 1.  Warsaw: Instytut Badań Edukacyjnych.</p>
 
-    <div class='dont-index'><p>Other segregation measures: 
-<code><a href='assort.html'>assort</a>()</code>,
-<code><a href='coleman.html'>coleman</a>()</code>,
-<code><a href='ei.html'>ei</a>()</code>,
-<code><a href='freeman.html'>freeman</a>()</code>,
-<code><a href='gamix.html'>gamix</a>()</code>,
-<code><a href='orwg.html'>orwg</a>()</code>,
-<code><a href='ssi.html'>ssi</a>()</code></p></div>
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># smi() needs a directed network</span>
-<span class='fu'>smi</span>( <span class='kw pkg'>igraph</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/igraph/man/as.directed.html'>as.directed</a></span>(<span class='no'>WhiteKinship</span>, <span class='st'>"mutual"</span>), <span class='st'>"gender"</span>)</div><div class='output co'>#&gt;    female      male 
-#&gt; 0.2500000 0.3207547 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-      <li><a href="#details">Details</a></li>
+      <li><a href="#format">Format</a></li>
       <li><a href="#references">References</a></li>
-      <li><a href="#see-also">See also</a></li>
-      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>
