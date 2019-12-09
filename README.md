@@ -1,15 +1,15 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# `netseg`: Measures of Network Segregation and Homophily
+# `netseg`: Measures of Network Segregation and Homophily <img src="man/figures/logo.png" align="right" width="20%" />
 
 <!-- badges: start -->
 
 <!-- badges: end -->
 
-This package implements most important descriptive measures of homophily
-and segregation in social networks. See Bojanowski & Corten (2014) for a
-review.
+This is an R package implementing most important descriptive measures of
+homophily and segregation in social networks. See Bojanowski & Corten
+(2014) for a review.
 
 ## Installation
 
