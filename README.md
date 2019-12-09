@@ -30,7 +30,8 @@ remotes::install_github("mbojan/netseg")
 
 ## Example
 
-To illustrate, consider the network below which comes from White (1975)
+To illustrate, consider the network below which comes from Freeman
+(1978) who took it from White (1975)
 
 ``` r
 library(netseg)
@@ -48,8 +49,19 @@ data("WhiteKinship")
 
 plot(
   WhiteKinship,
+  layout = graphlayouts::layout_with_stress,
   vertex.color = "white",
+  vertex.label.family = "sans",
+  vertex.label.cex = 0.7,
+  vertex.label.color = "black",
   vertex.shape = c("circle", "square")[match(V(WhiteKinship)$gender, c("female", "male"))]
+)
+legend(
+  "bottomright",
+  pch = 0:1,
+  legend = c("Male", "Female"),
+  pt.cex = 2,
+  bty = "n"
 )
 ```
 
@@ -75,6 +87,10 @@ ssi(WhiteKinship, "gender")
 
 Bojanowski, M., & Corten, R. (2014). Measuring segregation in social
 networks. *Social Networks*, 39, 14-32.
+<doi:10.1016/j.socnet.2014.04.001>
+
+Freeman, L. C. (1978). Segregation in social networks. Sociological
+Methods & Research, 6(4), 411-429. <doi:10.1177/004912417800600401>
 
 White, D. R. (1975) “Communicative Avoidance in Social Networks”.
 University of California, Irvine. (mimeo)
