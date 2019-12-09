@@ -45,42 +45,42 @@ library(igraph)
 #> 
 #>     union
 
-data("WhiteKinship")
+data("Classroom")
 
 plot(
-  WhiteKinship,
+  Classroom,
   layout = graphlayouts::layout_with_stress,
-  vertex.color = "white",
-  vertex.label.family = "sans",
-  vertex.label.cex = 0.7,
-  vertex.label.color = "black",
-  vertex.shape = c("circle", "square")[match(V(WhiteKinship)$gender, c("female", "male"))]
+  vertex.color = c("pink", "lightskyblue")[match(V(Classroom)$gender, c("Girl", "Boy"))],
+  vertex.label = NA,
+  edge.arrow.size = 0.5
 )
 legend(
   "bottomright",
-  pch = 0:1,
-  legend = c("Male", "Female"),
+  pch = 21,
+  legend = c("Boy", "Girl"),
   pt.cex = 2,
+  pt.bg = c("lightskyblue", "pink"),
+  col = "black",
   bty = "n"
 )
 ```
 
-<img src="man/figures/README-data-white-1.png" width="100%" />
+<img src="man/figures/README-Classroom-1.svg" width="100%" />
 
 The extent of segregation in this network can be assessed using one of
 the indices provided in the package, for example:
 
 ``` r
 # network-level
-freeman(WhiteKinship, "gender")
-#> [1] 0.2636364
+orwg(Classroom, "gender") # Odds ratio of within-group tie
+#> [1] 16.58071
+assort(Classroom, "gender") # Assortativity coefficient
+#> [1] 0.8408885
 
-# node-level
-ssi(WhiteKinship, "gender")
-#>         1         2         3         4         5         6         7         8 
-#> 0.3784935 0.4923020 1.0448612 0.4793474 0.6327077 0.4053925 0.5297216 1.0159465 
-#>         9        10 
-#> 0.7420267 0.5936214
+# group-level
+coleman(Classroom, "gender") # Coleman's index
+#>       Boy      Girl 
+#> 0.9084249 0.7909699
 ```
 
 ## References

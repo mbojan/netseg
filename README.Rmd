@@ -117,26 +117,26 @@ remotes::install_github("mbojan/netseg")
 To illustrate, consider the network below which comes from Freeman (1978) who took it from White (1975)
 
 
-```{r data-white}
+```{r Classroom, dev="svg"}
 library(netseg)
 library(igraph)
 
-data("WhiteKinship")
+data("Classroom")
 
 plot(
-  WhiteKinship,
+  Classroom,
   layout = graphlayouts::layout_with_stress,
-  vertex.color = "white",
-  vertex.label.family = "sans",
-  vertex.label.cex = 0.7,
-  vertex.label.color = "black",
-  vertex.shape = c("circle", "square")[match(V(WhiteKinship)$gender, c("female", "male"))]
+  vertex.color = c("pink", "lightskyblue")[match(V(Classroom)$gender, c("Girl", "Boy"))],
+  vertex.label = NA,
+  edge.arrow.size = 0.5
 )
 legend(
   "bottomright",
-  pch = 0:1,
-  legend = c("Male", "Female"),
+  pch = 21,
+  legend = c("Boy", "Girl"),
   pt.cex = 2,
+  pt.bg = c("lightskyblue", "pink"),
+  col = "black",
   bty = "n"
 )
 ```
@@ -145,10 +145,11 @@ The extent of segregation in this network can be assessed using one of the indic
 
 ```{r segregation}
 # network-level
-freeman(WhiteKinship, "gender")
+orwg(Classroom, "gender") # Odds ratio of within-group tie
+assort(Classroom, "gender") # Assortativity coefficient
 
-# node-level
-ssi(WhiteKinship, "gender")
+# group-level
+coleman(Classroom, "gender") # Coleman's index
 ```
 
 
