@@ -30,8 +30,7 @@ remotes::install_github("mbojan/netseg")
 
 ## Example
 
-To illustrate, consider the network below which comes from Freeman
-(1978) who took it from White (1975)
+To illustrate, consider the Classroom network below:
 
 ``` r
 library(netseg)
@@ -67,21 +66,30 @@ legend(
 
 <img src="man/figures/README-Classroom-1.svg" width="100%" />
 
-The extent of segregation in this network can be assessed using one of
-the indices provided in the package, for example:
+The extent of gender segregation in this network can be assessed using
+one of the indices provided in the package, for example odds ratio of
+within-group tie (`orwg()`)
 
 ``` r
-# network-level
-orwg(Classroom, "gender") # Odds ratio of within-group tie
+orwg(Classroom, "gender")
 #> [1] 16.58071
-assort(Classroom, "gender") # Assortativity coefficient
-#> [1] 0.8408885
+```
 
-# group-level
-coleman(Classroom, "gender") # Coleman's index
+tells us that within-gender ties are 16.580705 times more likely than
+between-gender ties. Coleman’s index (Coleman 1958) assesses the
+segregation on the group level:
+
+``` r
+coleman(Classroom, "gender")
 #>       Boy      Girl 
 #> 0.9084249 0.7909699
 ```
+
+Qualitatively speaking it compares the proportion of same-group
+neighbors to the proportion of that group in the network as a whole. It
+is a number between 0 and 1. Value of 0 means these proportions are
+equal. Value of 1 means that all ties outgoing from a particular group
+are sent to the members of the same group.
 
 ## References
 
@@ -89,8 +97,5 @@ Bojanowski, M., & Corten, R. (2014). Measuring segregation in social
 networks. *Social Networks*, 39, 14-32.
 <doi:10.1016/j.socnet.2014.04.001>
 
-Freeman, L. C. (1978). Segregation in social networks. Sociological
-Methods & Research, 6(4), 411-429. <doi:10.1177/004912417800600401>
-
-White, D. R. (1975) “Communicative Avoidance in Social Networks”.
-University of California, Irvine. (mimeo)
+Coleman, J. (1958) “Relational analysis: The study of social
+organizations with survey methods”, *Human Organization* 17:28–36.
