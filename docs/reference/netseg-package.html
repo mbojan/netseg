@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Coleman's homophily index — coleman • netseg</title>
+<title>netseg: Measures of Network Segregation and Homophily — netseg-package • netseg</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,8 +42,11 @@
 
 
 
-<meta property="og:title" content="Coleman's homophily index — coleman" />
-<meta property="og:description" content="Colemans's homphily index for directed networks." />
+<meta property="og:title" content="netseg: Measures of Network Segregation and Homophily — netseg-package" />
+<meta property="og:description" content="
+Implementations of measures of (social) network segregation and
+	homophily. See Bojanowski &amp;amp; Corten (2014) &amp;lt;doi:10.1016/j.socnet.2014.04.01&amp;gt; for
+	details." />
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -108,97 +111,29 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Coleman's homophily index</h1>
+    <h1>netseg: Measures of Network Segregation and Homophily</h1>
     
-    <div class="hidden name"><code>coleman.Rd</code></div>
+    <div class="hidden name"><code>netseg-package.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Colemans's homphily index for directed networks.</p>
+    <p><img src='figures/logo.png' align='right' alt='logo' width='120' /></p>
+<p>Implementations of measures of (social) network segregation and
+	homophily. See Bojanowski &amp; Corten (2014) &lt;doi:10.1016/j.socnet.2014.04.01&gt; for
+	details.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>coleman</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
-<span class='co'># S3 method for table</span>
-<span class='fu'>coleman</span>(<span class='no'>object</span>, <span class='kw'>gsizes</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>loops</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)
 
-<span class='co'># S3 method for igraph</span>
-<span class='fu'>coleman</span>(<span class='no'>object</span>, <span class='no'>vattr</span>, <span class='no'>...</span>)
 
-<span class='co'># S3 method for default</span>
-<span class='fu'>coleman</span>(<span class='no'>object</span>, <span class='no'>...</span>)</pre>
-
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>object</th>
-      <td><p>R object, see Details for available methods</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>other arguments passed to/from methods</p></td>
-    </tr>
-    <tr>
-      <th>gsizes</th>
-      <td><p>numeric vector of group sizes</p></td>
-    </tr>
-    <tr>
-      <th>loops</th>
-      <td><p>logical, whether loops are allowed</p></td>
-    </tr>
-    <tr>
-      <th>vattr</th>
-      <td><p>character, vertex attribute</p></td>
-    </tr>
-    </table>
-
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>Vector of numeric values of the index for each group</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>Coleman's homophily index computes homophily scores for each group
-defined by a vertex attribute.</p>
-<p>If <code>object</code> is a table it is interpreted as a mixing matrix. If it is
-only the contact layer (2-dimensional), then vector of group sizes need to
-be supplied via <code>gsizes</code>.</p>
-<p><code>object</code> can be of class "igraph"</p>
-<p>Default method tries to coerce <code>object</code> to table and use other methods.</p>
-    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
-
-    <p>Coleman, J. (1958) "Relational analysis: The study of social organizations
-with survey methods", Human Organization 17:28--36.</p>
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p>Other segregation measures: 
-<code>assort()</code>,
-<code>ei()</code>,
-<code>freeman()</code>,
-<code>gamix()</code>,
-<code>orwg()</code>,
-<code>smi()</code>,
-<code>ssi()</code></p></div>
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span>( <span class='fu'><a href='https://rdrr.io/r/base/library.html'>require</a></span>(<span class='no'>igraph</span>, <span class='kw'>quietly</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)) {
-<span class='co'># Converting network to directed</span>
-<span class='fu'>coleman</span>(<span class='fu'><a href='https://rdrr.io/pkg/igraph/man/as.directed.html'>as.directed</a></span>(<span class='no'>WhiteKinship</span>, <span class='st'>"mutual"</span>), <span class='st'>"gender"</span>)
-<span class='fu'>coleman</span>(<span class='fu'><a href='https://rdrr.io/pkg/igraph/man/as.directed.html'>as.directed</a></span>(<span class='no'>EF3</span>, <span class='st'>"mutual"</span>), <span class='st'>"race"</span>)
-}</div><div class='output co'>#&gt;         1         2 
-#&gt; 0.3337838 0.1918033 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-      <li><a href="#details">Details</a></li>
-      <li><a href="#references">References</a></li>
-      <li><a href="#see-also">See also</a></li>
-      <li><a href="#examples">Examples</a></li>
     </ul>
 
+    <h2>Author</h2>
+    <p><strong>Maintainer</strong>: Michal Bojanowski <a href='mailto:michal2992@gmail.com'>michal2992@gmail.com</a> (<a href='https://orcid.org/0000-0001-7503-852X'>ORCID</a>)</p>
   </div>
 </div>
 

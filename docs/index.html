@@ -18,7 +18,7 @@
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="Measures of Network Segregation and Homophily">
 <meta property="og:description" content="Implementations of measures of (social) network segregation and
-	homophily. See Bojanowski &amp; Corten (2014) &lt;doi:10.1016/j.socnet.2014.04.01&gt; for
+	homophily. See Bojanowski &amp; Corten (2014) &lt;doi:10.1016/j.socnet.2014.04.001&gt; for
 	details.">
 <meta property="og:image" content="/logo.png">
 <meta name="twitter:card" content="summary">
@@ -87,50 +87,50 @@ install.packages("netseg")
 ```
 -->
 <p>The development version from <a href="https://github.com/">GitHub</a> with:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="co"># install.packages("remotes")</span></a>
-<a class="sourceLine" id="cb1-2" title="2">remotes<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/remotes/man/install_github.html">install_github</a></span>(<span class="st">"mbojan/netseg"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># install.packages("remotes")</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a>remotes<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/remotes/man/install_github.html">install_github</a></span>(<span class="st">"mbojan/netseg"</span>)</span></code></pre></div>
 </div>
 <div id="example" class="section level2">
 <h2 class="hasAnchor">
 <a href="#example" class="anchor"></a>Example</h2>
 <p>To illustrate, consider the Classroom network below:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(netseg)</a>
-<a class="sourceLine" id="cb2-2" title="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(igraph)</a>
-<a class="sourceLine" id="cb2-3" title="3"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb2-4" title="4"><span class="co">#&gt; Attaching package: 'igraph'</span></a>
-<a class="sourceLine" id="cb2-5" title="5"><span class="co">#&gt; The following objects are masked from 'package:stats':</span></a>
-<a class="sourceLine" id="cb2-6" title="6"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb2-7" title="7"><span class="co">#&gt;     decompose, spectrum</span></a>
-<a class="sourceLine" id="cb2-8" title="8"><span class="co">#&gt; The following object is masked from 'package:base':</span></a>
-<a class="sourceLine" id="cb2-9" title="9"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb2-10" title="10"><span class="co">#&gt;     union</span></a>
-<a class="sourceLine" id="cb2-11" title="11"></a>
-<a class="sourceLine" id="cb2-12" title="12"><span class="kw"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="st">"Classroom"</span>)</a>
-<a class="sourceLine" id="cb2-13" title="13"></a>
-<a class="sourceLine" id="cb2-14" title="14"><span class="kw"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span>(</a>
-<a class="sourceLine" id="cb2-15" title="15">  Classroom,</a>
-<a class="sourceLine" id="cb2-16" title="16">  <span class="dt">layout =</span> graphlayouts<span class="op">::</span>layout_with_stress,</a>
-<a class="sourceLine" id="cb2-17" title="17">  <span class="dt">vertex.color =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"pink"</span>, <span class="st">"lightskyblue"</span>)[<span class="kw"><a href="https://rdrr.io/r/base/match.html">match</a></span>(<span class="kw"><a href="https://rdrr.io/pkg/igraph/man/V.html">V</a></span>(Classroom)<span class="op">$</span>gender, <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Girl"</span>, <span class="st">"Boy"</span>))],</a>
-<a class="sourceLine" id="cb2-18" title="18">  <span class="dt">vertex.label =</span> <span class="ot">NA</span>,</a>
-<a class="sourceLine" id="cb2-19" title="19">  <span class="dt">edge.arrow.size =</span> <span class="fl">0.5</span></a>
-<a class="sourceLine" id="cb2-20" title="20">)</a>
-<a class="sourceLine" id="cb2-21" title="21"><span class="kw"><a href="https://rdrr.io/r/graphics/legend.html">legend</a></span>(</a>
-<a class="sourceLine" id="cb2-22" title="22">  <span class="st">"bottomright"</span>,</a>
-<a class="sourceLine" id="cb2-23" title="23">  <span class="dt">pch =</span> <span class="dv">21</span>,</a>
-<a class="sourceLine" id="cb2-24" title="24">  <span class="dt">legend =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Boy"</span>, <span class="st">"Girl"</span>),</a>
-<a class="sourceLine" id="cb2-25" title="25">  <span class="dt">pt.cex =</span> <span class="dv">2</span>,</a>
-<a class="sourceLine" id="cb2-26" title="26">  <span class="dt">pt.bg =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"lightskyblue"</span>, <span class="st">"pink"</span>),</a>
-<a class="sourceLine" id="cb2-27" title="27">  <span class="dt">col =</span> <span class="st">"black"</span>,</a>
-<a class="sourceLine" id="cb2-28" title="28">  <span class="dt">bty =</span> <span class="st">"n"</span></a>
-<a class="sourceLine" id="cb2-29" title="29">)</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(netseg)</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(igraph)</span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="co">#&gt; </span></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="co">#&gt; Attaching package: 'igraph'</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="co">#&gt; The following objects are masked from 'package:stats':</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="co">#&gt; </span></span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="co">#&gt;     decompose, spectrum</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="co">#&gt; The following object is masked from 'package:base':</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a><span class="co">#&gt; </span></span>
+<span id="cb2-10"><a href="#cb2-10"></a><span class="co">#&gt;     union</span></span>
+<span id="cb2-11"><a href="#cb2-11"></a></span>
+<span id="cb2-12"><a href="#cb2-12"></a><span class="kw"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="st">"Classroom"</span>)</span>
+<span id="cb2-13"><a href="#cb2-13"></a></span>
+<span id="cb2-14"><a href="#cb2-14"></a><span class="kw"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span>(</span>
+<span id="cb2-15"><a href="#cb2-15"></a>  Classroom,</span>
+<span id="cb2-16"><a href="#cb2-16"></a>  <span class="dt">layout =</span> graphlayouts<span class="op">::</span>layout_with_stress,</span>
+<span id="cb2-17"><a href="#cb2-17"></a>  <span class="dt">vertex.color =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"pink"</span>, <span class="st">"lightskyblue"</span>)[<span class="kw"><a href="https://rdrr.io/r/base/match.html">match</a></span>(<span class="kw"><a href="https://rdrr.io/pkg/igraph/man/V.html">V</a></span>(Classroom)<span class="op">$</span>gender, <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Girl"</span>, <span class="st">"Boy"</span>))],</span>
+<span id="cb2-18"><a href="#cb2-18"></a>  <span class="dt">vertex.label =</span> <span class="ot">NA</span>,</span>
+<span id="cb2-19"><a href="#cb2-19"></a>  <span class="dt">edge.arrow.size =</span> <span class="fl">0.5</span></span>
+<span id="cb2-20"><a href="#cb2-20"></a>)</span>
+<span id="cb2-21"><a href="#cb2-21"></a><span class="kw"><a href="https://rdrr.io/r/graphics/legend.html">legend</a></span>(</span>
+<span id="cb2-22"><a href="#cb2-22"></a>  <span class="st">"bottomright"</span>,</span>
+<span id="cb2-23"><a href="#cb2-23"></a>  <span class="dt">pch =</span> <span class="dv">21</span>,</span>
+<span id="cb2-24"><a href="#cb2-24"></a>  <span class="dt">legend =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Boy"</span>, <span class="st">"Girl"</span>),</span>
+<span id="cb2-25"><a href="#cb2-25"></a>  <span class="dt">pt.cex =</span> <span class="dv">2</span>,</span>
+<span id="cb2-26"><a href="#cb2-26"></a>  <span class="dt">pt.bg =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"lightskyblue"</span>, <span class="st">"pink"</span>),</span>
+<span id="cb2-27"><a href="#cb2-27"></a>  <span class="dt">col =</span> <span class="st">"black"</span>,</span>
+<span id="cb2-28"><a href="#cb2-28"></a>  <span class="dt">bty =</span> <span class="st">"n"</span></span>
+<span id="cb2-29"><a href="#cb2-29"></a>)</span></code></pre></div>
 <p><img src="reference/figures/README-Classroom-1.svg" width="100%"></p>
-<p>The extent of gender segregation in this network can be assessed using one of the indices provided in the package, for example odds ratio of within-group tie (<code><a href="reference/orwg.html">orwg()</a></code>)</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw"><a href="reference/orwg.html">orwg</a></span>(Classroom, <span class="st">"gender"</span>)</a>
-<a class="sourceLine" id="cb3-2" title="2"><span class="co">#&gt; [1] 16.58071</span></a></code></pre></div>
+<p>The extent of gender segregation in this network can be assessed using one of the indices provided in the package, for example odds ratio of within-group tie (<code><a href="https://rdrr.io/pkg/netseg/man/orwg.html">orwg()</a></code>)</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw"><a href="https://rdrr.io/pkg/netseg/man/orwg.html">orwg</a></span>(Classroom, <span class="st">"gender"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="co">#&gt; [1] 16.58071</span></span></code></pre></div>
 <p>tells us that within-gender ties are 16.580705 times more likely than between-gender ties. Coleman’s index (Coleman 1958) assesses the segregation on the group level:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="kw"><a href="reference/coleman.html">coleman</a></span>(Classroom, <span class="st">"gender"</span>)</a>
-<a class="sourceLine" id="cb4-2" title="2"><span class="co">#&gt;       Boy      Girl </span></a>
-<a class="sourceLine" id="cb4-3" title="3"><span class="co">#&gt; 0.9084249 0.7909699</span></a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw"><a href="https://rdrr.io/pkg/netseg/man/coleman.html">coleman</a></span>(Classroom, <span class="st">"gender"</span>)</span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="co">#&gt;       Boy      Girl </span></span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="co">#&gt; 0.9084249 0.7909699</span></span></code></pre></div>
 <p>Qualitatively speaking it compares the proportion of same-group neighbors to the proportion of that group in the network as a whole. It is a number between 0 and 1. Value of 0 means these proportions are equal. Value of 1 means that all ties outgoing from a particular group are sent to the members of the same group.</p>
 </div>
 <div id="references" class="section level2">
