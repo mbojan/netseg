@@ -8,7 +8,7 @@ Authors@R:
            email = "michal2992@gmail.com",
            comment = c(ORCID = "0000-0001-7503-852X"))
 Description: Implementations of measures of (social) network segregation and
-	homophily. See Bojanowski & Corten (2014) <doi:10.1016/j.socnet.2014.04.01> for
+	homophily. See Bojanowski & Corten (2014) <doi:10.1016/j.socnet.2014.04.001> for
 	details.
 Depends: R (>= 2.10)
 Imports: igraph (>= 0.6-0)
