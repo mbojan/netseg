@@ -17,7 +17,7 @@ neighborhoods inhabited by other families similar to them. This package
 implements most important numerical indexes to measure the extent of
 homophily/segregation in a network in which vertices are assigned to two
 or more groups. It is a computational companion to the paper by
-Bojanowski & Corten (2014) <doi:10.1016/j.socnet.2014.04.001>.
+Bojanowski and Corten (2014).
 
 ## Installation
 
@@ -102,9 +102,21 @@ all ties are sent to members of other group(s).
 
 ## References
 
-Bojanowski, M., & Corten, R. (2014). Measuring segregation in social
-networks. *Social Networks*, 39, 14-32.
-<doi:10.1016/j.socnet.2014.04.001>
+<div id="refs" class="references hanging-indent">
 
-Coleman, J. (1958) “Relational analysis: The study of social
-organizations with survey methods”, *Human Organization* 17:28–36.
+<div id="ref-bojanowski-corten-2014">
+
+Bojanowski, Michał, and Rense Corten. 2014. “Measuring Segregation in
+Social Networks.” *Social Networks* 39: 14–32.
+<https://doi.org/10.1016/j.socnet.2014.04.001>.
+
+</div>
+
+<div id="ref-coleman-1958">
+
+Coleman, James S. 1958. “Relational Analysis: The Study of Social
+Organizations with Survey Methods.” *Human Organization* 17 (4): 28–36.
+
+</div>
+
+</div>
