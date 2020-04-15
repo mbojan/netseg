@@ -34,7 +34,7 @@ should be returned.}
 
 \item{directed}{logical, whether the network is directed. By default,
 directedness of the network is determined with
-\code{\link[igraph]{is.directed}}.}
+\code{\link[igraph]{is_directed}}.}
 
 \item{loops}{logical, whether loops are allowed. By default it is TRUE
 whenever there is at least one loop in \code{object}.}
