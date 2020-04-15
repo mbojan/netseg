@@ -86,6 +86,7 @@ sticker(
 # `netseg`: Measures of Network Segregation and Homophily <img src="man/figures/logo.png" align="right" width="20%" />
 
 <!-- badges: start -->
+[![R build status](https://github.com/mbojan/netseg/workflows/R-CMD-check/badge.svg)](https://github.com/mbojan/netseg/actions)
 <!-- badges: end -->
 
 This is an R package implementing most important descriptive measures of homophily and segregation in social networks. See Bojanowski & Corten (2014) for a review.
