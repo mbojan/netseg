@@ -154,7 +154,7 @@ tells us that within-gender ties are `r orwg(Classroom, "gender")` times more li
 coleman(Classroom, "gender")
 ```
 
-Qualitatively speaking it compares the proportion of same-group neighbors to the proportion of that group in the network as a whole. It is a number between 0 and 1. Value of 0 means these proportions are equal. Value of 1 means that all ties outgoing from a particular group are sent to the members of the same group.
+Qualitatively speaking it compares the proportion of same-group neighbors to the proportion of that group in the network as a whole. It is a number between -1 and 1. Value of 0 means these proportions are equal. Value of 1 means that all ties outgoing from a particular group are sent to the members of the same group. Value of -1 is the opposite -- all ties are sent to members of other group(s).
 
 
 ## References
