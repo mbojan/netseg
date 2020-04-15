@@ -9,9 +9,15 @@
 status](https://github.com/mbojan/netseg/workflows/R-CMD-check/badge.svg)](https://github.com/mbojan/netseg/actions)
 <!-- badges: end -->
 
-This is an R package implementing most important descriptive measures of
-homophily and segregation in social networks. See Bojanowski & Corten
-(2014) for a review.
+Network homophily is a pattern in which ties are more likely to exist
+between nodes similar to each other. It is frequently observed for
+various types of social relations. At the same time, segregation is
+often encountered in urban areas as a tendency of families to occupy
+neighborhoods inhabited by other families similar to them. This package
+implements most important numerical indexes to measure the extent of
+homophily/segregation in a network in which vertices are assigned to two
+or more groups. It is a computational companion to the paper by
+Bojanowski & Corten (2014) <doi:10.1016/j.socnet.2014.04.001>.
 
 ## Installation
 
@@ -89,9 +95,10 @@ coleman(Classroom, "gender")
 
 Qualitatively speaking it compares the proportion of same-group
 neighbors to the proportion of that group in the network as a whole. It
-is a number between 0 and 1. Value of 0 means these proportions are
+is a number between -1 and 1. Value of 0 means these proportions are
 equal. Value of 1 means that all ties outgoing from a particular group
-are sent to the members of the same group.
+are sent to the members of the same group. Value of -1 is the opposite –
+all ties are sent to members of other group(s).
 
 ## References
 
