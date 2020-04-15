@@ -4,7 +4,8 @@
 \name{Catania}
 \alias{Catania}
 \title{Pattern of sexual contacts in AMEN study}
-\format{Four-by-four numeric matrix with dimnames.
+\format{
+Four-by-four numeric matrix with dimnames.
 
 \preformatted{
           woman
@@ -13,7 +14,8 @@ man        black hispanic white other
   hispanic 0.012    0.157 0.058 0.019
   white    0.013    0.023 0.306 0.035
   other    0.005    0.007 0.024 0.016
-}}
+}
+}
 \source{
 Newman, M. (2003) "Mixing patterns in networks" Arxiv:cond-mat/0209450 v2
 }

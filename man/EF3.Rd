@@ -4,12 +4,14 @@
 \name{EF3}
 \alias{EF3}
 \title{Example data from Figure III of Echenique and Fryer (2006)}
-\format{Object of class "igraph". An undirected network with vertex
+\format{
+Object of class "igraph". An undirected network with vertex
 attributes
 \itemize{
 \item \code{type} (values 1 or 2).
 \item \code{name}
-}}
+}
+}
 \source{
 Echenique, Federico and Roland G. Fryer, Jr. (2006) "A Measure of Segregation
 Based On Social Interactions" Quarterly Journal of Economics CXXII(2):441-485

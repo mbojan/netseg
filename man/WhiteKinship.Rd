@@ -4,8 +4,10 @@
 \name{WhiteKinship}
 \alias{WhiteKinship}
 \title{White's data on Effective Kinship Networks}
-\format{Object of class "igraph" with an undirected network of size 10. Vertex
-attribute \code{gender}, takes values "male" or "female".}
+\format{
+Object of class "igraph" with an undirected network of size 10. Vertex
+attribute \code{gender}, takes values "male" or "female".
+}
 \source{
 Freeman, Linton C. (1978) "Segregation in Social Networks" Sociological
 Methods and Research 6(4):411--429

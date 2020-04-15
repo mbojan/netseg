@@ -4,8 +4,10 @@
 \name{Classroom}
 \alias{Classroom}
 \title{Classroom network}
-\format{Object of class "igraph" with a directed network of size 26. Vertex
-attribute \code{gender}, takes values "Boy" or "Girl".}
+\format{
+Object of class "igraph" with a directed network of size 26. Vertex
+attribute \code{gender}, takes values "Boy" or "Girl".
+}
 \usage{
 Classroom
 }
