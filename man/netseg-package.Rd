@@ -8,9 +8,14 @@
 \description{
 \if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
 
-Implementations of measures of (social) network segregation and
-	homophily. See Bojanowski & Corten (2014) <doi:10.1016/j.socnet.2014.04.01> for
-	details.
+Network homophily is a pattern in which ties are more likely to
+	exist between nodes similar to each other. It is frequently observed
+	for various types of social relations. At the same time, segregation is often
+	encountered in urban areas as a tendency of families to occupy neighborhoods
+	inhabited by other families similar to them. This package implements
+	most important numerical indexes to measure the extent of homophily/segregation
+	in a network in which vertices are assigned to two or more groups. It
+	is a computational companion to the paper by Bojanowski & Corten (2014) <doi:10.1016/j.socnet.2014.04.001>.
 }
 \author{
 \strong{Maintainer}: Michal Bojanowski \email{michal2992@gmail.com} (\href{https://orcid.org/0000-0001-7503-852X}{ORCID})
