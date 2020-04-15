@@ -44,7 +44,8 @@ be interpreted as a measure of network segregation.
 \details{
 If \code{object} is a table, it is assumed to be a mixing matrix.
 
-Method for igraphs
+Method for igraph objects needs the name of the vertex attribute \code{vattr} that
+defines groups.
 
 Default method tries to coerce \code{object} to table.
 }

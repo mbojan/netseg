@@ -44,7 +44,8 @@ ei.table <- function(object, ...)
 }
 
 #' @details
-#' Method for igraphs
+#' Method for igraph objects needs the name of the vertex attribute `vattr` that
+#' defines groups.
 #'
 #' @param vattr character scalar or vector of length equal to the size of
 #' \code{object}, vertex attribute for which mixing matrix is to be computed
