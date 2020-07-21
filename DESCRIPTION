@@ -21,6 +21,6 @@ License: GPL-2
 Encoding: UTF-8
 Roxygen: list(markdown=TRUE)
 LazyData: true
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
 Suggests: 
     testthat (>= 2.1.0)
