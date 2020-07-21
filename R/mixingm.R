@@ -98,6 +98,13 @@ mixingm.igraph <- function(object, rattr, cattr=rattr, full=FALSE,
                             directed = is.directed(object),
                             loops=any(is.loop(object)), ...)
 {
+  if(igraph::any_multiple(object) && full) {
+    stop(paste(
+      "don't know how to compute mixing matrix for a multigraph",
+      "perhaps you should use `simplify()` to drop multiple edges?",
+      sep = "\n"
+    ))
+  }
   # get attributes
   if( is.character(rattr) && length(rattr)==1 )
   {

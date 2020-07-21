@@ -213,3 +213,21 @@ test_that("It does not matter for square mixing matrix whether group sizes is a 
   fmm2 <- full_mm( umm, table(V(g)$a, V(g)$a), loops=FALSE, directed=FALSE)
   expect_equivalent(fmm, fmm2)
 } )
+
+
+
+
+
+
+context("Other mixingm() tests")
+
+test_that("computing full mixing matrix for a multigraph fails", {
+  g <- make_graph(~ A -- B -- C -- D, B -- C, simplify = FALSE)
+  V(g)$group <- c(1,1,2,2)
+  expect_error(
+    mixingm(g, "group", full=TRUE)
+  )
+  expect_silent(
+    mixingm(g, "group", full=FALSE)
+  )
+})
