@@ -83,9 +83,11 @@ orwg(Classroom, "gender")
 #> [1] 16.58071
 ```
 
-tells us that within-gender ties are 16.580705 times more likely than
-between-gender ties. Coleman’s index (Coleman 1958) assesses the
-segregation on the group level:
+tells us that same-gender tie odds are 16.580705 times greater than tie
+odds between genders.
+
+Coleman’s index (Coleman 1958) assesses the segregation on the group
+level:
 
 ``` r
 coleman(Classroom, "gender")

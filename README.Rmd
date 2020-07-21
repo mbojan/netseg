@@ -104,7 +104,7 @@ install.packages("netseg")
 
 The development version from [GitHub](https://github.com/) with:
 
-``` r
+```{r install, eval=FALSE}
 # install.packages("remotes")
 remotes::install_github("mbojan/netseg")
 ```
@@ -149,7 +149,9 @@ The extent of gender segregation in this network can be assessed using one of th
 orwg(Classroom, "gender")
 ```
 
-tells us that within-gender ties are `r orwg(Classroom, "gender")` times more likely than between-gender ties. Coleman's index [@coleman-1958] assesses the segregation on the group level:
+tells us that same-gender tie odds are `r orwg(Classroom, "gender")` times greater than tie odds between genders. 
+
+Coleman's index [@coleman-1958] assesses the segregation on the group level:
 
 ```{r Classroom-coleman}
 coleman(Classroom, "gender")
