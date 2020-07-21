@@ -71,7 +71,7 @@
 
 ssi <- function(g, vattr)
 {
-    stopifnot( !igraph::is.directed(g) )
+    stopifnot( !igraph::is.directed(g), !igraph::any_multiple(g) )
     # edge weights are "directed"
     gg <- igraph::as.directed(g, mode="mutual")
     V(gg)$id <- V(g)
