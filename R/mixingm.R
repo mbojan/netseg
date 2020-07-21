@@ -1,6 +1,6 @@
 #' Network mixing matrix
 #'
-#' Creating network mixing matrices.
+#' Creating network mixing matrices ([mixingm()]) and data frames ([mixingdf()]).
 #'
 #'
 #' Network mixing matrix is, traditionally, a two-dimensional
@@ -31,11 +31,11 @@
 #' @param ... other arguments passed to/from other methods
 #'
 #' @return
-#' Depending on \code{full} argument a two- or three-dimensional array
-#' crossclassifying connected or all dyads in \code{object}.
-#'
-#' For undirected network and if \code{foldit} is TRUE (default), the matrix is
-#' folded onto the upper triangle (entries in lower triangle are 0).
+#' Function [mixingm()], depending on \code{full} argument, a two- or
+#' three-dimensional array crossclassifying connected or all dyads in
+#' \code{object}. For undirected network and if \code{foldit} is `TRUE` (default),
+#' the matrix is folded onto the upper triangle (entries in lower triangle are
+#' 0).
 #'
 #' @export
 #' @examples
@@ -258,4 +258,42 @@ full_mm <- function(cl, gsizes, directed=TRUE, loops=FALSE)
     dimnames(rval) <- c( dimnames(cl)[1:2], list(tie=c(FALSE, TRUE)))
   }
   rval
+}
+
+
+
+
+
+
+
+
+
+
+#' @rdname mixingm
+#'
+#' @return Function [mixingdf()] returns non-zero entries of a mixing matrix (as
+#'   returned by [mixingm()]), but organized in a data frame with columns:
+#'
+#' \item{ego, alter}{group membership of ego an alter}
+#' \item{tie}{present only if `full=TRUE`, with `TRUE` or `FALSE` for connected
+#' and disconnected dyads respectively}
+#' \item{n}{counts}
+#'
+#' @export
+
+mixingdf <- function(object, ...) UseMethod("mixingdf")
+
+#' @rdname mixingm
+#' @export
+mixingdf.table <- function(object, ...) {
+  rval <- expand.grid(dimnames(object), stringsAsFactors = FALSE)
+  rval$n <- as.vector(object)
+  subset(rval, n != 0)
+}
+
+#' @rdname mixingm
+#' @export
+mixingdf.igraph <- function(object, ...) {
+  mm <- mixingm(object, ...)
+  mixingdf.table(as.table(mm))
 }

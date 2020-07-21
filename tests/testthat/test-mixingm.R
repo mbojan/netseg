@@ -231,3 +231,37 @@ test_that("computing full mixing matrix for a multigraph fails", {
     mixingm(g, "group", full=FALSE)
   )
 })
+
+
+
+
+
+
+
+
+
+context("Testing mixingdf()")
+
+test_that("mixingdf(directed, 2groups)", {
+  expect_silent(
+    r <- mixingdf(g, "a", full=FALSE)
+  )
+  expect_equivalent(r$n, c(2,1,1,2))
+  expect_silent(
+    r <- mixingdf(g, "a", full=TRUE)
+  )
+  expect_equivalent(r$n, c(4,8,8,4,2,1,1,2))
+})
+
+test_that("mixingdf(directed, 3groups)", {
+  expect_silent(
+    r <- mixingdf(g, "b", full=FALSE)
+  )
+  expect_equivalent(r$n, c(1,1,2,1,1))
+  expect_silent(
+    r <- mixingdf(g, "b", full=TRUE)
+  )
+  expect_equivalent(r$n, c(1,4,3,2,2,4,4,3,1,1,1,2,1,1))
+})
+
+mixingm(g, "b", full=TRUE)

@@ -3,6 +3,9 @@
 \name{mixingm}
 \alias{mixingm}
 \alias{mixingm.igraph}
+\alias{mixingdf}
+\alias{mixingdf.table}
+\alias{mixingdf.igraph}
 \title{Network mixing matrix}
 \usage{
 mixingm(object, ...)
@@ -16,6 +19,12 @@ mixingm(object, ...)
   loops = any(is.loop(object)),
   ...
 )
+
+mixingdf(object, ...)
+
+\method{mixingdf}{table}(object, ...)
+
+\method{mixingdf}{igraph}(object, ...)
 }
 \arguments{
 \item{object}{R object, see Details for available methods}
@@ -40,14 +49,22 @@ directedness of the network is determined with
 whenever there is at least one loop in \code{object}.}
 }
 \value{
-Depending on \code{full} argument a two- or three-dimensional array
-crossclassifying connected or all dyads in \code{object}.
+Function \code{\link[=mixingm]{mixingm()}}, depending on \code{full} argument, a two- or
+three-dimensional array crossclassifying connected or all dyads in
+\code{object}. For undirected network and if \code{foldit} is \code{TRUE} (default),
+the matrix is folded onto the upper triangle (entries in lower triangle are
+0).
 
-For undirected network and if \code{foldit} is TRUE (default), the matrix is
-folded onto the upper triangle (entries in lower triangle are 0).
+Function \code{\link[=mixingdf]{mixingdf()}} returns exactly the same values as \code{\link[=mixingm]{mixingm()}} but
+organized in a data frame with columns:
+
+\item{ego, alter}{group membership of ego an alter}
+\item{tie}{present only if \code{full=TRUE}, with \code{TRUE} or \code{FALSE} for connected
+and disconnected dyads respectively}
+\item{n}{counts}
 }
 \description{
-Creating network mixing matrices.
+Creating network mixing matrices (\code{\link[=mixingm]{mixingm()}}) and data frames (\code{\link[=mixingdf]{mixingdf()}}).
 }
 \details{
 Network mixing matrix is, traditionally, a two-dimensional
