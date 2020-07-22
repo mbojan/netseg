@@ -288,7 +288,7 @@ mixingdf <- function(object, ...) UseMethod("mixingdf")
 mixingdf.table <- function(object, ...) {
   rval <- expand.grid(dimnames(object), stringsAsFactors = FALSE)
   rval$n <- as.vector(object)
-  subset(rval, n != 0)
+  subset(rval, rval$n != 0)
 }
 
 #' @rdname mixingm
