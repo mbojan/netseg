@@ -264,4 +264,27 @@ test_that("mixingdf(directed, 3groups)", {
   expect_equivalent(r$n, c(1,4,3,2,2,4,4,3,1,1,1,2,1,1))
 })
 
-mixingm(g, "b", full=TRUE)
+
+
+
+test_that("mixingdf(undirected, 2groups)", {
+  expect_silent(
+    r <- mixingdf(ug, "a", full=FALSE)
+  )
+  expect_equivalent(r$n, c(2,2,2))
+  expect_silent(
+    r <- mixingdf(ug, "a", full=TRUE)
+  )
+  expect_equivalent(r$n, c(1,7,1,2,2,2))
+})
+
+test_that("mixingdf(undirected, 3groups)", {
+  expect_silent(
+    r <- mixingdf(ug, "b", full=FALSE)
+  )
+  expect_equivalent(r$n, c(1,2,1,1,1))
+  expect_silent(
+    r <- mixingdf(ug, "b", full=TRUE)
+  )
+  expect_equivalent(r$n, c(2,1,3,3,1,2,1,1,1))
+})
