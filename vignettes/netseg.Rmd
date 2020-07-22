@@ -31,19 +31,44 @@ set.seed(666)
 ```
 
 
-# Data
+> Please consult @bojanowski-corten-2014 for further details.
 
-Here is the data
+
+# Data
 
 ```{r load-data}
 data(Classroom)
 ```
 
+In the examples below  we will use data `Classroom`, a directed network in a classroom of `r vcount(Classroom)` kids [@dolata2014]. Ties correspond to nominations from a survey question "With whom do you like to play with?". Here is a picture:
+
 ```{r plot-data}
 plot(
   Classroom,
-  layout = graphlayouts::layout_with_stress,
   vertex.color = c("Skyblue", "Pink")[match(V(Classroom)$gender, c("Boy", "Girl"))],
+  vertex.label = NA,
+  vertex.size = 10,
+  edge.arrow.size = .7
+)
+legend(
+  "topright",
+  pch = 21,
+  legend = c("Boy", "Girl"),
+  pt.bg = c("Skyblue", "Pink"),
+  pt.cex = 2,
+  bty = "n"
+)
+```
+
+For us it will be a graph $G = <V, E>$ where the node-set $V = \{1, ..., i, ..., N\}$ correspond to kids, and edges $E$ correspond to "play-with" nominations. Additionally, we need a node attribute, say $X$, exhaustivelty assigning nodes to mutually-exclusive $K$ groups. In the classroom example $X$ is gender with values "Boy" and "Girl" (so $K=2$).
+
+Some measures are applicable only to an undirected network. For that purpose let's create an undirected network of reciprocated nominations in the `Classroom` network and call it `undir`:
+
+```{r data-undirected}
+undir <- as.undirected(Classroom, mode="mutual")
+plot(
+  undir,
+  vertex.color = c("Skyblue", "Pink")[match(V(undir)$gender, c("Boy", "Girl"))],
   vertex.label = NA,
   vertex.size = 10,
   edge.arrow.size = .7
@@ -60,7 +85,164 @@ legend(
 
 
 
-# Directed networks
 
 
-# Undirected networks
+
+# Mixing matrix
+
+Mixing matrix is traditionally a two-dimensional cross-classification of edges depending on group membership of the adjacent nodes. A three-dimensional version of a mixing matrix cross-classifies all the *dyads* according to the following criteria:
+
+1. Group membership of the ego
+2. Group membership of the alter
+3. Whether or not ego and alter are directly connected
+
+Formally, mixing matrix is a matrix $M$ in which entry $m_{ghy}$ is a number of pairs of nodes such that
+
+- The first node belongs to group $g$
+- The second node belongs to group $h$
+- $y$ is `TRUE` if there is a tie, $y$ is `FALSE` if there is no tie
+
+We can compute the mixing matrix for the classroom network and attribute `gender` with
+the function `mixingm()`. By default the traditional two-dimensional version is returned:
+
+```{r mixing-matrix-2d}
+mixingm(Classroom, "gender")
+```
+
+Among other things we see that:
+
+- There are  $40 + 41 = 81$ ties within groups.
+- There are only $5 + 2 = 7$ ties between groups.
+
+
+
+Supplying argument `full=TRUE` the function will return an three-dimensional array cross-classifying the dyads:
+
+```{r mixing-matrix-3d}
+m <- mixingm(Classroom, "gender", full=TRUE)
+m
+```
+
+We can analyze the mixing matrix as a typical frequency crosstabulation. For example:
+
+- What is the probability of a tie depending on attributes of nodes?
+
+```{r mm_condprob}
+round( prop.table(m, c(1,2)) * 100, 1)
+```
+
+- What is the distribution of group memberships of alters depending on the attribute of ego?
+
+```{r mm_contact_layer}
+round( prop.table(m[,,2], 1 ) * 100, 1)
+```
+
+In other words, boys are 95% of nominations of other boys, but only 11% of nominations of girls.
+
+Function `mixingm()` works also for undirected networks, values below the diagonal are always 0:
+
+```{r mixingm-undir}
+mixingm(undir, "gender")
+mixingm(undir, "gender", full=TRUE)
+```
+
+
+Most of the segregation indexes described below summarize the mixing matrix.
+
+
+
+
+## Mixing data frames
+
+Function `mixingdf()` returns the same data in the form of a data frame. For directed `Classroom` network:
+
+```{r mixingdf-classroom}
+mixingdf(Classroom, "gender")
+mixingdf(Classroom, "gender", full=TRUE)
+```
+
+For `undir`:
+
+```{r mixingdf-undir}
+mixingdf(undir, "gender")
+mixingdf(undir, "gender", full=TRUE)
+```
+
+
+# Measures
+
+## Assortativity coefficient
+
+```{r assort}
+assort(Classroom, "gender")
+assort(undir, "gender")
+```
+
+
+## Coleman's homophily index
+
+Coleman's index compares the distribution of group memberships of alters with the distribution of group sizes. It captures the extent the nominations are "biased" due to the preference for own group.
+
+- We have a separate value for each group 
+- Values are in [-1; 1]
+  + 0 -- Members of the given group nominate their group peers proportionally to the relative group size.
+  + 1 -- All nominations are from own group.
+  + -1 -- All nominations are from groups other than own.
+
+
+```{r coleman}
+coleman(Classroom, "gender")
+```
+
+Values are close to 1 (high segregation). The value for boys is greater than for girls, so girls nominated boys a bit more often than boys nominated girls.
+
+## E-I
+
+```{r ei}
+ei(Classroom, "gender")
+ei(undir, "gender")
+```
+
+
+## Freeman's segregation index
+
+Is applicable to undirected networks with two groups.
+
+- Values in [0;1]
+
+
+
+Function `freeman`:
+
+```{r freeman}
+freeman(undir, "gender")
+```
+
+
+
+## Gupta-Anderson-May
+
+```{r gamix}
+gamix(Classroom, "gender")
+gamix(undir, "gender")
+```
+
+## Odds-ratio
+
+```{r orwg}
+orwg(Classroom, "gender")
+orwg(undir, "gender")
+```
+
+
+## Segregation Matrix Index
+
+```{r smi}
+smi(Classroom, "gender")
+```
+
+## Spectral segregation index
+
+```{r ssi}
+ssi(undir, "gender")
+```
