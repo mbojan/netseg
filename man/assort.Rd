@@ -39,29 +39,28 @@ The minimum can be negative, but not less than -1, and depends on the
 relative number of ties of nodes in different groups. If the network
 conforms to "proportionate mixing", the coefficient is 0.
 
-If \code{object} is a table it is treated as a mixing matrix.
-Two-dimensional table is interpreted as a contact layer. Three-dimensional
-table is interpreted as a full mixing matrix \eqn{m_{ghy}}{m[ghy]}
-cross-classyfying all dyads, in which 'g' and 'h' correspond to group
-membership of ego and alter respectively. Layers y=1 and y=2 are assumed to
-be non-contact and contact layers respectively. In the 3-d case only
-\code{g[,,2]} is used.
+If \code{object} is a table it is interpreted as a mixing matrix. Two-dimensional
+table is interpreted as a contact layer. Three-dimensional table is
+interpreted as a full mixing matrix \eqn{m_{ghy}}{m[ghy]} cross-classyfying
+all dyads, in which \eqn{g} and \eqn{h} correspond to group membership of ego
+and alter respectively. Layers \eqn{y=1} and \eqn{y=2} are assumed to be
+non-contact and contact layers respectively. In the 3d case \code{m[,,2]} is used.
 
-If \code{g} is an object of class "igraph" the measure is
-calculated for the vertex attribute specified with \code{vattr}.
+If \code{object} is of class "igraph" the measure is calculated for the
+vertex attribute specified with \code{vattr}.
 
-For any other classes, object \code{g} are coerced to a table and the
+For any other classes, \code{object} are coerced to a table and the
 table method is called.
 }
 \examples{
 assort(WhiteKinship, "gender")
 assort(EF3, "type")
 
-if( require(igraph, quietly = TRUE) ) {
-# value of 'assort' for full networks of different sizes
+# Values of `assort()` for full networks of different sizes
+if( requireNamespace("igraph", quietly = TRUE) ) {
   f <- function(n) {
-    gfull <- graph.full(n, directed=FALSE)
-    V(gfull)$type <- rep(1:2, length=vcount(gfull))
+    gfull <- igraph::make_full_graph(n, directed=FALSE)
+    igraph::V(gfull)$type <- rep(1:2, length = igraph::vcount(gfull))
     assort(gfull, "type")
   }
   set.seed(1)
@@ -79,7 +78,7 @@ in networks", arXiv:cond-mat/0210146v1
 Newman, M. J. (2003) "Mixing patterns in networks" arXiv:cond-mat/0209450v2
 }
 \seealso{
-Mixing matrices: \code{\link{mixingm}}
+Mixing matrices: \code{\link[=mixingm]{mixingm()}}
 
 Other segregation measures: 
 \code{\link{coleman}()},
