@@ -1,4 +1,6 @@
-#' @keywords internal
+#' @name netseg-package
+#' @aliases netseg
+#' @keywords package
 #' @docType package
 #'
 #' @references

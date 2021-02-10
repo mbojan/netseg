@@ -2,8 +2,9 @@
 % Please edit documentation in R/netseg-package.R
 \docType{package}
 \name{netseg-package}
-\alias{netseg}
 \alias{netseg-package}
+\alias{_PACKAGE}
+\alias{netseg}
 \title{netseg: Measures of Network Segregation and Homophily}
 \description{
 \if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
@@ -26,4 +27,4 @@ https://doi.org/10.1016/j.socnet.2014.04.001.
 \strong{Maintainer}: Michal Bojanowski \email{michal2992@gmail.com} (\href{https://orcid.org/0000-0001-7503-852X}{ORCID})
 
 }
-\keyword{internal}
+\keyword{package}
