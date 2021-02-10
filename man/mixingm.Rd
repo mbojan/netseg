@@ -55,8 +55,8 @@ three-dimensional array crossclassifying connected or all dyads in
 the matrix is folded onto the upper triangle (entries in lower triangle are
 0).
 
-Function \code{\link[=mixingdf]{mixingdf()}} returns exactly the same values as \code{\link[=mixingm]{mixingm()}} but
-organized in a data frame with columns:
+Function \code{\link[=mixingdf]{mixingdf()}} returns non-zero entries of a mixing matrix (as
+returned by \code{\link[=mixingm]{mixingm()}}), but organized in a data frame with columns:
 
 \item{ego, alter}{group membership of ego an alter}
 \item{tie}{present only if \code{full=TRUE}, with \code{TRUE} or \code{FALSE} for connected

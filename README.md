@@ -9,15 +9,14 @@
 status](https://github.com/mbojan/netseg/workflows/R-CMD-check/badge.svg)](https://github.com/mbojan/netseg/actions)
 <!-- badges: end -->
 
-Network homophily is a pattern in which ties are more likely to exist
-between nodes similar to each other. It is frequently observed for
-various types of social relations. At the same time, segregation is
-often encountered in urban areas as a tendency of families to occupy
-neighborhoods inhabited by other families similar to them. This package
-implements most important numerical indexes to measure the extent of
-homophily/segregation in a network in which vertices are assigned to two
-or more groups. It is a computational companion to the paper by
-Bojanowski and Corten (2014).
+Segregation is a network-level property such that edges between
+predefined groups of vertices are relatively less likely. Network
+homophily is a individual-level tendency to form relations with people
+who are similar on some attribute (e.g. gender, music taste, social
+status, etc.). In general homophily leads to segregation, but
+segregation might arise without homophily. This package implements
+descriptive indices measuring homophily/segregation. It is a
+computational companion to Bojanowski and Corten (2014).
 
 ## Installation
 
@@ -104,9 +103,9 @@ all ties are sent to members of other group(s).
 
 ## References
 
-<div id="refs" class="references hanging-indent">
+<div id="refs" class="references csl-bib-body hanging-indent">
 
-<div id="ref-bojanowski-corten-2014">
+<div id="ref-bojanowski-corten-2014" class="csl-entry">
 
 Bojanowski, Michał, and Rense Corten. 2014. “Measuring Segregation in
 Social Networks.” *Social Networks* 39: 14–32.
@@ -114,7 +113,7 @@ Social Networks.” *Social Networks* 39: 14–32.
 
 </div>
 
-<div id="ref-coleman-1958">
+<div id="ref-coleman-1958" class="csl-entry">
 
 Coleman, James S. 1958. “Relational Analysis: The Study of Social
 Organizations with Survey Methods.” *Human Organization* 17 (4): 28–36.

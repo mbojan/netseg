@@ -8,14 +8,14 @@
 \description{
 \if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
 
-Network homophily is a pattern in which ties are more likely to
-	exist between nodes similar to each other. It is frequently observed
-	for various types of social relations. At the same time, segregation is often
-	encountered in urban areas as a tendency of families to occupy neighborhoods
-	inhabited by other families similar to them. This package implements
-	most important numerical indexes to measure the extent of homophily/segregation
-	in a network in which vertices are assigned to two or more groups. It
-	is a computational companion to the paper by Bojanowski & Corten (2014) <doi:10.1016/j.socnet.2014.04.001>.
+Segregation is a network-level property such that edges between 
+  predefined groups of vertices are relatively less likely. Network homophily 
+  is a individual-level tendency to form relations with people who are similar 
+  on some attribute (e.g. gender, music taste, social status, etc.). In general
+  homophily leads to segregation, but segregation might arise without 
+  homophily. This package implements descriptive indices measuring 
+  homophily/segregation. It is a computational companion 
+  to Bojanowski & Corten (2014) <doi:10.1016/j.socnet.2014.04.001>.
 }
 \references{
 Bojanowski, Michał, and Rense Corten. 2014. "Measuring Segregation in Social
