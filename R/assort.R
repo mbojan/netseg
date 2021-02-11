@@ -11,6 +11,8 @@
 #' relative number of ties of nodes in different groups. If the network
 #' conforms to "proportionate mixing", the coefficient is 0.
 #'
+#' @template mm-igraph-methods
+#'
 #' @param object R object, see available methods
 #' @param ... other arguments to/from other methods
 #'
@@ -19,11 +21,10 @@
 #' @family segregation measures
 #' @seealso Mixing matrices: [mixingm()]
 #'
-#' @references
-#' Newman, M. J. and Girvan, M. (2002) "Mixing patterns and community structure
-#' in networks", arXiv:cond-mat/0210146v1
+#' @references Newman, M. J. and Girvan, M. (2002) "Mixing patterns and
+#'   community structure in networks", arXiv:cond-mat/0210146v1
 #'
-#' Newman, M. J. (2003) "Mixing patterns in networks" arXiv:cond-mat/0209450v2
+#'   Newman, M. J. (2003) "Mixing patterns in networks" arXiv:cond-mat/0209450v2
 #'
 #' @export
 #' @examples
@@ -50,14 +51,6 @@ assort <- function(object, ...) UseMethod("assort")
 
 
 #' @rdname assort
-#' @details
-#' If `object` is a table it is interpreted as a mixing matrix. Two-dimensional
-#' table is interpreted as a contact layer. Three-dimensional table is
-#' interpreted as a full mixing matrix \eqn{m_{ghy}}{m[ghy]} cross-classyfying
-#' all dyads, in which \eqn{g} and \eqn{h} correspond to group membership of ego
-#' and alter respectively. Layers \eqn{y=1} and \eqn{y=2} are assumed to be
-#' non-contact and contact layers respectively. In the 3d case `m[,,2]` is used.
-#'
 #' @export
 assort.table <- function(object, ...)
 {
@@ -79,11 +72,8 @@ assort.table <- function(object, ...)
 
 
 #' @rdname assort
-#' @details If `object` is of class "igraph" the measure is calculated for the
-#'   vertex attribute specified with `vattr`.
-#'
-#' @param vattr character, name of the vertex attribute for which the measure
-#' is to be calculated
+#' @param vattr character, name of the vertex attribute for which the measure is
+#'   to be calculated
 #'
 #' @export
 assort.igraph <- function(object, vattr, ...)
@@ -97,8 +87,8 @@ assort.igraph <- function(object, vattr, ...)
 
 
 #' @rdname assort
-#' @details For any other classes, `object` are coerced to a table and the
-#' table method is called.
+#' @details For any other classes, `object` is coerced to a table and the table
+#'   method is called.
 #'
 #' @export
 assort.default <- function(object, ...)

@@ -20,8 +20,8 @@ assort(object, ...)
 
 \item{...}{other arguments to/from other methods}
 
-\item{vattr}{character, name of the vertex attribute for which the measure
-is to be calculated}
+\item{vattr}{character, name of the vertex attribute for which the measure is
+to be calculated}
 }
 \value{
 Numeric value of the index.
@@ -39,18 +39,19 @@ The minimum can be negative, but not less than -1, and depends on the
 relative number of ties of nodes in different groups. If the network
 conforms to "proportionate mixing", the coefficient is 0.
 
-If \code{object} is a table it is interpreted as a mixing matrix. Two-dimensional
-table is interpreted as a contact layer. Three-dimensional table is
-interpreted as a full mixing matrix \eqn{m_{ghy}}{m[ghy]} cross-classyfying
-all dyads, in which \eqn{g} and \eqn{h} correspond to group membership of ego
-and alter respectively. Layers \eqn{y=1} and \eqn{y=2} are assumed to be
-non-contact and contact layers respectively. In the 3d case \code{m[,,2]} is used.
+If \code{object} is a table it is interpreted as a mixing matrix.
+Two-dimensional table is interpreted as a contact layer. Three-dimensional
+table is interpreted as a full mixing matrix \eqn{m_{ghy}}{m[ghy]}
+cross-classyfying all dyads, in which \eqn{g} and \eqn{h} correspond to
+group membership of ego and alter respectively. Layers \eqn{y=1} and
+\eqn{y=2} are assumed to be non-contact and contact layers respectively.
 
-If \code{object} is of class "igraph" the measure is calculated for the
-vertex attribute specified with \code{vattr}.
+If \code{object} is of class "igraph" it is required to supply \code{vattr}
+with the name of the vertex attribute to calculate intermediate mixing
+matrix.
 
-For any other classes, \code{object} are coerced to a table and the
-table method is called.
+For any other classes, \code{object} is coerced to a table and the table
+method is called.
 }
 \examples{
 assort(WhiteKinship, "gender")
@@ -72,8 +73,8 @@ if( requireNamespace("igraph", quietly = TRUE) ) {
 }
 }
 \references{
-Newman, M. J. and Girvan, M. (2002) "Mixing patterns and community structure
-in networks", arXiv:cond-mat/0210146v1
+Newman, M. J. and Girvan, M. (2002) "Mixing patterns and
+community structure in networks", arXiv:cond-mat/0210146v1
 
 Newman, M. J. (2003) "Mixing patterns in networks" arXiv:cond-mat/0209450v2
 }
