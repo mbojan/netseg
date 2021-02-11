@@ -87,7 +87,7 @@ sticker(
 # `netseg`: Measures of Network Segregation and Homophily <img src="man/figures/logo.png" align="right" width="20%" />
 
 <!-- badges: start -->
-[![R build status](https://github.com/mbojan/netseg/workflows/R-CMD-check/badge.svg)](https://github.com/mbojan/netseg/actions)
+[![R-CMD-check](https://github.com/mbojan/netseg/workflows/R-CMD-check/badge.svg)](https://github.com/mbojan/netseg/actions)
 [![CRAN status](https://www.r-pkg.org/badges/version/netseg)](https://CRAN.R-project.org/package=netseg)
 [![rstudio cran mirror downloads](http://cranlogs.r-pkg.org/badges/netseg?color=2ED968)](http://cranlogs.r-pkg.org/)
 <!-- badges: end -->

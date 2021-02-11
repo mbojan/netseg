@@ -5,8 +5,7 @@
 
 <!-- badges: start -->
 
-[![R build
-status](https://github.com/mbojan/netseg/workflows/R-CMD-check/badge.svg)](https://github.com/mbojan/netseg/actions)
+[![R-CMD-check](https://github.com/mbojan/netseg/workflows/R-CMD-check/badge.svg)](https://github.com/mbojan/netseg/actions)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/netseg)](https://CRAN.R-project.org/package=netseg)
 [![rstudio cran mirror
