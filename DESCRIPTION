@@ -20,6 +20,8 @@ Imports: igraph (>= 0.6-0)
 License: GPL-2
 Encoding: UTF-8
 Roxygen: list(markdown=TRUE)
+URL: https://mbojan.github.io/netseg/
+BugReports: https://github.com/mbojan/netseg/issues
 LazyData: true
 RoxygenNote: 7.1.1
 Suggests: 
