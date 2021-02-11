@@ -31,37 +31,36 @@ mixingdf(object, ...)
 
 \item{...}{other arguments passed to/from other methods}
 
-\item{rattr}{name of the vertex attribute or an attribute itself as a
-vector. If \code{cattr} is not NULL, \code{rattr} is used for rows of the
-resulting mixing matrix.}
+\item{rattr}{name of the vertex attribute or an attribute itself as a vector.
+If \code{cattr} is not \code{NULL}, \code{rattr} is used for rows of the resulting mixing
+matrix.}
 
-\item{cattr}{name of the vertex attribute or an attribute itself as a
-vector. If supplied, used for columns in the mixing matrix.}
+\item{cattr}{name of the vertex attribute or an attribute itself as a vector.
+If supplied, used for columns in the mixing matrix.}
 
-\item{full}{logical, whether two- or three-dimensional mixing matrix
-should be returned.}
+\item{full}{logical, whether two- or three-dimensional mixing matrix should
+be returned.}
 
 \item{directed}{logical, whether the network is directed. By default,
-directedness of the network is determined with
-\code{\link[igraph]{is_directed}}.}
+directedness of the network is determined with \code{\link[igraph:is_directed]{igraph::is_directed()}}.}
 
-\item{loops}{logical, whether loops are allowed. By default it is TRUE
+\item{loops}{logical, whether loops are allowed. By default it is \code{TRUE}
 whenever there is at least one loop in \code{object}.}
 }
 \value{
 Function \code{\link[=mixingm]{mixingm()}}, depending on \code{full} argument, a two- or
 three-dimensional array crossclassifying connected or all dyads in
-\code{object}. For undirected network and if \code{foldit} is \code{TRUE} (default),
-the matrix is folded onto the upper triangle (entries in lower triangle are
-0).
+\code{object}. For undirected network and if \code{foldit} is \code{TRUE} (default), the
+matrix is folded onto the upper triangle (entries in lower triangle are 0).
 
 Function \code{\link[=mixingdf]{mixingdf()}} returns non-zero entries of a mixing matrix (as
 returned by \code{\link[=mixingm]{mixingm()}}), but organized in a data frame with columns:
-
-\item{ego, alter}{group membership of ego an alter}
-\item{tie}{present only if \code{full=TRUE}, with \code{TRUE} or \code{FALSE} for connected
-and disconnected dyads respectively}
-\item{n}{counts}
+\itemize{
+\item \code{ego}, \code{alter} -- group membership of ego an alter
+\item \code{tie} -- present only if \code{full=TRUE}, with \code{TRUE} or \code{FALSE} for connected
+and disconnected dyads respectively
+\item \code{n} -- counts
+}
 }
 \description{
 Creating network mixing matrices (\code{\link[=mixingm]{mixingm()}}) and data frames (\code{\link[=mixingdf]{mixingdf()}}).
@@ -83,10 +82,11 @@ group \eqn{i}.
 A full mixing matrix is a three-dimensional array that cross-classifies
 \emph{all} network \emph{dyads} depending on:
 \enumerate{
-\item{the value of the vertex attribute for tie sender}
-\item{the value of the vertex attribute for tie receiver}
-\item{the status of the dyad, i.e. whether it is connected or not}
+\item the value of the vertex attribute for tie sender
+\item the value of the vertex attribute for tie receiver
+\item the status of the dyad, i.e. whether it is connected or not
 }
+
 The two-dimensional version is a so-called "contact layer"
 of the three-dimensional version.
 
@@ -94,14 +94,14 @@ If \code{object} is of class "igraph," mixing matrix is created for the
 network in \code{object} based on vertex attributes supplied in arguments
 \code{rattr} and optionally \code{cattr}.
 
-If only \code{rattr} is specified (or, equivalently, \code{rattr} and
-\code{cattr} are identical), the result will be a mixing matrix \eqn{G
-\times G} if \code{full} is \code{FALSE} or \eqn{G \times G \times 2}{GxGx2}
-if \code{full} is \code{TRUE}. Where \eqn{G} is the number of categories of
-vertex attribute specified by \code{rattr}.
+If only \code{rattr} is specified (or, equivalently, \code{rattr} and \code{cattr} are
+identical), the result will be a mixing matrix \eqn{G \times G} if \code{full}
+is \code{FALSE} or \eqn{G \times G \times 2}{GxGx2} if \code{full} is \code{TRUE}. Where
+\eqn{G} is the number of categories of vertex attribute specified by
+\code{rattr}.
 
-If \code{rattr} and \code{cattr} can be used to specify different vertex
-attributes for tie sender and tie receiver.
+If \code{rattr} and \code{cattr} can be used to specify different vertex attributes
+for tie sender and tie receiver.
 }
 \examples{
 if(requireNamespace("igraph", quietly = TRUE)) {
