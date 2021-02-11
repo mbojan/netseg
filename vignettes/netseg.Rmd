@@ -1,7 +1,7 @@
 ---
 title: "Network Segregation and Homophily"
 author: "Michał Bojanowski"
-date: "July 7, 2020"
+date: "February 11, 2020"
 output: 
   rmarkdown::html_vignette:
     toc: true
@@ -12,6 +12,7 @@ vignette: >
   %\VignetteEngine{knitr::rmarkdown}
 editor_options: 
   chunk_output_type: console
+bibliography: refs.bib
 ---
 
 ```{r setup, include = FALSE}
@@ -30,8 +31,10 @@ knitr::opts_chunk$set(
 set.seed(666)
 ```
 
-
-> Please consult @bojanowski-corten-2014 for further details.
+The following vignette demonstrates using the functions from package **netseg**
+[@r-netseg]. Two example datasets are described in the next section. Mixing
+matrices are described in section 2 and the measures are described in section 3.
+Please consult @bojanowski-corten-2014 for further details.
 
 
 # Data
@@ -243,6 +246,26 @@ smi(Classroom, "gender")
 
 ## Spectral segregation index
 
+Values for vertices
+
 ```{r ssi}
-ssi(undir, "gender")
+(v <- ssi(undir, "gender"))
 ```
+
+Plotted with grayscale (the more segregated the darker the color):
+
+```{r ssi-plot}
+kol <- gray(scales::rescale(v, 1:0))
+plot(
+  undir,
+  vertex.shape = c("circle", "square")[match(V(undir)$gender, c("Boy", "Girl"))],
+  vertex.color = kol,
+  vertex.label = V(undir),
+  vertex.label.color = ifelse(apply(col2rgb(kol), 2, mean) > 125, "black", "white"),
+  vertex.size = 15,
+  vertex.label.family = "sans",
+  edge.arrow.size = .7
+)
+```
+
+# References
