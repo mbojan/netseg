@@ -36,24 +36,27 @@ Colemans's homphily index for directed networks.
 Coleman's homophily index computes homophily scores for each group
 defined by a vertex attribute.
 
-If \code{object} is a table it is interpreted as a mixing matrix. If it is
-only the contact layer (2-dimensional), then vector of group sizes need to
-be supplied via \code{gsizes}.
+If \code{object} is a table it is interpreted as a mixing matrix.
+Two-dimensional table is interpreted as a contact layer. Three-dimensional
+table is interpreted as a full mixing matrix \eqn{m_{ghy}}{m[ghy]}
+cross-classyfying all dyads, in which \eqn{g} and \eqn{h} correspond to
+group membership of ego and alter respectively. Layers \eqn{y=1} and
+\eqn{y=2} are assumed to be non-contact and contact layers respectively.
 
-\code{object} can be of class "igraph"
-
-Default method tries to coerce \code{object} to table and use other methods.
+If \code{object} is of class "igraph" it is required to supply \code{vattr}
+with the name of the vertex attribute to calculate intermediate mixing
+matrix.
 }
 \examples{
-if( require(igraph, quietly = TRUE)) {
-# Converting network to directed
-coleman(as.directed(WhiteKinship, "mutual"), "gender")
-coleman(as.directed(EF3, "mutual"), "race")
+if(requireNamespace("igraph", quietly = TRUE)) {
+  # Converting networks to directed
+  coleman(igraph::as.directed(WhiteKinship, "mutual"), "gender")
+  coleman(igraph::as.directed(EF3, "mutual"), "race")
 }
 }
 \references{
 Coleman, J. (1958) "Relational analysis: The study of social organizations
-with survey methods", Human Organization 17:28--36.
+with survey methods", \emph{Human Organization} 17:28--36.
 }
 \seealso{
 Other segregation measures: 
