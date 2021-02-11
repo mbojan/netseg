@@ -33,7 +33,7 @@
 #' @importFrom igraph V 'V<-' E 'E<-'
 #' @export
 #' @examples
-#' if( require(igraph, quietly = TRUE)) {
+#' if(requireNamespace("igraph", quietly = TRUE)) {
 #'
 #' ### artificial EF data
 #' x <- ssi(EF3, "race")
@@ -41,10 +41,10 @@
 #'
 #'
 #' # show it on picture
-#' a <- V(EF3)$race
+#' a <- igraph::V(EF3)$race
 #' # rescale SSI values to use as shades of gray
 #' k <- 1 - scale(x, center=min(x), scale=max(x) - min(x))
-#' plot( EF3, layout=layout.fruchterman.reingold,
+#' plot( EF3, layout=igraph::layout.fruchterman.reingold,
 #' vertex.color= gray(k),
 #' vertex.label.family="",
 #' vertex.shape=c("circle", "square")[a],
@@ -56,13 +56,13 @@
 #' x
 #'
 #' # plot it
-#' a <- match(V(WhiteKinship)$gender, unique(V(WhiteKinship)$gender))
+#' a <- match(igraph::V(WhiteKinship)$gender, unique(igraph::V(WhiteKinship)$gender))
 #' k <- 1 - scale(x, center=min(x), scale=max(x) - min(x))
 #' set.seed(1234)
-#' plot( WhiteKinship, layout=layout.fruchterman.reingold,
+#' plot( WhiteKinship, layout=igraph::layout.fruchterman.reingold,
 #' main="Node segregation in White's kinship data",
 #' vertex.label.family="",
-#' vertex.label=V(WhiteKinship)$name,
+#' vertex.label=igraph::V(WhiteKinship)$name,
 #' vertex.color= gray(k),
 #' vertex.shape=c("circle", "csquare")[a],
 #' vertex.label.color="black")
