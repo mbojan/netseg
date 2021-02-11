@@ -9,7 +9,7 @@
 \usage{
 gamix(object, ...)
 
-\method{gamix}{table}(object, debug = FALSE, ...)
+\method{gamix}{table}(object, ...)
 
 \method{gamix}{igraph}(object, vattr, ...)
 
@@ -19,9 +19,6 @@ gamix(object, ...)
 \item{object}{R object, see Details for available methods}
 
 \item{...}{other objects passed to/from other methods}
-
-\item{debug}{logical, return some intermediate results as attributes to the
-returned value}
 
 \item{vattr}{character, name of vertex attribute}
 }
@@ -37,9 +34,16 @@ The measure varies between \code{-1/vcount(g)} for dissassortative mixing
 and 1 for perfect within-group mixing. It takes a value of 0 for
 proportionate mixing.
 
-Method for mixing matrices
+If \code{object} is a table it is interpreted as a mixing matrix.
+Two-dimensional table is interpreted as a contact layer. Three-dimensional
+table is interpreted as a full mixing matrix \eqn{m_{ghy}}{m[ghy]}
+cross-classyfying all dyads, in which \eqn{g} and \eqn{h} correspond to
+group membership of ego and alter respectively. Layers \eqn{y=1} and
+\eqn{y=2} are assumed to be non-contact and contact layers respectively.
 
-Method for igraphs
+If \code{object} is of class "igraph" it is required to supply \code{vattr}
+with the name of the vertex attribute to calculate intermediate mixing
+matrix.
 }
 \examples{
 gamix(WhiteKinship, "gender")
