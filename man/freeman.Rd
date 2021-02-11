@@ -9,7 +9,7 @@
 \usage{
 freeman(object, ...)
 
-\method{freeman}{table}(object, gsizes = NULL, more = FALSE, loops = FALSE, ...)
+\method{freeman}{table}(object, gsizes = NULL, loops = FALSE, ...)
 
 \method{freeman}{igraph}(object, vattr, gsizes = NULL, loops = any(is.loop(object)), ...)
 
@@ -22,8 +22,6 @@ freeman(object, ...)
 
 \item{gsizes}{numeric, optional true distribution of types, see Details}
 
-\item{more}{logical, should some more output be returned}
-
 \item{loops}{logical, whether loops are allowed}
 
 \item{vattr}{character scalar or any vector of length equal to
@@ -32,9 +30,6 @@ designating the groups or a vector with the attribute itself}
 }
 \value{
 The value of the Freeman's index.
-
-If \code{more} is \code{TRUE}, some intermediate results are returned in a
-list.
 }
 \description{
 Calculate Freeman's segregation index for undirected netoworks with
@@ -50,19 +45,30 @@ between-group ties that would be expected if ties would be created randomly.
 The index has some discontinuity as there are network and group configurations
 that are characterized by the higher number of between-group ties that is
 expected under a random graph. The index is truncates these situations and
-takes a value of 0.
+takes a value of 0 (as originally described by Freeman (1978)).
 
-The original Freeman's formulation was for only two types of vertices.  Here
-it is extended to the arbitrary number of types. The modification only
-affects the way in which the expected number of inter-type edges under pure
-random graph is calculated.
+The original Freeman's formulation involves two groups of vertices. Here
+it is extended to the arbitrary number of groups. The generalization
+affects the way in which the expected number of between-group edges under pure
+random graph is calculated, see Bojanowski & Corten (2014) for details.
 
-The function internally calculates the frequency of types of vertices in the
-supplied attributer \code{vattr}. However, it is possible to override this
-by specifying ``true'' type distribution with the \code{dis} argument. It is
-assumed to be a table (as returned by \code{table}) or a numeric vector with
-frequencies of types of vertices. This may be especially usefull when
-dealing with large graphs with larger number of isolates.
+The function internally calculates the sizes of groups of vertices in the
+supplied attribute \code{vattr}. However, it is possible to override this by
+specifying "true" type distribution with the \code{gsizes} argument. It is assumed
+to be a table (as returned by \code{\link[=table]{table()}}) or a numeric vector with the group
+sizes. This may be especially usefull when dealing with large graphs and/or
+with large number of isolates.
+
+If \code{object} is a table it is interpreted as a mixing matrix.
+Two-dimensional table is interpreted as a contact layer. Three-dimensional
+table is interpreted as a full mixing matrix \eqn{m_{ghy}}{m[ghy]}
+cross-classyfying all dyads, in which \eqn{g} and \eqn{h} correspond to
+group membership of ego and alter respectively. Layers \eqn{y=1} and
+\eqn{y=2} are assumed to be non-contact and contact layers respectively.
+
+If \code{object} is of class "igraph" it is required to supply \code{vattr}
+with the name of the vertex attribute to calculate intermediate mixing
+matrix.
 
 Method for mixing matrices
 
@@ -74,11 +80,15 @@ Method for "igraph"s
 freeman(WhiteKinship, "gender")
 
 # using 'more' argument
-freeman(WhiteKinship, "gender", more=TRUE)
+freeman(WhiteKinship, "gender")
 }
 \references{
-Freeman, Linton C. (1978) Segregation in Social Networks, \emph{Sociological
-Methods & Research} \bold{6}(4):411--429
+Freeman, Linton C. (1978) Segregation in Social Networks,
+\emph{Sociological Methods & Research} \bold{6}(4):411--429
+
+Bojanowski, Michał, and Rense Corten. 2014. "Measuring Segregation in
+Social Networks." \emph{Social Networks} 39: 14–32.
+https://doi.org/10.1016/j.socnet.2014.04.001.
 }
 \seealso{
 Other segregation measures: 
