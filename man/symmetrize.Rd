@@ -21,16 +21,16 @@ A matrix: symmetrized version of \code{mat}.
 Argument \code{mat} is to be a square numeric matrix. The way it is made
 symmetric, or asymetric, depends on the value of the \code{rule} argument.
 
-If \code{rule} is "upper" or "lower" then \code{mat} is made symmetric by
-copying, respectively, upper triangle onto lower, or lower onto upper. The
-value of \code{rule} specifies values of which triangle will stay in the
-returned value.
+If \code{rule} is "upper" or "lower" then \code{mat} is made symmetric by copying,
+respectively, upper triangle onto lower, or lower onto upper. The value of
+\code{rule} specifies values of which triangle will stay in the returned value.
 
 If \code{rule} is "intdiv" then the off-diagonal values are distributed
 approximately equally between the lower/upper triangles. If \code{r} is the
-computed result, then \code{r[i,j]} will be equal to \code{(x[i,j] + x[j,i])
-\%/\% 2} if \code{r[i,j]} is in the lower triangle. It will be equal to
-\code{(x[i,j] + x[j,i]) \%/\% 2 + 1} if in the upper triangle.
+computed result, then \code{r[i,j]} will be equal to
+\verb{(x[i,j] + x[j,i]) \\\%/\\\% 2} if \code{r[i,j]} is in the lower triangle.
+It will be equal to
+\verb{(x[i,j] + x[j,i]) \\\%/\\\% 2 + 1} if in the upper triangle.
 
 If \code{rule} is "div" then the off-diagonal values are distributed equally
 between the lower/upper triangles: as with "intdiv" but using normal
@@ -57,5 +57,5 @@ r2
 all.equal(sum(m), sum(r2))
 }
 \seealso{
-\code{\link{fold}}
+\code{\link[=fold]{fold()}}
 }
