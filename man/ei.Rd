@@ -42,20 +42,24 @@ prevalence of between- and within-group ties. From that perspective it can
 be interpreted as a measure of network segregation.
 }
 \details{
-If \code{object} is a table, it is assumed to be a mixing matrix.
+If \code{object} is a table it is interpreted as a mixing matrix.
+Two-dimensional table is interpreted as a contact layer. Three-dimensional
+table is interpreted as a full mixing matrix \eqn{m_{ghy}}{m[ghy]}
+cross-classyfying all dyads, in which \eqn{g} and \eqn{h} correspond to
+group membership of ego and alter respectively. Layers \eqn{y=1} and
+\eqn{y=2} are assumed to be non-contact and contact layers respectively.
 
-Method for igraph objects needs the name of the vertex attribute \code{vattr} that
-defines groups.
-
-Default method tries to coerce \code{object} to table.
+If \code{object} is of class "igraph" it is required to supply \code{vattr}
+with the name of the vertex attribute to calculate intermediate mixing
+matrix.
 }
 \examples{
 ei(WhiteKinship, "gender")
 }
 \references{
 Krackhardt, D., & Stern, R. N. (1988). Informal networks and
-organizational crises: An experimental simulation. Social psychology
-quarterly, 123-140.
+organizational crises: An experimental simulation. \emph{Social Psychology
+Quarterly}, 123-140.
 }
 \seealso{
 Other segregation measures: 
