@@ -43,7 +43,7 @@ ei.table <- function(object, ...)
 
 #' @rdname ei
 #' @param vattr character scalar or vector of length equal to the size of
-#' \code{object}, vertex attribute for which mixing matrix is to be computed
+#'   `object`, vertex attribute for which mixing matrix is to be computed
 #' @param directed logical whether the network is directed
 #' @param loops logical, whether loops are allowed
 #' @export

@@ -23,6 +23,14 @@ Bojanowski, Michał, and Rense Corten. 2014. "Measuring Segregation in Social
 Networks." \emph{Social Networks} 39: 14–32.
 https://doi.org/10.1016/j.socnet.2014.04.001.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://mbojan.github.io/netseg/}
+  \item Report bugs at \url{https://github.com/mbojan/netseg/issues}
+}
+
+}
 \author{
 \strong{Maintainer}: Michal Bojanowski \email{michal2992@gmail.com} (\href{https://orcid.org/0000-0001-7503-852X}{ORCID})
 
