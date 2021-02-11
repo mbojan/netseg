@@ -88,6 +88,7 @@ sticker(
 
 <!-- badges: start -->
 [![R build status](https://github.com/mbojan/netseg/workflows/R-CMD-check/badge.svg)](https://github.com/mbojan/netseg/actions)
+[![CRAN status](https://www.r-pkg.org/badges/version/netseg)](https://CRAN.R-project.org/package=netseg)
 <!-- badges: end -->
 
 Segregation is a network-level property such that edges between predefined groups of vertices are relatively less likely. Network homophily is a individual-level tendency to form relations with people who are similar on some attribute (e.g. gender, music taste, social status, etc.). In general homophily leads to segregation, but segregation might arise without homophily. This package implements descriptive indices measuring homophily/segregation. It is a computational companion to @bojanowski-corten-2014.
