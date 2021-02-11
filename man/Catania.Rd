@@ -5,15 +5,12 @@
 \alias{Catania}
 \title{Pattern of sexual contacts in AMEN study}
 \format{
-Four-by-four numeric matrix with dimnames.
-
-\preformatted{
-          woman
-man        black hispanic white other
-  black    0.258    0.016 0.035 0.013
-  hispanic 0.012    0.157 0.058 0.019
-  white    0.013    0.023 0.306 0.035
-  other    0.005    0.007 0.024 0.016
+Four-by-four numeric matrix with dimnames.\preformatted{##           female
+## male       black hispanic other white
+##   black      506       32    26    69
+##   hispanic    23      308    38   114
+##   other       10       14    32    47
+##   white       26       46    68   599
 }
 }
 \source{
@@ -35,11 +32,11 @@ ep <- sum(Catania \%*\% Catania)
 }
 \references{
 Catania et al. (1992) "The population-based AMEN (AIDS in Multi-Ethnic
-Neighborhoods) study" American Journal of Public Health 82, 284-287
+Neighborhoods) study" \emph{American Journal of Public Health} 82, 284-287
 
 Morris, M. (1995) "Data driven network models for the spread of infectious
-disease". In D. Mollison (ed.) "Epidemic Models: Their Structure and
-Relation to Data", pp. 302-322, Cambridge University Press, Cambridge
+disease". In D. Mollison (ed.) \emph{Epidemic Models: Their Structure and
+Relation to Data}, pp. 302-322, Cambridge University Press, Cambridge
 
 Newman, M. (2003) "Mixing patterns in networks" Arxiv:cond-mat/0209450 v2
 }
