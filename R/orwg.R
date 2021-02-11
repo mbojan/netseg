@@ -7,8 +7,9 @@
 #' The measure takes values, like all odds ratios, from (0; Inf).
 #'
 #' @param object R object, see Details for available methods
-#'
 #' @param ... other arguments passed to/from other methods
+#'
+#' @template mm-igraph-methods
 #'
 #' @return Numeric value of the measure.
 #'
@@ -25,12 +26,8 @@
 orwg <- function(object, ...) UseMethod("orwg")
 
 
-#' @details
-#' Method for mixing matrices.
-#'
-#' @method orwg table
-#' @export
 #' @rdname orwg
+#' @export
 orwg.table <- function(object, ...)
 {
   # needs full mixing matrix
@@ -44,15 +41,10 @@ orwg.table <- function(object, ...)
   prod(diag(z)) / prod(offdiag)
 }
 
-#' @details
-#' Method for igraphs
-#'
+#' @rdname orwg
 #' @param vattr character scalar or any vector, name of the vertex attribute or
 #' the attribute itself (as a vector)
-#'
-#' @method orwg igraph
 #' @export
-#' @rdname orwg
 orwg.igraph <- function(object, vattr, ...)
 {
   m <- mixingm(object, rattr=vattr, full=TRUE)
@@ -62,9 +54,8 @@ orwg.igraph <- function(object, vattr, ...)
 
 
 
-#' @method orwg default
-#' @export
 #' @rdname orwg
+#' @export
 orwg.default <- function(object, ...)
 {
   orwg.table( as.table(object), ... )

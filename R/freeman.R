@@ -12,33 +12,33 @@
 #' The index has some discontinuity as there are network and group configurations
 #' that are characterized by the higher number of between-group ties that is
 #' expected under a random graph. The index is truncates these situations and
-#' takes a value of 0.
+#' takes a value of 0 (as originally described by Freeman (1978)).
 #'
-#' The original Freeman's formulation was for only two types of vertices.  Here
-#' it is extended to the arbitrary number of types. The modification only
-#' affects the way in which the expected number of inter-type edges under pure
-#' random graph is calculated.
+#' The original Freeman's formulation involves two groups of vertices. Here
+#' it is extended to the arbitrary number of groups. The generalization
+#' affects the way in which the expected number of between-group edges under pure
+#' random graph is calculated, see Bojanowski & Corten (2014) for details.
 #'
-#' The function internally calculates the frequency of types of vertices in the
-#' supplied attributer \code{vattr}. However, it is possible to override this
-#' by specifying ``true'' type distribution with the \code{dis} argument. It is
-#' assumed to be a table (as returned by \code{table}) or a numeric vector with
-#' frequencies of types of vertices. This may be especially usefull when
-#' dealing with large graphs with larger number of isolates.
+#' The function internally calculates the sizes of groups of vertices in the
+#' supplied attribute `vattr`. However, it is possible to override this by
+#' specifying "true" type distribution with the `gsizes` argument. It is assumed
+#' to be a table (as returned by [table()]) or a numeric vector with the group
+#' sizes. This may be especially usefull when dealing with large graphs and/or
+#' with large number of isolates.
+#'
+#' @template mm-igraph-methods
 #'
 #' @param object R object, see Details for available methods
-#'
 #' @param ... other arguments passed to/from other methods
 #'
-#' @return
-#' The value of the Freeman's index.
+#' @return The value of the Freeman's index.
 #'
-#' If \code{more} is \code{TRUE}, some intermediate results are returned in a
-#' list.
+#' @references Freeman, Linton C. (1978) Segregation in Social Networks,
+#'   \emph{Sociological Methods & Research} \bold{6}(4):411--429
 #'
-#' @references
-#' Freeman, Linton C. (1978) Segregation in Social Networks, \emph{Sociological
-#' Methods & Research} \bold{6}(4):411--429
+#'   Bojanowski, Michał, and Rense Corten. 2014. "Measuring Segregation in
+#'   Social Networks." *Social Networks* 39: 14–32.
+#'   https://doi.org/10.1016/j.socnet.2014.04.001.
 #'
 #' @keywords graphs
 #' @export
@@ -50,7 +50,7 @@
 #' freeman(WhiteKinship, "gender")
 #'
 #' # using 'more' argument
-#' freeman(WhiteKinship, "gender", more=TRUE)
+#' freeman(WhiteKinship, "gender")
 
 freeman <- function(object, ...) UseMethod("freeman")
 
@@ -59,15 +59,12 @@ freeman <- function(object, ...) UseMethod("freeman")
 #' Method for mixing matrices
 #'
 #' @param gsizes numeric, optional true distribution of types, see Details
-#'
-#' @param more logical, should some more output be returned
-#'
 #' @param loops logical, whether loops are allowed
 #'
 #' @method freeman table
 #' @export
 #' @rdname freeman
-freeman.table <- function(object, gsizes=NULL, more=FALSE, loops=FALSE, ...)
+freeman.table <- function(object, gsizes=NULL, loops=FALSE, ...)
 {
   dims <- dim(object)
   # need group sizes if only contact layer
@@ -90,10 +87,7 @@ freeman.table <- function(object, gsizes=NULL, more=FALSE, loops=FALSE, ...)
   ecct <- (n * (sum(btab)^2 - sum(btab^2))) / (m * (m - 1))
   s <- ecct - cct
   if(s < 0)  s <- 0
-  if(more)
-      return(list(ecct = ecct, cct = cct, n = n, m = m, btab = btab))
-  else
-      return(s/ecct)
+  s / ecct
 }
 
 
@@ -104,7 +98,7 @@ freeman.table <- function(object, gsizes=NULL, more=FALSE, loops=FALSE, ...)
 #' Method for "igraph"s
 #'
 #' @param vattr character scalar or any vector of length equal to
-#' \code{vcount(object)}, name of the vertex attribute in \code{object}
+#' `vcount(object)`, name of the vertex attribute in `object`
 #' designating the groups or a vector with the attribute itself
 #'
 #' @method freeman igraph

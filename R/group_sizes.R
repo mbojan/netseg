@@ -1,9 +1,9 @@
 #' Computing group sizes from square mixing matrices
-
-#' \code{group_sizes} recomputes group sizes from a full mixing matrix. This is only
-#' limited to square (single-attribute) mixing matrices.
 #'
-#' @param mm numeric array with \code{dim} of (k, k, 2) for some 'k'
+#' [group_sizes()] recomputes group sizes from a full mixing matrix. This is
+#' only limited to square (single-attribute) mixing matrices.
+#'
+#' @param mm numeric array with \code{dim} of \eqn{(k, k, 2)} for some \eqn{k}
 #' @param directed logical, whether network is directed
 #' @param loops logical, whether loops are allowed
 #'

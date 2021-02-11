@@ -1,5 +1,11 @@
-#' @keywords internal
+#' @name netseg-package
+#' @aliases netseg
+#' @keywords package
 #' @docType package
+#'
+#' @seealso Useful links:
+#' - Package homepage: https://mbojan.github.io/netseg
+#' - Bug reports: https://github.com/mbojan/netseg/issues
 #'
 #' @references
 #' Bojanowski, Michał, and Rense Corten. 2014. "Measuring Segregation in Social

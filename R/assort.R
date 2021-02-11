@@ -11,32 +11,31 @@
 #' relative number of ties of nodes in different groups. If the network
 #' conforms to "proportionate mixing", the coefficient is 0.
 #'
-#' @param object R object, see available methods
+#' @template mm-igraph-methods
 #'
+#' @param object R object, see available methods
 #' @param ... other arguments to/from other methods
 #'
 #' @return Numeric value of the index.
 #'
-#' @seealso
-#' Mixing matrices: \code{\link{mixingm}}
+#' @family segregation measures
+#' @seealso Mixing matrices: [mixingm()]
 #'
-#' @references
-#' Newman, M. J. and Girvan, M. (2002) "Mixing patterns and community structure
-#' in networks", arXiv:cond-mat/0210146v1
+#' @references Newman, M. J. and Girvan, M. (2002) "Mixing patterns and
+#'   community structure in networks", arXiv:cond-mat/0210146v1
 #'
-#' Newman, M. J. (2003) "Mixing patterns in networks" arXiv:cond-mat/0209450v2
+#'   Newman, M. J. (2003) "Mixing patterns in networks" arXiv:cond-mat/0209450v2
 #'
 #' @export
-#' @family segregation measures
 #' @examples
 #' assort(WhiteKinship, "gender")
 #' assort(EF3, "type")
 #'
-#' if( require(igraph, quietly = TRUE) ) {
-#' # value of 'assort' for full networks of different sizes
+#' # Values of `assort()` for full networks of different sizes
+#' if( requireNamespace("igraph", quietly = TRUE) ) {
 #'   f <- function(n) {
-#'     gfull <- graph.full(n, directed=FALSE)
-#'     V(gfull)$type <- rep(1:2, length=vcount(gfull))
+#'     gfull <- igraph::make_full_graph(n, directed=FALSE)
+#'     igraph::V(gfull)$type <- rep(1:2, length = igraph::vcount(gfull))
 #'     assort(gfull, "type")
 #'   }
 #'   set.seed(1)
@@ -51,18 +50,8 @@ assort <- function(object, ...) UseMethod("assort")
 
 
 
-#' @details
-#' If \code{object} is a table it is treated as a mixing matrix.
-#' Two-dimensional table is interpreted as a contact layer. Three-dimensional
-#' table is interpreted as a full mixing matrix \eqn{m_{ghy}}{m[ghy]}
-#' cross-classyfying all dyads, in which 'g' and 'h' correspond to group
-#' membership of ego and alter respectively. Layers y=1 and y=2 are assumed to
-#' be non-contact and contact layers respectively. In the 3-d case only
-#' \code{g[,,2]} is used.
-#'
-#' @method assort table
-#' @export
 #' @rdname assort
+#' @export
 assort.table <- function(object, ...)
 {
   stopifnot( valid_mm(object) )
@@ -82,31 +71,26 @@ assort.table <- function(object, ...)
 
 
 
-#' @details If \code{g} is an object of class "igraph" the measure is
-#' calculated for the vertex attribute specified with \code{vattr}.
-#'
-#' @param vattr character, name of the vertex attribute for which the measure
-#' is to be calculated
-#'
-#' @method assort igraph
-#' @export
 #' @rdname assort
+#' @param vattr character, name of the vertex attribute for which the measure is
+#'   to be calculated
+#'
+#' @export
 assort.igraph <- function(object, vattr, ...)
 {
   # missing matrix
   object <- mixingm(object, vattr)
-  assort(object, ...)
+  assort.table(object, ...)
 }
 
 
 
 
-#' @details For any other classes, object \code{g} are coerced to a table and the
-#' table method is called.
-#'
-#' @method assort default
-#' @export
 #' @rdname assort
+#' @details For any other classes, `object` is coerced to a table and the table
+#'   method is called.
+#'
+#' @export
 assort.default <- function(object, ...)
 {
   m <- as.table(object)

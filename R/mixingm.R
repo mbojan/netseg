@@ -2,7 +2,6 @@
 #'
 #' Creating network mixing matrices ([mixingm()]) and data frames ([mixingdf()]).
 #'
-#'
 #' Network mixing matrix is, traditionally, a two-dimensional
 #' cross-classification of edges depending on the values of a specified vertex
 #' attribute for tie sender and tie receiver. It is an important tool
@@ -13,42 +12,39 @@
 #' network.  The mixing matrix is a \eqn{G \times G}{GxG} matrix such that
 #' \eqn{m_{ij}}{m[ij]} is the number of ties send by vertices in group \eqn{i}
 #' to vertices in group \eqn{j}. The diagonal of that matrix is of special
-#' interest as, say, \eqn{m_{ii}}{m[ii]} is the number of ties \emph{within}
+#' interest as, say, \eqn{m_{ii}}{m[ii]} is the number of ties *within*
 #' group \eqn{i}.
 #'
 #' A full mixing matrix is a three-dimensional array that cross-classifies
-#' \emph{all} network \emph{dyads} depending on:
-#' \enumerate{
-#' \item{the value of the vertex attribute for tie sender}
-#' \item{the value of the vertex attribute for tie receiver}
-#' \item{the status of the dyad, i.e. whether it is connected or not}
-#' }
+#' *all* network *dyads* depending on:
+#'
+#' 1. the value of the vertex attribute for tie sender
+#' 2. the value of the vertex attribute for tie receiver
+#' 3. the status of the dyad, i.e. whether it is connected or not
+#'
 #' The two-dimensional version is a so-called "contact layer"
 #' of the three-dimensional version.
 #'
 #' @param object R object, see Details for available methods
-#'
 #' @param ... other arguments passed to/from other methods
 #'
-#' @return
-#' Function [mixingm()], depending on \code{full} argument, a two- or
-#' three-dimensional array crossclassifying connected or all dyads in
-#' \code{object}. For undirected network and if \code{foldit} is `TRUE` (default),
-#' the matrix is folded onto the upper triangle (entries in lower triangle are
-#' 0).
+#' @return Function [mixingm()], depending on `full` argument, a two- or
+#'   three-dimensional array crossclassifying connected or all dyads in
+#'   `object`. For undirected network and if `foldit` is `TRUE` (default), the
+#'   matrix is folded onto the upper triangle (entries in lower triangle are 0).
 #'
 #' @export
 #' @examples
-#' if(require(igraph, quietly = TRUE)) {
-#' # some directed network
-#' net <- graph(c(1,2, 1,3, 2,3,  4,5,  1,4, 1,5, 4,2, 5,3))
-#' V(net)$type <- c(1,1,1, 2,2)
-#' mixingm(net, "type")
-#' mixingm(net, "type", full=TRUE)
-#' # as undirected
-#' mixingm( as.undirected(net), "type")
-#' mixingm(net, "type")
-#' mixingm(net, "type", full=TRUE)
+#' if(requireNamespace("igraph", quietly = TRUE)) {
+#'   # some directed network
+#'   net <- igraph::make_graph(c(1,2, 1,3, 2,3,  4,5,  1,4, 1,5, 4,2, 5,3))
+#'   igraph::V(net)$type <- c(1,1,1, 2,2)
+#'   mixingm(net, "type")
+#'   mixingm(net, "type", full=TRUE)
+#'   # as undirected
+#'   mixingm( igraph::as.undirected(net), "type")
+#'   mixingm(net, "type")
+#'   mixingm(net, "type", full=TRUE)
 #' }
 mixingm <- function(object, ...) UseMethod("mixingm")
 
@@ -57,43 +53,35 @@ mixingm <- function(object, ...) UseMethod("mixingm")
 
 
 
-#' @details
-#' If \code{object} is of class "igraph," mixing matrix is created for the
-#' network in \code{object} based on vertex attributes supplied in arguments
-#' \code{rattr} and optionally \code{cattr}.
+#' @rdname mixingm
+#' @details If `object` is of class "igraph," mixing matrix is created for the
+#'   network in `object` based on vertex attributes supplied in arguments
+#'   `rattr` and optionally `cattr`.
 #'
-#' If only \code{rattr} is specified (or, equivalently, \code{rattr} and
-#' \code{cattr} are identical), the result will be a mixing matrix \eqn{G
-#' \times G} if \code{full} is \code{FALSE} or \eqn{G \times G \times 2}{GxGx2}
-#' if \code{full} is \code{TRUE}. Where \eqn{G} is the number of categories of
-#' vertex attribute specified by \code{rattr}.
+#'   If only `rattr` is specified (or, equivalently, `rattr` and `cattr` are
+#'   identical), the result will be a mixing matrix \eqn{G \times G} if `full`
+#'   is `FALSE` or \eqn{G \times G \times 2}{GxGx2} if `full` is `TRUE`. Where
+#'   \eqn{G} is the number of categories of vertex attribute specified by
+#'   `rattr`.
 #'
-#' If \code{rattr} and \code{cattr} can be used to specify different vertex
-#' attributes for tie sender and tie receiver.
+#'   If `rattr` and `cattr` can be used to specify different vertex attributes
+#'   for tie sender and tie receiver.
 #'
-#' @param rattr name of the vertex attribute or an attribute itself as a
-#' vector. If \code{cattr} is not NULL, \code{rattr} is used for rows of the
-#' resulting mixing matrix.
-#'
-#' @param cattr name of the vertex attribute or an attribute itself as a
-#' vector. If supplied, used for columns in the mixing matrix.
-#'
-#' @param full logical, whether two- or three-dimensional mixing matrix
-#' should be returned.
-#'
+#' @param rattr name of the vertex attribute or an attribute itself as a vector.
+#'   If `cattr` is not `NULL`, `rattr` is used for rows of the resulting mixing
+#'   matrix.
+#' @param cattr name of the vertex attribute or an attribute itself as a vector.
+#'   If supplied, used for columns in the mixing matrix.
+#' @param full logical, whether two- or three-dimensional mixing matrix should
+#'   be returned.
 #' @param directed logical, whether the network is directed. By default,
-#' directedness of the network is determined with
-#' \code{\link[igraph]{is_directed}}.
-#'
-#' @param loops logical, whether loops are allowed. By default it is TRUE
-#' whenever there is at least one loop in \code{object}.
-#'
-#' @method mixingm igraph
+#'   directedness of the network is determined with [igraph::is_directed()].
+#' @param loops logical, whether loops are allowed. By default it is `TRUE`
+#'   whenever there is at least one loop in `object`.
 #'
 #' @importFrom igraph is.directed is.loop vcount
 #'
 #' @export
-#' @rdname mixingm
 mixingm.igraph <- function(object, rattr, cattr=rattr, full=FALSE,
                             directed = is.directed(object),
                             loops=any(is.loop(object)), ...)
@@ -274,10 +262,10 @@ full_mm <- function(cl, gsizes, directed=TRUE, loops=FALSE)
 #' @return Function [mixingdf()] returns non-zero entries of a mixing matrix (as
 #'   returned by [mixingm()]), but organized in a data frame with columns:
 #'
-#' \item{ego, alter}{group membership of ego an alter}
-#' \item{tie}{present only if `full=TRUE`, with `TRUE` or `FALSE` for connected
-#' and disconnected dyads respectively}
-#' \item{n}{counts}
+#'   - `ego`, `alter` -- group membership of ego an alter
+#'   - `tie` -- present only if `full=TRUE`, with `TRUE` or `FALSE` for connected
+#' and disconnected dyads respectively
+#'   - `n` -- counts
 #'
 #' @export
 

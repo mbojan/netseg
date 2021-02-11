@@ -3,13 +3,14 @@
 #' Measure of within-group mixing in networks proposed in Gupta, Anderson and
 #' May (1989).
 #'
-#' The measure varies between \code{-1/vcount(g)} for dissassortative mixing
+#' The measure varies between `-1/vcount(g)` for dissassortative mixing
 #' and 1 for perfect within-group mixing. It takes a value of 0 for
 #' proportionate mixing.
 #'
 #' @param object R object, see Details for available methods
-#'
 #' @param ... other objects passed to/from other methods
+#'
+#' @template mm-igraph-methods
 #'
 #' @return Numerical value of the measure.
 #'
@@ -29,16 +30,9 @@ gamix <- function(object, ...) UseMethod("gamix")
 
 
 
-#' @details
-#' Method for mixing matrices
-#'
-#' @param debug logical, return some intermediate results as attributes to the
-#' returned value
-#'
-#' @method gamix table
-#' @export
 #' @rdname gamix
-gamix.table <- function(object, debug=FALSE, ...)
+#' @export
+gamix.table <- function(object, ...)
 {
   if( length(dim(object)) == 3 )
   {
@@ -49,23 +43,14 @@ gamix.table <- function(object, debug=FALSE, ...)
   }
   p <- sweep(m, 1, rowSums(m), "/")
   w <- eigen(p)$values
-  rval <- (sum(w) - 1)/(dim(m)[1] - 1)
-  if(debug)
-    structure(rval, mix=m, mixp=p, e=w)
-  else
-    rval
+  (sum(w) - 1) / (dim(m)[1] - 1)
 }
 
 
 
-#' @details
-#' Method for igraphs
-#'
-#' @param vattr character, name of vertex attribute
-#'
-#' @method gamix igraph
-#' @export
 #' @rdname gamix
+#' @param vattr character, name of vertex attribute
+#' @export
 gamix.igraph <- function (object, vattr, ...)
 {
   m <- mixingm(object, rattr=vattr)
@@ -74,9 +59,8 @@ gamix.igraph <- function (object, vattr, ...)
 
 
 
-#' @method gamix default
-#' @export
 #' @rdname gamix
+#' @export
 gamix.default <- function(object, ...)
 {
   gamix.table( as.table(object), ... )

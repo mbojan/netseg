@@ -4,15 +4,16 @@
 #' prevalence of between- and within-group ties. From that perspective it can
 #' be interpreted as a measure of network segregation.
 #'
-#' @param object R object, see Details for available methods
+#' @template mm-igraph-methods
 #'
+#' @param object R object, see Details for available methods
 #' @param ... other arguments passed to/from other methods
 #'
 #' @return Numerical value of the E-I index.
 #'
 #' @references Krackhardt, D., & Stern, R. N. (1988). Informal networks and
-#'   organizational crises: An experimental simulation. Social psychology
-#'   quarterly, 123-140.
+#'   organizational crises: An experimental simulation. *Social Psychology
+#'   Quarterly*, 123-140.
 #'
 #' @export
 #' @family segregation measures
@@ -25,9 +26,6 @@ ei <- function(object, ...) UseMethod("ei")
 
 
 
-#' @details
-#' If \code{object} is a table, it is assumed to be a mixing matrix.
-#' @method ei table
 #' @rdname ei
 #' @export
 ei.table <- function(object, ...)
@@ -43,19 +41,11 @@ ei.table <- function(object, ...)
   return( pexternal - pinternal )
 }
 
-#' @details
-#' Method for igraph objects needs the name of the vertex attribute `vattr` that
-#' defines groups.
-#'
-#' @param vattr character scalar or vector of length equal to the size of
-#' \code{object}, vertex attribute for which mixing matrix is to be computed
-#'
-#' @param directed logical whether the network is directed
-#'
-#' @param loops logical, whether loops are allowed
-#'
-#' @method ei igraph
 #' @rdname ei
+#' @param vattr character scalar or vector of length equal to the size of
+#'   `object`, vertex attribute for which mixing matrix is to be computed
+#' @param directed logical whether the network is directed
+#' @param loops logical, whether loops are allowed
 #' @export
 ei.igraph <- function(object, vattr, directed=is.directed(object),
                       loops=any(is.loop(object)), ...)
@@ -69,12 +59,8 @@ ei.igraph <- function(object, vattr, directed=is.directed(object),
 
 
 
-#' @details
-#' Default method tries to coerce \code{object} to table.
-#'
-#' @method ei default
-#' @export
 #' @rdname ei
+#' @export
 ei.default <- function(object, ...)
 {
   ei.table( as.table(object), ...)

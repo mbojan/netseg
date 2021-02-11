@@ -38,5 +38,5 @@ stopifnot( all.equal(f1[1,2], m[2,1] + m[1,2]) )
 stopifnot( all.equal(f2[2,1], m[2,1] + m[1,2]) )
 }
 \seealso{
-\code{\link{upper.tri}}, \code{\link{lower.tri}}
+\code{\link[=upper.tri]{upper.tri()}}, \code{\link[=lower.tri]{lower.tri()}}, \code{\link[=symmetrize]{symmetrize()}}
 }

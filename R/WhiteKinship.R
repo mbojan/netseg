@@ -43,15 +43,14 @@
 #' @name WhiteKinship
 #' @docType data
 #' @examples
-#' if( require(igraph, quietly = TRUE) ) {
-#' data(WhiteKinship)
-#' set.seed(2992)
-#' plot(
-#'   WhiteKinship, layout=layout.fruchterman.reingold,
-#'   vertex.color= match(V(WhiteKinship)$gender, unique(V(WhiteKinship)$gender)),
-#'   vertex.label=V(WhiteKinship)$name, vertex.label.family="",
-#'   main="White's (1975) data on kinship networks"
+#' if( requireNamespace("igraph", quietly = TRUE) ) {
+#'   set.seed(2992)
+#'   plot(
+#'     WhiteKinship, layout=igraph::layout.fruchterman.reingold,
+#'     vertex.color= match(igraph::V(WhiteKinship)$gender, unique(igraph::V(WhiteKinship)$gender)),
+#'     vertex.label=igraph::V(WhiteKinship)$name, vertex.label.family="",
+#'     main="White's (1975) data on kinship networks"
 #'   )
-#' legend("topleft", col=2:3, legend=c("Woman", "Man"), pch=19)
+#'   legend("topleft", col=2:3, legend=c("Woman", "Man"), pch=19)
 #' }
 "WhiteKinship"

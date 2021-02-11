@@ -3,27 +3,27 @@
 #' Colemans's homphily index for directed networks.
 #'
 #' @param object R object, see Details for available methods
-#'
 #' @param ... other arguments passed to/from methods
 #'
-#' @details
-#' Coleman's homophily index computes homophily scores for each group
-#' defined by a vertex attribute.
+#' @details Coleman's homophily index computes homophily scores for each group
+#'   defined by a vertex attribute.
+#'
+#' @template mm-igraph-methods
 #'
 #' @return Vector of numeric values of the index for each group
 #'
 #' @references
 #' Coleman, J. (1958) "Relational analysis: The study of social organizations
-#' with survey methods", Human Organization 17:28--36.
+#' with survey methods", *Human Organization* 17:28--36.
 #'
 #' @export
 #' @family segregation measures
 #'
 #' @examples
-#' if( require(igraph, quietly = TRUE)) {
-#' # Converting network to directed
-#' coleman(as.directed(WhiteKinship, "mutual"), "gender")
-#' coleman(as.directed(EF3, "mutual"), "race")
+#' if(requireNamespace("igraph", quietly = TRUE)) {
+#'   # Converting networks to directed
+#'   coleman(igraph::as.directed(WhiteKinship, "mutual"), "gender")
+#'   coleman(igraph::as.directed(EF3, "mutual"), "race")
 #' }
 
 coleman <- function(object, ...) UseMethod("coleman")
@@ -34,18 +34,10 @@ coleman <- function(object, ...) UseMethod("coleman")
 
 
 
-#' @details
-#' If \code{object} is a table it is interpreted as a mixing matrix. If it is
-#' only the contact layer (2-dimensional), then vector of group sizes need to
-#' be supplied via \code{gsizes}.
-#'
-#' @param gsizes numeric vector of group sizes
-#'
-#' @param loops logical, whether loops are allowed
-#'
-#' @method coleman table
-#' @export
 #' @rdname coleman
+#' @param gsizes numeric vector of group sizes
+#' @param loops logical, whether loops are allowed
+#' @export
 coleman.table <- function(object, gsizes=NULL, loops=FALSE, ...)
 {
   dims <- dim(object)
@@ -74,12 +66,9 @@ coleman.table <- function(object, gsizes=NULL, loops=FALSE, ...)
 
 
 
-#' @details
-#' \code{object} can be of class "igraph"
-#' @param vattr character, vertex attribute
-#' @method coleman igraph
-#' @export
 #' @rdname coleman
+#' @param vattr character, vertex attribute
+#' @export
 coleman.igraph <- function(object, vattr, ...)
 {
   stopifnot(is.directed(object))
@@ -89,11 +78,8 @@ coleman.igraph <- function(object, vattr, ...)
 
 
 
-#' @details
-#' Default method tries to coerce \code{object} to table and use other methods.
-#' @method coleman default
-#' @export
 #' @rdname coleman
+#' @export
 coleman.default <- function(object, ...)
 {
   m <- as.table(object)
