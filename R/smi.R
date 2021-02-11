@@ -1,7 +1,7 @@
 #' Segregation Matrix Index
 #'
 #' Segregation Matrix Index due to Freshtman (1997). A measure of network
-#' segregation.  Currently (and originally) supports only two groups.
+#' segregation. Currently (and originally) supports only two groups.
 #'
 #' The Segregation Matrix Index (SMI) is calculated for every group separately.
 #' It compares the density within group to the density of between group ties of
@@ -12,16 +12,16 @@
 #' version varies between 0 and 1.
 #'
 #' @param object R object, see Details for available methods
-#'
 #' @param ... other arguments passed to/from other methods
 #'
-#' @return
-#' Numeric vector of length equal to the number of groups in \code{g} according
-#' to \code{vattr} with the values of SMI for the groups.
+#' @template mm-igraph-methods
 #'
-#' @references
-#' Freshtman, M. (1997) "Cohesive Group Segregation Detection in a Social
-#' Network by the Segregation Matrix Index", Social Networks, 19:193--207
+#' @return Numeric vector of length equal to the number of groups in `g`
+#'   according to `vattr` with the values of SMI for the groups.
+#'
+#' @references Freshtman, M. (1997) "Cohesive Group Segregation Detection in a
+#'   Social Network by the Segregation Matrix Index", Social Networks,
+#'   19:193--207
 #'
 #' @family segregation measures
 #' @export
@@ -34,15 +34,10 @@
 smi <- function(object, ...) UseMethod("smi")
 
 
-#' @details
-#' Method for mixing matrices.
-#'
-#' @param normalize logical, whether normalized values should be returned,
-#' defaults to \code{TRUE}
-#'
-#' @method smi table
-#' @export
 #' @rdname smi
+#' @param normalize logical, whether normalized values should be returned,
+#'   defaults to `TRUE`
+#' @export
 smi.table <- function(object, normalize=TRUE, ...)
 {
   # only directed networks
@@ -58,14 +53,9 @@ smi.table <- function(object, normalize=TRUE, ...)
 
 
 
-#' @details
-#' Method for igraphs
-#'
-#' @param vattr character, name of the node attribute designating groups
-#'
-#' @method smi igraph
-#' @export
 #' @rdname smi
+#' @param vattr character, name of the node attribute designating groups
+#' @export
 smi.igraph <- function(object, vattr, ...)
 {
   stopifnot(is.directed(object))
@@ -78,9 +68,8 @@ smi.igraph <- function(object, vattr, ...)
 
 
 
-#' @method smi default
-#' @export
 #' @rdname smi
+#' @export
 smi.default <- function(object, ...)
 {
   smi.table(as.table(object), ...)

@@ -26,12 +26,12 @@ defaults to \code{TRUE}}
 \item{vattr}{character, name of the node attribute designating groups}
 }
 \value{
-Numeric vector of length equal to the number of groups in \code{g} according
-to \code{vattr} with the values of SMI for the groups.
+Numeric vector of length equal to the number of groups in \code{g}
+according to \code{vattr} with the values of SMI for the groups.
 }
 \description{
 Segregation Matrix Index due to Freshtman (1997). A measure of network
-segregation.  Currently (and originally) supports only two groups.
+segregation. Currently (and originally) supports only two groups.
 }
 \details{
 The Segregation Matrix Index (SMI) is calculated for every group separately.
@@ -42,17 +42,25 @@ Non-normalized version is the ratio of the within-group density to the
 between-group density, so vary between 0 and infinity. The normalized
 version varies between 0 and 1.
 
-Method for mixing matrices.
+If \code{object} is a table it is interpreted as a mixing matrix.
+Two-dimensional table is interpreted as a contact layer. Three-dimensional
+table is interpreted as a full mixing matrix \eqn{m_{ghy}}{m[ghy]}
+cross-classyfying all dyads, in which \eqn{g} and \eqn{h} correspond to
+group membership of ego and alter respectively. Layers \eqn{y=1} and
+\eqn{y=2} are assumed to be non-contact and contact layers respectively.
 
-Method for igraphs
+If \code{object} is of class "igraph" it is required to supply \code{vattr}
+with the name of the vertex attribute to calculate intermediate mixing
+matrix.
 }
 \examples{
 # smi() needs a directed network
 smi( igraph::as.directed(WhiteKinship, "mutual"), "gender")
 }
 \references{
-Freshtman, M. (1997) "Cohesive Group Segregation Detection in a Social
-Network by the Segregation Matrix Index", Social Networks, 19:193--207
+Freshtman, M. (1997) "Cohesive Group Segregation Detection in a
+Social Network by the Segregation Matrix Index", Social Networks,
+19:193--207
 }
 \seealso{
 Other segregation measures: 
