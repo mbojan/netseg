@@ -42,10 +42,11 @@ vertices from the same group than with other groups.  Formally, the index
 compares the observed number of between-group ties with the number of
 between-group ties that would be expected if ties would be created randomly.
 
-The index has some discontinuity as there are network and group configurations
-that are characterized by the higher number of between-group ties that is
-expected under a random graph. The index is truncates these situations and
-takes a value of 0 (as originally described by Freeman (1978)).
+Originally the index has a discontinuity for network and group size
+configurations that are characterized by the higher number of between-group
+ties that is expected under a random graph, for which it returns 0 (as
+originally described by Freeman (1978)). We removed that truncation such that
+it returns values betweem -1 and 1.
 
 The original Freeman's formulation involves two groups of vertices. Here
 it is extended to the arbitrary number of groups. The generalization
