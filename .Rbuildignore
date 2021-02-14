@@ -8,3 +8,4 @@
 ^pkgdown$
 ^vignettes$
 ^man-roxygen$
+^cran-comments\.md$
