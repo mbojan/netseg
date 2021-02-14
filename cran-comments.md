@@ -7,7 +7,9 @@
 - GitHub Actions (MS Windows Server 2019), release
 
 
-## R CMD check results
+## Comments to previous submission
+
+### 1
 
 ```
 Found the following (possibly) invalid URLs:
@@ -17,13 +19,19 @@ Found the following (possibly) invalid URLs:
        Message: Invalid URI scheme (use \doi for DOIs in Rd markup)
 ```
 
+DOI markup has been fixed.
+
+### 2
+
 ```
      URL: http://cranlogs.r-pkg.org/ (moved to
 https://cranlogs.r-pkg.org:443/)
        From: README.md
        Status: 200
        Message: OK
-```
 
 Please change http --> https, add trailing slashes, or follow moved
 content as appropriate.
+```
+
+Change to https.
