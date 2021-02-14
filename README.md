@@ -9,7 +9,7 @@
 [![CRAN
 status](https://www.r-pkg.org/badges/version/netseg)](https://CRAN.R-project.org/package=netseg)
 [![rstudio cran mirror
-downloads](http://cranlogs.r-pkg.org/badges/netseg?color=2ED968)](http://cranlogs.r-pkg.org/)
+downloads](https://cranlogs.r-pkg.org/badges/netseg?color=2ED968)](https://cranlogs.r-pkg.org/)
 <!-- badges: end -->
 
 Segregation is a network-level property such that edges between
