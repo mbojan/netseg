@@ -39,7 +39,7 @@
 #'
 #'   Bojanowski, Michał, and Rense Corten. 2014. "Measuring Segregation in
 #'   Social Networks." *Social Networks* 39: 14–32.
-#'   <doi:10.1016/j.socnet.2014.04.001>
+#'   \doi{10.1016/j.socnet.2014.04.001}
 #'
 #' @keywords graphs
 #' @export

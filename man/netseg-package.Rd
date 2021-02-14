@@ -21,7 +21,7 @@ Segregation is a network-level property such that edges between
 \references{
 Bojanowski, Michał, and Rense Corten. 2014. "Measuring Segregation in Social
 Networks." \emph{Social Networks} 39: 14–32.
-\url{doi:10.1016/j.socnet.2014.04.001}.
+\doi{10.1016/j.socnet.2014.04.001}.
 }
 \seealso{
 Useful links:

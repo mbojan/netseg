@@ -89,7 +89,7 @@ Freeman, Linton C. (1978) Segregation in Social Networks,
 
 Bojanowski, Michał, and Rense Corten. 2014. "Measuring Segregation in
 Social Networks." \emph{Social Networks} 39: 14–32.
-\url{doi:10.1016/j.socnet.2014.04.001}
+\doi{10.1016/j.socnet.2014.04.001}
 }
 \seealso{
 Other segregation measures: 
