@@ -18,6 +18,7 @@ bibliography: refs.bib
 ```{r setup, include = FALSE}
 library(netseg)
 library(igraph)
+requireNamespace("scales")
 
 knitr::opts_chunk$set(
   collapse = TRUE,
