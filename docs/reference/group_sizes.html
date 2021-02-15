@@ -6,9 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Computing group sizes from square mixing matrices
-<code>group_sizes</code> recomputes group sizes from a full mixing matrix. This is only
-limited to square (single-attribute) mixing matrices. — group_sizes • netseg</title>
+<title>Computing group sizes from square mixing matrices — group_sizes • netseg</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -48,12 +46,9 @@ limited to square (single-attribute) mixing matrices. — group_sizes • netseg
 
 
 
-<meta property="og:title" content="Computing group sizes from square mixing matrices
-<code>group_sizes</code> recomputes group sizes from a full mixing matrix. This is only
-limited to square (single-attribute) mixing matrices. — group_sizes" />
-<meta property="og:description" content="Computing group sizes from square mixing matrices
-group_sizes recomputes group sizes from a full mixing matrix. This is only
-limited to square (single-attribute) mixing matrices." />
+<meta property="og:title" content="Computing group sizes from square mixing matrices — group_sizes" />
+<meta property="og:description" content="group_sizes() recomputes group sizes from a full mixing matrix. This is
+only limited to square (single-attribute) mixing matrices." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -94,16 +89,24 @@ limited to square (single-attribute) mixing matrices." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
+</li>
+<li>
+  <a href="../articles/netseg.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/mbojan/netseg/">
+    <span class="fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -117,27 +120,24 @@ limited to square (single-attribute) mixing matrices." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Computing group sizes from square mixing matrices
-<code>group_sizes</code> recomputes group sizes from a full mixing matrix. This is only
-limited to square (single-attribute) mixing matrices.</h1>
-    
+    <h1>Computing group sizes from square mixing matrices</h1>
+    <small class="dont-index">Source: <a href='https://github.com/mbojan/netseg/blob/master/R/group_sizes.R'><code>R/group_sizes.R</code></a></small>
     <div class="hidden name"><code>group_sizes.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Computing group sizes from square mixing matrices
-<code>group_sizes</code> recomputes group sizes from a full mixing matrix. This is only
-limited to square (single-attribute) mixing matrices.</p>
+    <p><code>group_sizes()</code> recomputes group sizes from a full mixing matrix. This is
+only limited to square (single-attribute) mixing matrices.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>group_sizes</span>(<span class='no'>mm</span>, <span class='kw'>directed</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>loops</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>group_sizes</span><span class='op'>(</span><span class='va'>mm</span>, directed <span class='op'>=</span> <span class='cn'>TRUE</span>, loops <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>mm</th>
-      <td><p>numeric array with <code>dim</code> of (k, k, 2) for some 'k'</p></td>
+      <td><p>numeric array with <code>dim</code> of \((k, k, 2)\) for some \(k\)</p></td>
     </tr>
     <tr>
       <th>directed</th>
@@ -168,7 +168,7 @@ limited to square (single-attribute) mixing matrices.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

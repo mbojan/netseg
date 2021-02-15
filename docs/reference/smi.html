@@ -48,7 +48,7 @@
 
 <meta property="og:title" content="Segregation Matrix Index — smi" />
 <meta property="og:description" content="Segregation Matrix Index due to Freshtman (1997). A measure of network
-segregation.  Currently (and originally) supports only two groups." />
+segregation. Currently (and originally) supports only two groups." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -89,16 +89,24 @@ segregation.  Currently (and originally) supports only two groups." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
+</li>
+<li>
+  <a href="../articles/netseg.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/mbojan/netseg/">
+    <span class="fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -113,25 +121,25 @@ segregation.  Currently (and originally) supports only two groups." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Segregation Matrix Index</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/mbojan/netseg/blob/master/R/smi.R'><code>R/smi.R</code></a></small>
     <div class="hidden name"><code>smi.Rd</code></div>
     </div>
 
     <div class="ref-description">
     <p>Segregation Matrix Index due to Freshtman (1997). A measure of network
-segregation.  Currently (and originally) supports only two groups.</p>
+segregation. Currently (and originally) supports only two groups.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>smi</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>smi</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for table</span>
-<span class='fu'>smi</span>(<span class='no'>object</span>, <span class='kw'>normalize</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)
+<span class='fu'>smi</span><span class='op'>(</span><span class='va'>object</span>, normalize <span class='op'>=</span> <span class='cn'>TRUE</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for igraph</span>
-<span class='fu'>smi</span>(<span class='no'>object</span>, <span class='no'>vattr</span>, <span class='no'>...</span>)
+<span class='fu'>smi</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>vattr</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for default</span>
-<span class='fu'>smi</span>(<span class='no'>object</span>, <span class='no'>...</span>)</pre>
+<span class='fu'>smi</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -157,8 +165,8 @@ defaults to <code>TRUE</code></p></td>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Numeric vector of length equal to the number of groups in <code>g</code> according
-to <code>vattr</code> with the values of SMI for the groups.</p>
+    <p>Numeric vector of length equal to the number of groups in <code>g</code>
+according to <code>vattr</code> with the values of SMI for the groups.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>The Segregation Matrix Index (SMI) is calculated for every group separately.
@@ -167,12 +175,20 @@ nodes belonging to that group.</p>
 <p>Non-normalized version is the ratio of the within-group density to the
 between-group density, so vary between 0 and infinity. The normalized
 version varies between 0 and 1.</p>
-<p>Method for mixing matrices.</p>
-<p>Method for igraphs</p>
+<p>If <code>object</code> is a table it is interpreted as a mixing matrix.
+Two-dimensional table is interpreted as a contact layer. Three-dimensional
+table is interpreted as a full mixing matrix \(m_{ghy}\)
+cross-classyfying all dyads, in which \(g\) and \(h\) correspond to
+group membership of ego and alter respectively. Layers \(y=1\) and
+\(y=2\) are assumed to be non-contact and contact layers respectively.</p>
+<p>If <code>object</code> is of class "igraph" it is required to supply <code>vattr</code>
+with the name of the vertex attribute to calculate intermediate mixing
+matrix.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>Freshtman, M. (1997) "Cohesive Group Segregation Detection in a Social
-Network by the Segregation Matrix Index", Social Networks, 19:193--207</p>
+    <p>Freshtman, M. (1997) "Cohesive Group Segregation Detection in a
+Social Network by the Segregation Matrix Index", Social Networks,
+19:193--207</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other segregation measures: 
@@ -186,7 +202,8 @@ Network by the Segregation Matrix Index", Social Networks, 19:193--207</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># smi() needs a directed network</span>
-<span class='fu'>smi</span>( <span class='kw pkg'>igraph</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/igraph/man/as.directed.html'>as.directed</a></span>(<span class='no'>WhiteKinship</span>, <span class='st'>"mutual"</span>), <span class='st'>"gender"</span>)</div><div class='output co'>#&gt;    female      male 
+<span class='fu'>smi</span><span class='op'>(</span> <span class='fu'>igraph</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/igraph/man/as.directed.html'>as.directed</a></span><span class='op'>(</span><span class='va'>WhiteKinship</span>, <span class='st'>"mutual"</span><span class='op'>)</span>, <span class='st'>"gender"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;    female      male 
 #&gt; 0.2500000 0.3207547 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -203,7 +220,7 @@ Network by the Segregation Matrix Index", Social Networks, 19:193--207</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

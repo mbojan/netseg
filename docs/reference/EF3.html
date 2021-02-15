@@ -89,16 +89,24 @@ a city with black and white neighbourhoods." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
+</li>
+<li>
+  <a href="../articles/netseg.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/mbojan/netseg/">
+    <span class="fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -113,7 +121,7 @@ a city with black and white neighbourhoods." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Example data from Figure III of Echenique and Fryer (2006)</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/mbojan/netseg/blob/master/R/EF3.R'><code>R/EF3.R</code></a></small>
     <div class="hidden name"><code>EF3.Rd</code></div>
     </div>
 
@@ -122,21 +130,23 @@ a city with black and white neighbourhoods." />
 a city with black and white neighbourhoods.</p>
     </div>
 
-    <pre class="usage"><span class='no'>EF3</span></pre>
+    <pre class="usage"><span class='va'>EF3</span></pre>
 
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
     <p>Object of class "igraph". An undirected network with vertex
-attributes</p><ul>
-<li><p><code>type</code> (values 1 or 2).</p></li>
-<li><p><code>name</code></p></li>
+attributes:</p><ul>
+<li><p><code>name</code> -- vertex names of the form "A1" in which letter and number indicate
+the position in the lattice</p></li>
+<li><p><code>race</code> -- values 1 or 2 indicate the two groups</p></li>
 </ul>
 
     <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
 
-    <p>Echenique, Federico and Roland G. Fryer, Jr. (2006) "A Measure of Segregation
-Based On Social Interactions" Quarterly Journal of Economics CXXII(2):441-485</p>
+    <p>Echenique, Federico and Roland G. Fryer, Jr. (2006) "A Measure of
+Segregation Based On Social Interactions" <em>Quarterly Journal of Economics</em>
+CXXII(2):441-485</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>This data is taken from Echenique &amp; Fryer (2006, figure III). The data
@@ -144,19 +154,18 @@ represent a fictional city composed of 30 neighborhoods that are either
 black or white.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span>( <span class='fu'><a href='https://rdrr.io/r/base/library.html'>require</a></span>(<span class='no'>igraph</span>, <span class='kw'>quietly</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>) ) {
-  <span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span>(<span class='fl'>1</span>)
-  <span class='fu'><a href='https://rdrr.io/r/graphics/plot.html'>plot</a></span>(<span class='no'>EF3</span>, <span class='kw'>layout</span><span class='kw'>=</span><span class='no'>layout.fruchterman.reingold</span>,
-    <span class='kw'>vertex.color</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/pkg/igraph/man/V.html'>V</a></span>(<span class='no'>EF3</span>)$<span class='no'>type</span>+<span class='fl'>1</span>, <span class='kw'>vertex.label.family</span><span class='kw'>=</span><span class='st'>""</span>,
-    <span class='kw'>sub</span><span class='kw'>=</span><span class='st'>"Source: Echenique &amp; Fryer (2006)"</span>,
-    <span class='kw'>main</span><span class='kw'>=</span><span class='st'>"Neighborhood racial segregation\n in a fictional city"</span>
-  )
-}</div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: ‘igraph’</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:stats’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    decompose, spectrum</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:base’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    union</span></div><div class='img'><img src='EF3-1.png' alt='' width='700' height='433' /></div></pre>
+    <pre class="examples"><div class='input'><span class='kw'>if</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace</a></span><span class='op'>(</span><span class='st'>"igraph"</span>, quietly <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span>
+  <span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span>
+    <span class='va'>EF3</span>,
+    layout <span class='op'>=</span> <span class='fu'>igraph</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/igraph/man/layout.deprecated.html'>layout.fruchterman.reingold</a></span>,
+    vertex.color <span class='op'>=</span> <span class='fu'>igraph</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/igraph/man/V.html'>V</a></span><span class='op'>(</span><span class='va'>EF3</span><span class='op'>)</span><span class='op'>$</span><span class='va'>type</span><span class='op'>+</span><span class='fl'>1</span>,
+    vertex.label.family <span class='op'>=</span> <span class='st'>""</span>,
+    sub <span class='op'>=</span> <span class='st'>"Source: Echenique &amp; Fryer (2006)"</span>,
+    main <span class='op'>=</span> <span class='st'>"Neighborhood racial segregation\n in a fictional city"</span>
+  <span class='op'>)</span>
+<span class='op'>}</span>
+</div><div class='img'><img src='EF3-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -172,7 +181,7 @@ black or white.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

@@ -89,16 +89,24 @@ May (1989)." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
+</li>
+<li>
+  <a href="../articles/netseg.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/mbojan/netseg/">
+    <span class="fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -113,7 +121,7 @@ May (1989)." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Gupta-Anderson-May measure of within-group mixing</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/mbojan/netseg/blob/master/R/gamix.R'><code>R/gamix.R</code></a></small>
     <div class="hidden name"><code>gamix.Rd</code></div>
     </div>
 
@@ -122,16 +130,16 @@ May (1989)." />
 May (1989).</p>
     </div>
 
-    <pre class="usage"><span class='fu'>gamix</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>gamix</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for table</span>
-<span class='fu'>gamix</span>(<span class='no'>object</span>, <span class='kw'>debug</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)
+<span class='fu'>gamix</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for igraph</span>
-<span class='fu'>gamix</span>(<span class='no'>object</span>, <span class='no'>vattr</span>, <span class='no'>...</span>)
+<span class='fu'>gamix</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>vattr</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for default</span>
-<span class='fu'>gamix</span>(<span class='no'>object</span>, <span class='no'>...</span>)</pre>
+<span class='fu'>gamix</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -143,11 +151,6 @@ May (1989).</p>
     <tr>
       <th>...</th>
       <td><p>other objects passed to/from other methods</p></td>
-    </tr>
-    <tr>
-      <th>debug</th>
-      <td><p>logical, return some intermediate results as attributes to the
-returned value</p></td>
     </tr>
     <tr>
       <th>vattr</th>
@@ -163,8 +166,15 @@ returned value</p></td>
     <p>The measure varies between <code>-1/vcount(g)</code> for dissassortative mixing
 and 1 for perfect within-group mixing. It takes a value of 0 for
 proportionate mixing.</p>
-<p>Method for mixing matrices</p>
-<p>Method for igraphs</p>
+<p>If <code>object</code> is a table it is interpreted as a mixing matrix.
+Two-dimensional table is interpreted as a contact layer. Three-dimensional
+table is interpreted as a full mixing matrix \(m_{ghy}\)
+cross-classyfying all dyads, in which \(g\) and \(h\) correspond to
+group membership of ego and alter respectively. Layers \(y=1\) and
+\(y=2\) are assumed to be non-contact and contact layers respectively.</p>
+<p>If <code>object</code> is of class "igraph" it is required to supply <code>vattr</code>
+with the name of the vertex attribute to calculate intermediate mixing
+matrix.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Gupta, S., Anderson, R., May, R. (1989) "Networks of sexual contacts:
@@ -181,7 +191,9 @@ implications for the pattern of spread of HIV", AIDS 3:807--817</p>
 <code><a href='ssi.html'>ssi</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>gamix</span>(<span class='no'>WhiteKinship</span>, <span class='st'>"gender"</span>)</div><div class='output co'>#&gt; [1] -0.1625</div><div class='input'><span class='fu'>gamix</span>(<span class='no'>EF3</span>, <span class='st'>"race"</span>)</div><div class='output co'>#&gt; [1] -0.06552707</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>gamix</span><span class='op'>(</span><span class='va'>WhiteKinship</span>, <span class='st'>"gender"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] -0.1625</div><div class='input'><span class='fu'>gamix</span><span class='op'>(</span><span class='va'>EF3</span>, <span class='st'>"race"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] -0.06552707</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -197,7 +209,7 @@ implications for the pattern of spread of HIV", AIDS 3:807--817</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

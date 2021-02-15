@@ -89,16 +89,24 @@ due to Newman &amp;amp; Girvan (2002)." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
+</li>
+<li>
+  <a href="../articles/netseg.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/mbojan/netseg/">
+    <span class="fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -113,7 +121,7 @@ due to Newman &amp;amp; Girvan (2002)." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Assortativity Coefficient</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/mbojan/netseg/blob/master/R/assort.R'><code>R/assort.R</code></a></small>
     <div class="hidden name"><code>assort.Rd</code></div>
     </div>
 
@@ -122,16 +130,16 @@ due to Newman &amp;amp; Girvan (2002)." />
 due to Newman &amp; Girvan (2002).</p>
     </div>
 
-    <pre class="usage"><span class='fu'>assort</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>assort</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for table</span>
-<span class='fu'>assort</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+<span class='fu'>assort</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for igraph</span>
-<span class='fu'>assort</span>(<span class='no'>object</span>, <span class='no'>vattr</span>, <span class='no'>...</span>)
+<span class='fu'>assort</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>vattr</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for default</span>
-<span class='fu'>assort</span>(<span class='no'>object</span>, <span class='no'>...</span>)</pre>
+<span class='fu'>assort</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -146,8 +154,8 @@ due to Newman &amp; Girvan (2002).</p>
     </tr>
     <tr>
       <th>vattr</th>
-      <td><p>character, name of the vertex attribute for which the measure
-is to be calculated</p></td>
+      <td><p>character, name of the vertex attribute for which the measure is
+to be calculated</p></td>
     </tr>
     </table>
 
@@ -162,25 +170,25 @@ based on the contact layer of the mixing matrix.</p>
 The minimum can be negative, but not less than -1, and depends on the
 relative number of ties of nodes in different groups. If the network
 conforms to "proportionate mixing", the coefficient is 0.</p>
-<p>If <code>object</code> is a table it is treated as a mixing matrix.
+<p>If <code>object</code> is a table it is interpreted as a mixing matrix.
 Two-dimensional table is interpreted as a contact layer. Three-dimensional
 table is interpreted as a full mixing matrix \(m_{ghy}\)
-cross-classyfying all dyads, in which 'g' and 'h' correspond to group
-membership of ego and alter respectively. Layers y=1 and y=2 are assumed to
-be non-contact and contact layers respectively. In the 3-d case only
-<code>g[,,2]</code> is used.</p>
-<p>If <code>g</code> is an object of class "igraph" the measure is
-calculated for the vertex attribute specified with <code>vattr</code>.</p>
-<p>For any other classes, object <code>g</code> are coerced to a table and the
-table method is called.</p>
+cross-classyfying all dyads, in which \(g\) and \(h\) correspond to
+group membership of ego and alter respectively. Layers \(y=1\) and
+\(y=2\) are assumed to be non-contact and contact layers respectively.</p>
+<p>If <code>object</code> is of class "igraph" it is required to supply <code>vattr</code>
+with the name of the vertex attribute to calculate intermediate mixing
+matrix.</p>
+<p>For any other classes, <code>object</code> is coerced to a table and the table
+method is called.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>Newman, M. J. and Girvan, M. (2002) "Mixing patterns and community structure
-in networks", arXiv:cond-mat/0210146v1</p>
+    <p>Newman, M. J. and Girvan, M. (2002) "Mixing patterns and
+community structure in networks", arXiv:cond-mat/0210146v1</p>
 <p>Newman, M. J. (2003) "Mixing patterns in networks" arXiv:cond-mat/0209450v2</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Mixing matrices: <code><a href='mixingm.html'>mixingm</a></code></p>
+    <div class='dont-index'><p>Mixing matrices: <code><a href='mixingm.html'>mixingm()</a></code></p>
 <p>Other segregation measures: 
 <code><a href='coleman.html'>coleman</a>()</code>,
 <code><a href='ei.html'>ei</a>()</code>,
@@ -191,21 +199,24 @@ in networks", arXiv:cond-mat/0210146v1</p>
 <code><a href='ssi.html'>ssi</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>assort</span>(<span class='no'>WhiteKinship</span>, <span class='st'>"gender"</span>)</div><div class='output co'>#&gt; [1] 0.1801242</div><div class='input'><span class='fu'>assort</span>(<span class='no'>EF3</span>, <span class='st'>"type"</span>)</div><div class='output co'>#&gt; [1] 0</div><div class='input'>
-<span class='kw'>if</span>( <span class='fu'><a href='https://rdrr.io/r/base/library.html'>require</a></span>(<span class='no'>igraph</span>, <span class='kw'>quietly</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>) ) {
-<span class='co'># value of 'assort' for full networks of different sizes</span>
-  <span class='no'>f</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>n</span>) {
-    <span class='no'>gfull</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/igraph/man/make_full_graph.html'>graph.full</a></span>(<span class='no'>n</span>, <span class='kw'>directed</span><span class='kw'>=</span><span class='fl'>FALSE</span>)
-    <span class='fu'><a href='https://rdrr.io/pkg/igraph/man/V.html'>V</a></span>(<span class='no'>gfull</span>)$<span class='no'>type</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>1</span>:<span class='fl'>2</span>, <span class='kw'>length</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/pkg/igraph/man/gorder.html'>vcount</a></span>(<span class='no'>gfull</span>))
-    <span class='fu'>assort</span>(<span class='no'>gfull</span>, <span class='st'>"type"</span>)
-  }
-  <span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span>(<span class='fl'>1</span>)
-  <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sort.html'>sort</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='fl'>5</span>:<span class='fl'>100</span>, <span class='fl'>25</span>) * <span class='fl'>2</span>)
-  <span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>sapply</a></span>(<span class='no'>x</span>, <span class='no'>f</span>)
-  <span class='fu'><a href='https://rdrr.io/r/graphics/plot.html'>plot</a></span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>type</span><span class='kw'>=</span><span class='st'>"o"</span>,
-       <span class='kw'>xlab</span><span class='kw'>=</span><span class='st'>"Network size"</span>, <span class='kw'>ylab</span><span class='kw'>=</span><span class='st'>"Assortativity coefficient"</span>,
-       <span class='kw'>main</span><span class='kw'>=</span><span class='st'>"Assortativity coef. for full networks of different sizes"</span>)
-}</div><div class='img'><img src='assort-1.png' alt='' width='700' height='433' /></div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>assort</span><span class='op'>(</span><span class='va'>WhiteKinship</span>, <span class='st'>"gender"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] 0.1801242</div><div class='input'><span class='fu'>assort</span><span class='op'>(</span><span class='va'>EF3</span>, <span class='st'>"type"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] 0</div><div class='input'>
+<span class='co'># Values of `assort()` for full networks of different sizes</span>
+<span class='kw'>if</span><span class='op'>(</span> <span class='fu'><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace</a></span><span class='op'>(</span><span class='st'>"igraph"</span>, quietly <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span> <span class='op'>)</span> <span class='op'>{</span>
+  <span class='va'>f</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>n</span><span class='op'>)</span> <span class='op'>{</span>
+    <span class='va'>gfull</span> <span class='op'>&lt;-</span> <span class='fu'>igraph</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/igraph/man/make_full_graph.html'>make_full_graph</a></span><span class='op'>(</span><span class='va'>n</span>, directed<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
+    <span class='fu'>igraph</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/igraph/man/V.html'>V</a></span><span class='op'>(</span><span class='va'>gfull</span><span class='op'>)</span><span class='op'>$</span><span class='va'>type</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>2</span>, length <span class='op'>=</span> <span class='fu'>igraph</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/igraph/man/gorder.html'>vcount</a></span><span class='op'>(</span><span class='va'>gfull</span><span class='op'>)</span><span class='op'>)</span>
+    <span class='fu'>assort</span><span class='op'>(</span><span class='va'>gfull</span>, <span class='st'>"type"</span><span class='op'>)</span>
+  <span class='op'>}</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span>
+  <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sort.html'>sort</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fl'>5</span><span class='op'>:</span><span class='fl'>100</span>, <span class='fl'>25</span><span class='op'>)</span> <span class='op'>*</span> <span class='fl'>2</span><span class='op'>)</span>
+  <span class='va'>y</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>sapply</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>f</span><span class='op'>)</span>
+  <span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, type<span class='op'>=</span><span class='st'>"o"</span>,
+       xlab<span class='op'>=</span><span class='st'>"Network size"</span>, ylab<span class='op'>=</span><span class='st'>"Assortativity coefficient"</span>,
+       main<span class='op'>=</span><span class='st'>"Assortativity coef. for full networks of different sizes"</span><span class='op'>)</span>
+<span class='op'>}</span>
+</div><div class='img'><img src='assort-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -221,7 +232,7 @@ in networks", arXiv:cond-mat/0210146v1</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

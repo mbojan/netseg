@@ -47,7 +47,7 @@
 
 
 <meta property="og:title" content="Network mixing matrix — mixingm" />
-<meta property="og:description" content="Creating network mixing matrices." />
+<meta property="og:description" content="Creating network mixing matrices (mixingm()) and data frames (mixingdf())." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -88,16 +88,24 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
+</li>
+<li>
+  <a href="../articles/netseg.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/mbojan/netseg/">
+    <span class="fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -112,26 +120,34 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Network mixing matrix</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/mbojan/netseg/blob/master/R/mixingm.R'><code>R/mixingm.R</code></a></small>
     <div class="hidden name"><code>mixingm.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Creating network mixing matrices.</p>
+    <p>Creating network mixing matrices (<code>mixingm()</code>) and data frames (<code>mixingdf()</code>).</p>
     </div>
 
-    <pre class="usage"><span class='fu'>mixingm</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>mixingm</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for igraph</span>
-<span class='fu'>mixingm</span>(
-  <span class='no'>object</span>,
-  <span class='no'>rattr</span>,
-  <span class='kw'>cattr</span> <span class='kw'>=</span> <span class='no'>rattr</span>,
-  <span class='kw'>full</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>directed</span> <span class='kw'>=</span> <span class='fu'>is.directed</span>(<span class='no'>object</span>),
-  <span class='kw'>loops</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/any.html'>any</a></span>(<span class='fu'>is.loop</span>(<span class='no'>object</span>)),
-  <span class='no'>...</span>
-)</pre>
+<span class='fu'>mixingm</span><span class='op'>(</span>
+  <span class='va'>object</span>,
+  <span class='va'>rattr</span>,
+  cattr <span class='op'>=</span> <span class='va'>rattr</span>,
+  full <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  directed <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/igraph/man/is_directed.html'>is.directed</a></span><span class='op'>(</span><span class='va'>object</span><span class='op'>)</span>,
+  loops <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/any.html'>any</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/igraph/man/which_multiple.html'>is.loop</a></span><span class='op'>(</span><span class='va'>object</span><span class='op'>)</span><span class='op'>)</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span>
+
+<span class='fu'>mixingdf</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>...</span><span class='op'>)</span>
+
+<span class='co'># S3 method for table</span>
+<span class='fu'>mixingdf</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>...</span><span class='op'>)</span>
+
+<span class='co'># S3 method for igraph</span>
+<span class='fu'>mixingdf</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -146,39 +162,46 @@
     </tr>
     <tr>
       <th>rattr</th>
-      <td><p>name of the vertex attribute or an attribute itself as a
-vector. If <code>cattr</code> is not NULL, <code>rattr</code> is used for rows of the
-resulting mixing matrix.</p></td>
+      <td><p>name of the vertex attribute or an attribute itself as a vector.
+If <code>cattr</code> is not <code>NULL</code>, <code>rattr</code> is used for rows of the resulting mixing
+matrix.</p></td>
     </tr>
     <tr>
       <th>cattr</th>
-      <td><p>name of the vertex attribute or an attribute itself as a
-vector. If supplied, used for columns in the mixing matrix.</p></td>
+      <td><p>name of the vertex attribute or an attribute itself as a vector.
+If supplied, used for columns in the mixing matrix.</p></td>
     </tr>
     <tr>
       <th>full</th>
-      <td><p>logical, whether two- or three-dimensional mixing matrix
-should be returned.</p></td>
+      <td><p>logical, whether two- or three-dimensional mixing matrix should
+be returned.</p></td>
     </tr>
     <tr>
       <th>directed</th>
       <td><p>logical, whether the network is directed. By default,
-directedness of the network is determined with
-<code><a href='https://rdrr.io/pkg/igraph/man/is_directed.html'>is.directed</a></code>.</p></td>
+directedness of the network is determined with <code><a href='https://rdrr.io/pkg/igraph/man/is_directed.html'>igraph::is_directed()</a></code>.</p></td>
     </tr>
     <tr>
       <th>loops</th>
-      <td><p>logical, whether loops are allowed. By default it is TRUE
+      <td><p>logical, whether loops are allowed. By default it is <code>TRUE</code>
 whenever there is at least one loop in <code>object</code>.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Depending on <code>full</code> argument a two- or three-dimensional array
-crossclassifying connected or all dyads in <code>object</code>.</p>
-<p>For undirected network and if <code>foldit</code> is TRUE (default), the matrix is
-folded onto the upper triangle (entries in lower triangle are 0).</p>
+    <p>Function <code>mixingm()</code>, depending on <code>full</code> argument, a two- or
+three-dimensional array crossclassifying connected or all dyads in
+<code>object</code>. For undirected network and if <code>foldit</code> is <code>TRUE</code> (default), the
+matrix is folded onto the upper triangle (entries in lower triangle are 0).</p>
+<p>Function <code>mixingdf()</code> returns non-zero entries of a mixing matrix (as
+returned by <code>mixingm()</code>), but organized in a data frame with columns:</p><ul>
+<li><p><code>ego</code>, <code>alter</code> -- group membership of ego an alter</p></li>
+<li><p><code>tie</code> -- present only if <code>full=TRUE</code>, with <code>TRUE</code> or <code>FALSE</code> for connected
+and disconnected dyads respectively</p></li>
+<li><p><code>n</code> -- counts</p></li>
+</ul>
+
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Network mixing matrix is, traditionally, a two-dimensional
@@ -197,31 +220,34 @@ group \(i\).</p>
 <li><p>the value of the vertex attribute for tie sender</p></li>
 <li><p>the value of the vertex attribute for tie receiver</p></li>
 <li><p>the status of the dyad, i.e. whether it is connected or not</p></li>
-</ol><p>The two-dimensional version is a so-called "contact layer"
+</ol>
+
+<p>The two-dimensional version is a so-called "contact layer"
 of the three-dimensional version.</p>
 <p>If <code>object</code> is of class "igraph," mixing matrix is created for the
 network in <code>object</code> based on vertex attributes supplied in arguments
 <code>rattr</code> and optionally <code>cattr</code>.</p>
-<p>If only <code>rattr</code> is specified (or, equivalently, <code>rattr</code> and
-<code>cattr</code> are identical), the result will be a mixing matrix \(G
-\times G\) if <code>full</code> is <code>FALSE</code> or \(G \times G \times 2\)
-if <code>full</code> is <code>TRUE</code>. Where \(G\) is the number of categories of
-vertex attribute specified by <code>rattr</code>.</p>
-<p>If <code>rattr</code> and <code>cattr</code> can be used to specify different vertex
-attributes for tie sender and tie receiver.</p>
+<p>If only <code>rattr</code> is specified (or, equivalently, <code>rattr</code> and <code>cattr</code> are
+identical), the result will be a mixing matrix \(G \times G\) if <code>full</code>
+is <code>FALSE</code> or \(G \times G \times 2\) if <code>full</code> is <code>TRUE</code>. Where
+\(G\) is the number of categories of vertex attribute specified by
+<code>rattr</code>.</p>
+<p>If <code>rattr</code> and <code>cattr</code> can be used to specify different vertex attributes
+for tie sender and tie receiver.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span>(<span class='fu'><a href='https://rdrr.io/r/base/library.html'>require</a></span>(<span class='no'>igraph</span>, <span class='kw'>quietly</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)) {
-<span class='co'># some directed network</span>
-<span class='no'>net</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/igraph/man/make_graph.html'>graph</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>2</span>, <span class='fl'>1</span>,<span class='fl'>3</span>, <span class='fl'>2</span>,<span class='fl'>3</span>,  <span class='fl'>4</span>,<span class='fl'>5</span>,  <span class='fl'>1</span>,<span class='fl'>4</span>, <span class='fl'>1</span>,<span class='fl'>5</span>, <span class='fl'>4</span>,<span class='fl'>2</span>, <span class='fl'>5</span>,<span class='fl'>3</span>))
-<span class='fu'><a href='https://rdrr.io/pkg/igraph/man/V.html'>V</a></span>(<span class='no'>net</span>)$<span class='no'>type</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>1</span>,<span class='fl'>1</span>, <span class='fl'>2</span>,<span class='fl'>2</span>)
-<span class='fu'>mixingm</span>(<span class='no'>net</span>, <span class='st'>"type"</span>)
-<span class='fu'>mixingm</span>(<span class='no'>net</span>, <span class='st'>"type"</span>, <span class='kw'>full</span><span class='kw'>=</span><span class='fl'>TRUE</span>)
-<span class='co'># as undirected</span>
-<span class='fu'>mixingm</span>( <span class='fu'><a href='https://rdrr.io/pkg/igraph/man/as.directed.html'>as.undirected</a></span>(<span class='no'>net</span>), <span class='st'>"type"</span>)
-<span class='fu'>mixingm</span>(<span class='no'>net</span>, <span class='st'>"type"</span>)
-<span class='fu'>mixingm</span>(<span class='no'>net</span>, <span class='st'>"type"</span>, <span class='kw'>full</span><span class='kw'>=</span><span class='fl'>TRUE</span>)
-}</div><div class='output co'>#&gt; , , tie = FALSE
+    <pre class="examples"><div class='input'><span class='kw'>if</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace</a></span><span class='op'>(</span><span class='st'>"igraph"</span>, quietly <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='co'># some directed network</span>
+  <span class='va'>net</span> <span class='op'>&lt;-</span> <span class='fu'>igraph</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/igraph/man/make_graph.html'>make_graph</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fl'>2</span>, <span class='fl'>1</span>,<span class='fl'>3</span>, <span class='fl'>2</span>,<span class='fl'>3</span>,  <span class='fl'>4</span>,<span class='fl'>5</span>,  <span class='fl'>1</span>,<span class='fl'>4</span>, <span class='fl'>1</span>,<span class='fl'>5</span>, <span class='fl'>4</span>,<span class='fl'>2</span>, <span class='fl'>5</span>,<span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span>
+  <span class='fu'>igraph</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/igraph/man/V.html'>V</a></span><span class='op'>(</span><span class='va'>net</span><span class='op'>)</span><span class='op'>$</span><span class='va'>type</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fl'>1</span>,<span class='fl'>1</span>, <span class='fl'>2</span>,<span class='fl'>2</span><span class='op'>)</span>
+  <span class='fu'>mixingm</span><span class='op'>(</span><span class='va'>net</span>, <span class='st'>"type"</span><span class='op'>)</span>
+  <span class='fu'>mixingm</span><span class='op'>(</span><span class='va'>net</span>, <span class='st'>"type"</span>, full<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
+  <span class='co'># as undirected</span>
+  <span class='fu'>mixingm</span><span class='op'>(</span> <span class='fu'>igraph</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/igraph/man/as.directed.html'>as.undirected</a></span><span class='op'>(</span><span class='va'>net</span><span class='op'>)</span>, <span class='st'>"type"</span><span class='op'>)</span>
+  <span class='fu'>mixingm</span><span class='op'>(</span><span class='va'>net</span>, <span class='st'>"type"</span><span class='op'>)</span>
+  <span class='fu'>mixingm</span><span class='op'>(</span><span class='va'>net</span>, <span class='st'>"type"</span>, full<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
+<span class='op'>}</span>
+</div><div class='output co'>#&gt; , , tie = FALSE
 #&gt; 
 #&gt;    alter
 #&gt; ego 1 2
@@ -250,7 +276,7 @@ attributes for tie sender and tie receiver.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

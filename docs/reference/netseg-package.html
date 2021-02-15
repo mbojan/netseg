@@ -48,14 +48,14 @@
 
 <meta property="og:title" content="netseg: Measures of Network Segregation and Homophily — netseg-package" />
 <meta property="og:description" content="
-Network homophily is a pattern in which ties are more likely to
-	exist between nodes similar to each other. It is frequently observed
-	for various types of social relations. At the same time, segregation is often
-	encountered in urban areas as a tendency of families to occupy neighborhoods
-	inhabited by other families similar to them. This package implements
-	most important numerical indexes to measure the extent of homophily/segregation
-	in a network in which vertices are assigned to two or more groups. It
-	is a computational companion to the paper by Bojanowski &amp;amp; Corten (2014) &amp;lt;doi:10.1016/j.socnet.2014.04.001&amp;gt;." />
+Segregation is a network-level property such that edges between 
+  predefined groups of vertices are relatively less likely. Network homophily 
+  is a individual-level tendency to form relations with people who are similar 
+  on some attribute (e.g. gender, music taste, social status, etc.). In general
+  homophily leads to segregation, but segregation might arise without 
+  homophily. This package implements descriptive indices measuring 
+  homophily/segregation. It is a computational companion 
+  to Bojanowski &amp;amp; Corten (2014) &amp;lt;doi:10.1016/j.socnet.2014.04.001&amp;gt;." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -96,16 +96,24 @@ Network homophily is a pattern in which ties are more likely to
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
+</li>
+<li>
+  <a href="../articles/netseg.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/mbojan/netseg/">
+    <span class="fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -120,24 +128,40 @@ Network homophily is a pattern in which ties are more likely to
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>netseg: Measures of Network Segregation and Homophily</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/mbojan/netseg/blob/master/R/netseg-package.R'><code>R/netseg-package.R</code></a></small>
     <div class="hidden name"><code>netseg-package.Rd</code></div>
     </div>
 
     <div class="ref-description">
     <p><img src='figures/logo.png' align='right' alt='logo' width='120' /></p>
-<p>Network homophily is a pattern in which ties are more likely to
-	exist between nodes similar to each other. It is frequently observed
-	for various types of social relations. At the same time, segregation is often
-	encountered in urban areas as a tendency of families to occupy neighborhoods
-	inhabited by other families similar to them. This package implements
-	most important numerical indexes to measure the extent of homophily/segregation
-	in a network in which vertices are assigned to two or more groups. It
-	is a computational companion to the paper by Bojanowski &amp; Corten (2014) &lt;doi:10.1016/j.socnet.2014.04.001&gt;.</p>
+<p>Segregation is a network-level property such that edges between 
+  predefined groups of vertices are relatively less likely. Network homophily 
+  is a individual-level tendency to form relations with people who are similar 
+  on some attribute (e.g. gender, music taste, social status, etc.). In general
+  homophily leads to segregation, but segregation might arise without 
+  homophily. This package implements descriptive indices measuring 
+  homophily/segregation. It is a computational companion 
+  to Bojanowski &amp; Corten (2014) &lt;doi:10.1016/j.socnet.2014.04.001&gt;.</p>
     </div>
 
 
 
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+
+    <p>Bojanowski, Michał, and Rense Corten. 2014. "Measuring Segregation in Social
+Networks." <em>Social Networks</em> 39: 14–32.
+doi: <a href='https://doi.org/10.1016/j.socnet.2014.04.001'>10.1016/j.socnet.2014.04.001</a>
+.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Useful links:</p><ul>
+<li><p>Package homepage: https://mbojan.github.io/netseg</p></li>
+<li><p>Bug reports: https://github.com/mbojan/netseg/issues</p></li>
+</ul>
+</div>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p><strong>Maintainer</strong>: Michal Bojanowski <a href='mailto:michal2992@gmail.com'>michal2992@gmail.com</a> (<a href='https://orcid.org/0000-0001-7503-852X'>ORCID</a>)</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -154,7 +178,7 @@ Network homophily is a pattern in which ties are more likely to
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
