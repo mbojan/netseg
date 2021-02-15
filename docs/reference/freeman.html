@@ -89,16 +89,24 @@ arbitrary number of groups." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
+</li>
+<li>
+  <a href="../articles/netseg.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/mbojan/netseg/">
+    <span class="fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -113,7 +121,7 @@ arbitrary number of groups." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Generalized Freeman's segregation index</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/mbojan/netseg/blob/master/R/freeman.R'><code>R/freeman.R</code></a></small>
     <div class="hidden name"><code>freeman.Rd</code></div>
     </div>
 
@@ -122,16 +130,16 @@ arbitrary number of groups." />
 arbitrary number of groups.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>freeman</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>freeman</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for table</span>
-<span class='fu'>freeman</span>(<span class='no'>object</span>, <span class='kw'>gsizes</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>more</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>loops</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)
+<span class='fu'>freeman</span><span class='op'>(</span><span class='va'>object</span>, gsizes <span class='op'>=</span> <span class='cn'>NULL</span>, loops <span class='op'>=</span> <span class='cn'>FALSE</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for igraph</span>
-<span class='fu'>freeman</span>(<span class='no'>object</span>, <span class='no'>vattr</span>, <span class='kw'>gsizes</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>loops</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/any.html'>any</a></span>(<span class='fu'>is.loop</span>(<span class='no'>object</span>)), <span class='no'>...</span>)
+<span class='fu'>freeman</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>vattr</span>, gsizes <span class='op'>=</span> <span class='cn'>NULL</span>, loops <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/any.html'>any</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/igraph/man/which_multiple.html'>is.loop</a></span><span class='op'>(</span><span class='va'>object</span><span class='op'>)</span><span class='op'>)</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for default</span>
-<span class='fu'>freeman</span>(<span class='no'>object</span>, <span class='no'>...</span>)</pre>
+<span class='fu'>freeman</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -149,17 +157,13 @@ arbitrary number of groups.</p>
       <td><p>numeric, optional true distribution of types, see Details</p></td>
     </tr>
     <tr>
-      <th>more</th>
-      <td><p>logical, should some more output be returned</p></td>
-    </tr>
-    <tr>
       <th>loops</th>
       <td><p>logical, whether loops are allowed</p></td>
     </tr>
     <tr>
       <th>vattr</th>
       <td><p>character scalar or any vector of length equal to
-<code>vcount(object)</code>, name of the vertex attribute in <code>object</code>
+<code><a href='https://rdrr.io/pkg/igraph/man/gorder.html'>vcount(object)</a></code>, name of the vertex attribute in <code>object</code>
 designating the groups or a vector with the attribute itself</p></td>
     </tr>
     </table>
@@ -167,8 +171,6 @@ designating the groups or a vector with the attribute itself</p></td>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>The value of the Freeman's index.</p>
-<p>If <code>more</code> is <code>TRUE</code>, some intermediate results are returned in a
-list.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Freeman's segregation index (Freeman, 1978) is designed to capture the
@@ -176,26 +178,39 @@ extent to which the defined groups of vertices tend to have more edges with
 vertices from the same group than with other groups.  Formally, the index
 compares the observed number of between-group ties with the number of
 between-group ties that would be expected if ties would be created randomly.</p>
-<p>The index has some discontinuity as there are network and group configurations
-that are characterized by the higher number of between-group ties that is
-expected under a random graph. The index is truncates these situations and
-takes a value of 0.</p>
-<p>The original Freeman's formulation was for only two types of vertices.  Here
-it is extended to the arbitrary number of types. The modification only
-affects the way in which the expected number of inter-type edges under pure
-random graph is calculated.</p>
-<p>The function internally calculates the frequency of types of vertices in the
-supplied attributer <code>vattr</code>. However, it is possible to override this
-by specifying ``true'' type distribution with the <code>dis</code> argument. It is
-assumed to be a table (as returned by <code>table</code>) or a numeric vector with
-frequencies of types of vertices. This may be especially usefull when
-dealing with large graphs with larger number of isolates.</p>
+<p>Originally the index has a discontinuity for network and group size
+configurations that are characterized by the higher number of between-group
+ties that is expected under a random graph, for which it returns 0 (as
+originally described by Freeman (1978)). We removed that truncation such that
+it returns values betweem -1 and 1.</p>
+<p>The original Freeman's formulation involves two groups of vertices. Here
+it is extended to the arbitrary number of groups. The generalization
+affects the way in which the expected number of between-group edges under pure
+random graph is calculated, see Bojanowski &amp; Corten (2014) for details.</p>
+<p>The function internally calculates the sizes of groups of vertices in the
+supplied attribute <code>vattr</code>. However, it is possible to override this by
+specifying "true" type distribution with the <code>gsizes</code> argument. It is assumed
+to be a table (as returned by <code><a href='https://rdrr.io/r/base/table.html'>table()</a></code>) or a numeric vector with the group
+sizes. This may be especially usefull when dealing with large graphs and/or
+with large number of isolates.</p>
+<p>If <code>object</code> is a table it is interpreted as a mixing matrix.
+Two-dimensional table is interpreted as a contact layer. Three-dimensional
+table is interpreted as a full mixing matrix \(m_{ghy}\)
+cross-classyfying all dyads, in which \(g\) and \(h\) correspond to
+group membership of ego and alter respectively. Layers \(y=1\) and
+\(y=2\) are assumed to be non-contact and contact layers respectively.</p>
+<p>If <code>object</code> is of class "igraph" it is required to supply <code>vattr</code>
+with the name of the vertex attribute to calculate intermediate mixing
+matrix.</p>
 <p>Method for mixing matrices</p>
 <p>Method for "igraph"s</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>Freeman, Linton C. (1978) Segregation in Social Networks, <em>Sociological
-Methods &amp; Research</em> <b>6</b>(4):411--429</p>
+    <p>Freeman, Linton C. (1978) Segregation in Social Networks,
+<em>Sociological Methods &amp; Research</em> <b>6</b>(4):411--429</p>
+<p>Bojanowski, Michał, and Rense Corten. 2014. "Measuring Segregation in
+Social Networks." <em>Social Networks</em> 39: 14–32.
+doi: <a href='https://doi.org/10.1016/j.socnet.2014.04.001'>10.1016/j.socnet.2014.04.001</a></p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other segregation measures: 
@@ -210,24 +225,11 @@ Methods &amp; Research</em> <b>6</b>(4):411--429</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
 <span class='co'>## White's data from Freeman's article segregation level</span>
-<span class='fu'>freeman</span>(<span class='no'>WhiteKinship</span>, <span class='st'>"gender"</span>)</div><div class='output co'>#&gt; [1] 0.2636364</div><div class='input'>
+<span class='fu'>freeman</span><span class='op'>(</span><span class='va'>WhiteKinship</span>, <span class='st'>"gender"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] 0.2636364</div><div class='input'>
 <span class='co'># using 'more' argument</span>
-<span class='fu'>freeman</span>(<span class='no'>WhiteKinship</span>, <span class='st'>"gender"</span>, <span class='kw'>more</span><span class='kw'>=</span><span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; $ecct
-#&gt; [1] 12.22222
-#&gt; 
-#&gt; $cct
-#&gt; [1] 9
-#&gt; 
-#&gt; $n
-#&gt; [1] 22
-#&gt; 
-#&gt; $m
-#&gt; [1] 10
-#&gt; 
-#&gt; $btab
-#&gt; female   male 
-#&gt;      5      5 
-#&gt; </div></pre>
+<span class='fu'>freeman</span><span class='op'>(</span><span class='va'>WhiteKinship</span>, <span class='st'>"gender"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] 0.2636364</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -243,7 +245,7 @@ Methods &amp; Research</em> <b>6</b>(4):411--429</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

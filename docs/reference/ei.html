@@ -90,16 +90,24 @@ be interpreted as a measure of network segregation." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
+</li>
+<li>
+  <a href="../articles/netseg.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/mbojan/netseg/">
+    <span class="fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -114,7 +122,7 @@ be interpreted as a measure of network segregation." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Krackhard and Stern's E-I index</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/mbojan/netseg/blob/master/R/ei.R'><code>R/ei.R</code></a></small>
     <div class="hidden name"><code>ei.Rd</code></div>
     </div>
 
@@ -124,22 +132,22 @@ prevalence of between- and within-group ties. From that perspective it can
 be interpreted as a measure of network segregation.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>ei</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>ei</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for table</span>
-<span class='fu'>ei</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+<span class='fu'>ei</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for igraph</span>
-<span class='fu'>ei</span>(
-  <span class='no'>object</span>,
-  <span class='no'>vattr</span>,
-  <span class='kw'>directed</span> <span class='kw'>=</span> <span class='fu'>is.directed</span>(<span class='no'>object</span>),
-  <span class='kw'>loops</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/any.html'>any</a></span>(<span class='fu'>is.loop</span>(<span class='no'>object</span>)),
-  <span class='no'>...</span>
-)
+<span class='fu'>ei</span><span class='op'>(</span>
+  <span class='va'>object</span>,
+  <span class='va'>vattr</span>,
+  directed <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/igraph/man/is_directed.html'>is.directed</a></span><span class='op'>(</span><span class='va'>object</span><span class='op'>)</span>,
+  loops <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/any.html'>any</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/igraph/man/which_multiple.html'>is.loop</a></span><span class='op'>(</span><span class='va'>object</span><span class='op'>)</span><span class='op'>)</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span>
 
 <span class='co'># S3 method for default</span>
-<span class='fu'>ei</span>(<span class='no'>object</span>, <span class='no'>...</span>)</pre>
+<span class='fu'>ei</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -172,14 +180,20 @@ be interpreted as a measure of network segregation.</p>
     <p>Numerical value of the E-I index.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>If <code>object</code> is a table, it is assumed to be a mixing matrix.</p>
-<p>Method for igraphs</p>
-<p>Default method tries to coerce <code>object</code> to table.</p>
+    <p>If <code>object</code> is a table it is interpreted as a mixing matrix.
+Two-dimensional table is interpreted as a contact layer. Three-dimensional
+table is interpreted as a full mixing matrix \(m_{ghy}\)
+cross-classyfying all dyads, in which \(g\) and \(h\) correspond to
+group membership of ego and alter respectively. Layers \(y=1\) and
+\(y=2\) are assumed to be non-contact and contact layers respectively.</p>
+<p>If <code>object</code> is of class "igraph" it is required to supply <code>vattr</code>
+with the name of the vertex attribute to calculate intermediate mixing
+matrix.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Krackhardt, D., &amp; Stern, R. N. (1988). Informal networks and
-organizational crises: An experimental simulation. Social psychology
-quarterly, 123-140.</p>
+organizational crises: An experimental simulation. <em>Social Psychology
+Quarterly</em>, 123-140.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other segregation measures: 
@@ -192,7 +206,8 @@ quarterly, 123-140.</p>
 <code><a href='ssi.html'>ssi</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>ei</span>(<span class='no'>WhiteKinship</span>, <span class='st'>"gender"</span>)</div><div class='output co'>#&gt; [1] -0.1818182</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>ei</span><span class='op'>(</span><span class='va'>WhiteKinship</span>, <span class='st'>"gender"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] -0.1818182</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -208,7 +223,7 @@ quarterly, 123-140.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

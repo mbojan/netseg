@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Pattern of sexual contacts in AMEN study — Catania • netseg</title>
+<title>Articles • netseg</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,9 +46,7 @@
 
 
 
-<meta property="og:title" content="Pattern of sexual contacts in AMEN study — Catania" />
-<meta property="og:description" content="Contact layer of the mixing matrix of men and women in US based on &quot;Aids in
-Multi-Ethnic  Neighborhoods&quot; (AMEN). Based on Newman (2003)." />
+<meta property="og:title" content="Articles" />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -68,7 +66,7 @@ Multi-Ethnic  Neighborhoods&quot; (AMEN). Based on Newman (2003)." />
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-topic">
+    <div class="container template-article-index">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -120,53 +118,18 @@ Multi-Ethnic  Neighborhoods&quot; (AMEN). Based on Newman (2003)." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Pattern of sexual contacts in AMEN study</h1>
-    <small class="dont-index">Source: <a href='https://github.com/mbojan/netseg/blob/master/R/Catania.R'><code>R/Catania.R</code></a></small>
-    <div class="hidden name"><code>Catania.Rd</code></div>
+      <h1>Articles</h1>
     </div>
 
-    <div class="ref-description">
-    <p>Contact layer of the mixing matrix of men and women in US based on "Aids in
-Multi-Ethnic  Neighborhoods" (AMEN). Based on Newman (2003).</p>
+    <div class="section ">
+      <h3>All vignettes</h3>
+      <p class="section-desc"></p>
+
+      <dl>
+        <dt><a href="netseg.html">Network Segregation and Homophily</a></dt>
+        <dd></dt>
+      </dl>
     </div>
-
-    <pre class="usage"><span class='va'>Catania</span></pre>
-
-
-    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
-
-    <p>Four-by-four numeric matrix with dimnames.</p><pre><span class='co'>##           female</span>
-<span class='co'>## male       black hispanic other white</span>
-<span class='co'>##   black      506       32    26    69</span>
-<span class='co'>##   hispanic    23      308    38   114</span>
-<span class='co'>##   other       10       14    32    47</span>
-<span class='co'>##   white       26       46    68   599</span>
-</pre>
-
-    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
-
-    <p>Newman, M. (2003) "Mixing patterns in networks" Arxiv:cond-mat/0209450 v2</p>
-    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
-
-    <p>Catania et al. (1992) "The population-based AMEN (AIDS in Multi-Ethnic
-Neighborhoods) study" <em>American Journal of Public Health</em> 82, 284-287</p>
-<p>Morris, M. (1995) "Data driven network models for the spread of infectious
-disease". In D. Mollison (ed.) <em>Epidemic Models: Their Structure and
-Relation to Data</em>, pp. 302-322, Cambridge University Press, Cambridge</p>
-<p>Newman, M. (2003) "Mixing patterns in networks" Arxiv:cond-mat/0209450 v2</p>
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>Catania</span><span class='op'>)</span>
-
-<span class='co'># assortativity</span>
-<span class='va'>ep</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>Catania</span> <span class='op'>%*%</span> <span class='va'>Catania</span><span class='op'>)</span>
-<span class='op'>(</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/diag.html'>diag</a></span><span class='op'>(</span><span class='va'>Catania</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>-</span> <span class='va'>ep</span> <span class='op'>)</span> <span class='op'>/</span> <span class='op'>(</span> <span class='fl'>1</span> <span class='op'>-</span> <span class='va'>ep</span> <span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] 0.9987767</div></pre>
-  </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
-    <nav id="toc" data-toggle="toc" class="sticky-top">
-      <h2 data-toc-skip>Contents</h2>
-    </nav>
   </div>
 </div>
 
