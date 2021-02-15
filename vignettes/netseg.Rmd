@@ -23,7 +23,6 @@ requireNamespace("scales")
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  dev = "svg",
   out.width = "100%",
   fig.width=10,
   fig.height=6
