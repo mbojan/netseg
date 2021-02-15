@@ -1,6 +1,6 @@
 Package: netseg
 Title: Measures of Network Segregation and Homophily
-Version: 1.0-0
+Version: 1.0-1
 Authors@R: 
     person(given = "Michal",
            family = "Bojanowski",
