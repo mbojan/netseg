@@ -1,0 +1,30 @@
+citHeader("I have invested some time and effort to create this package. Please cite 'netseg' in your publications with:")
+
+bibentry(
+  bibtype = "Manual",
+  title = "Measures of Network Segregation and Homophily",
+  author = person(given = "Michal", family = "Bojanowski",
+                  comment = c(ORCID = "0000-0001-7503-852X")),
+  year = 2021,
+  note = "R package version 1.0-1",
+  url = "https://mbojan.github.io/netseg/",
+  key = 'r-netseg'
+)
+
+bibentry(
+  bibtype  = "Article",
+  title    = "Measuting Segregation in Social Networks",
+  author   = c(
+    person(given = "Michal", family = "Bojanowski",
+           comment = c(ORCID = "0000-0001-7503-852X")),
+    person("Rense", "Corten")
+  ),
+  journal  = "Social Networks",
+  year     = 2014,
+  volume   = 39,
+  number   = NULL,
+  pages    = "14--32",
+  doi      = "10.1016/j.socnet.2014.04.001",
+  key = "r-netseg-article"
+)
+
