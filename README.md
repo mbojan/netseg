@@ -23,15 +23,14 @@ computational companion to Bojanowski and Corten (2014).
 
 ## Installation
 
-<!--
-You can install the released version of netseg from [CRAN](https://CRAN.R-project.org) with:
+Install the released version of netseg from
+[CRAN](https://CRAN.R-project.org/) with:
 
 ``` r
 install.packages("netseg")
 ```
--->
 
-The development version from [GitHub](https://github.com/) with:
+or the development version from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("remotes")
