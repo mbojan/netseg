@@ -1,6 +1,6 @@
 #' Generalized Freeman's segregation index
 #'
-#' Calculate Freeman's segregation index for undirected netoworks with
+#' Calculate Freeman's segregation index for undirected networks with
 #' arbitrary number of groups.
 #'
 #' Freeman's segregation index (Freeman, 1978) is designed to capture the
