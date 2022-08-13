@@ -32,7 +32,7 @@ designating the groups or a vector with the attribute itself}
 The value of the Freeman's index.
 }
 \description{
-Calculate Freeman's segregation index for undirected netoworks with
+Calculate Freeman's segregation index for undirected networks with
 arbitrary number of groups.
 }
 \details{

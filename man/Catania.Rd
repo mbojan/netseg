@@ -5,13 +5,15 @@
 \alias{Catania}
 \title{Pattern of sexual contacts in AMEN study}
 \format{
-Four-by-four numeric matrix with dimnames.\preformatted{##           female
-## male       black hispanic other white
-##   black      506       32    26    69
-##   hispanic    23      308    38   114
-##   other       10       14    32    47
-##   white       26       46    68   599
-}
+Four-by-four numeric matrix with dimnames.
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{#>           female
+#> male       black hispanic other white
+#>   black      506       32    26    69
+#>   hispanic    23      308    38   114
+#>   other       10       14    32    47
+#>   white       26       46    68   599
+}\if{html}{\out{</div>}}
 }
 \source{
 Newman, M. (2003) "Mixing patterns in networks" Arxiv:cond-mat/0209450 v2

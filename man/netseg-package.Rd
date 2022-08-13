@@ -7,16 +7,9 @@
 \alias{netseg}
 \title{netseg: Measures of Network Segregation and Homophily}
 \description{
-\if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-Segregation is a network-level property such that edges between 
-  predefined groups of vertices are relatively less likely. Network homophily 
-  is a individual-level tendency to form relations with people who are similar 
-  on some attribute (e.g. gender, music taste, social status, etc.). In general
-  homophily leads to segregation, but segregation might arise without 
-  homophily. This package implements descriptive indices measuring 
-  homophily/segregation. It is a computational companion 
-  to Bojanowski & Corten (2014) <doi:10.1016/j.socnet.2014.04.001>.
+Segregation is a network-level property such that edges between predefined groups of vertices are relatively less likely. Network homophily is a individual-level tendency to form relations with people who are similar on some attribute (e.g. gender, music taste, social status, etc.). In general homophily leads to segregation, but segregation might arise without homophily. This package implements descriptive indices measuring homophily/segregation. It is a computational companion to Bojanowski & Corten (2014) \doi{10.1016/j.socnet.2014.04.001}.
 }
 \references{
 Bojanowski, Michał, and Rense Corten. 2014. "Measuring Segregation in Social
