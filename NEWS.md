@@ -1,5 +1,6 @@
 # netseg 1.0-1
 
+- Use `Re()` within `ssi()` to compute on real parts of eigenvalues.
 - Added a `NEWS.md` file to track changes to the package.
 - "Activated" the vignette published with  **knitr**.
 - Added **scales** to Suggests (for vignette)
