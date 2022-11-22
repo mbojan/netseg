@@ -13,7 +13,7 @@ bibentry(
 
 bibentry(
   bibtype  = "Article",
-  title    = "Measuting Segregation in Social Networks",
+  title    = "Measuring Segregation in Social Networks",
   author   = c(
     person(given = "Michal", family = "Bojanowski",
            comment = c(ORCID = "0000-0001-7503-852X")),
