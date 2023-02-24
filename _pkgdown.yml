@@ -1,1 +1,4 @@
-destination: docs
+url: https://mbojan.github.io/netseg/
+template:
+  bootstrap: 5
+
