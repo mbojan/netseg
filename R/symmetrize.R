@@ -1,6 +1,6 @@
-#' (De)symmetrize square numeric matrix
+#' Symmetrize square numeric matrix
 #'
-#' (De)symmetrize square binary matrix in various ways.
+#' Symmetrize square binary matrix in various ways.
 #'
 #' Argument `mat` is to be a square numeric matrix. The way it is made
 #' symmetric, or asymetric, depends on the value of the `rule` argument.
@@ -25,7 +25,7 @@
 #'
 #' @return A matrix: symmetrized version of `mat`.
 #'
-#' @seealso [fold()]
+#' @seealso [fold()], [sna::symmetrize()]
 #'
 #' @export
 #'
@@ -56,12 +56,12 @@ symmetrize <- function(mat, rule=c("upper", "lower", "div", "intdiv"))
     rval <- mat
     switch( rul,
         upper = {
-          rval[ lower.tri(mat) ] <- mat[upper.tri(mat)]
+          rval[ lower.tri(mat) ] <- t(mat)[lower.tri(mat)]
           rval
         },
 
         lower = {
-          rval[ upper.tri(mat) ] <- mat[lower.tri(mat)]
+          rval[ upper.tri(mat) ] <- t(mat)[upper.tri(mat)]
           rval
         },
 
