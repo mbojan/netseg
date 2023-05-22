@@ -74,7 +74,7 @@ ssi <- function(g, vattr)
     stopifnot( !igraph::is.directed(g), !igraph::any_multiple(g) )
     # edge weights are "directed"
     gg <- igraph::as.directed(g, mode="mutual")
-    V(gg)$id <- V(g)
+    V(gg)$id <- seq_along(V(g))
     # add edge weights, these are "directed"
     degs <- igraph::degree(gg, mode="out")
     for(i in seq(1, igraph::vcount(gg)))
