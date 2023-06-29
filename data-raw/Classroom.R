@@ -44,4 +44,4 @@ igraph::graph_from_data_frame(
   directed = TRUE
 ) -> Classroom
 
-usethis::use_data(Classroom)
+usethis::use_data(Classroom, overwrite = TRUE)

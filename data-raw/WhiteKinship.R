@@ -44,6 +44,5 @@ WhiteKinship <- igraph::graph_from_data_frame(
   directed=FALSE
   )
 
-usethis::use_data(WhiteKinship)
-
+usethis::use_data(WhiteKinship, overwrite=TRUE)
 

@@ -47,7 +47,7 @@ EF3 <- igraph::graph_from_data_frame(
   directed=FALSE
 )
 
-usethis::use_data(EF3)
+usethis::use_data(EF3, overwrite = TRUE)
 
 
 

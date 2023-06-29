@@ -26,4 +26,4 @@ read_csv(
   ) %>%
   as.table() -> Catania
 
-usethis::use_data(Catania)
+usethis::use_data(Catania, overwrite=TRUE)
