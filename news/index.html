@@ -48,13 +48,12 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="1.0-1" id="netseg-10-1">netseg 1.0-1<a class="anchor" aria-label="anchor" href="#netseg-10-1"></a></h2><p class="text-muted">CRAN release: 2022-08-25</p>
-<ul><li>Use <code><a href="https://rdrr.io/r/base/complex.html" class="external-link">Re()</a></code> within <code><a href="../reference/ssi.html">ssi()</a></code> to compute on real parts of eigenvalues.</li>
-<li>Added a <code>NEWS.md</code> file to track changes to the package.</li>
-<li>“Activated” the vignette published with <strong>knitr</strong>.</li>
-<li>Added <strong>scales</strong> to Suggests (for vignette)</li>
-<li>Added package CITATION.</li>
-<li>Rerun Roxygen to fix HTML help problems (<a href="https://github.com/mbojan/netseg/issues/12" class="external-link">#12</a>).</li>
+<h2 class="pkg-version" data-toc-text="1.0-2" id="netseg-10-2">netseg 1.0-2<a class="anchor" aria-label="anchor" href="#netseg-10-2"></a></h2>
+<ul><li>Fix bug in symmetrize (<a href="https://github.com/mbojan/netseg/issues/14" class="external-link">#14</a>) for rule=upper and rule=lower reported by <a href="https://github.com/krisher1" class="external-link">@krisher1</a>.</li>
+<li>Fix typo in <code>CITATION</code>.</li>
+<li>
+<code>SSI()</code> relies on integer vertex IDs rather than vertex sequences</li>
+<li>Resave the datasets into a new igraph object structure (triggered CRAN errors)</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.0-0" id="netseg-10-0">netseg 1.0-0<a class="anchor" aria-label="anchor" href="#netseg-10-0"></a></h2><p class="text-muted">CRAN release: 2021-02-17</p>
