@@ -42,7 +42,7 @@
 #'   mixingm(net, "type")
 #'   mixingm(net, "type", full=TRUE)
 #'   # as undirected
-#'   mixingm( igraph::as.undirected(net), "type")
+#'   mixingm( igraph::as_undirected(net), "type")
 #'   mixingm(net, "type")
 #'   mixingm(net, "type", full=TRUE)
 #' }

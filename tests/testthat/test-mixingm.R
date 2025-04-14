@@ -90,7 +90,7 @@ V(g)$label <- paste( V(g)$a, V(g)$b, sep="|")
 rm(el, el2)
 
 # Example undirected network
-ug <- simplify(as.undirected(g))
+ug <- simplify(as_undirected(g))
 el <- get.edgelist(g)
 el2 <- as.data.frame(apply(el, 2, function(k) V(ug)$a[k] ), stringsAsFactors=FALSE)
 el2$V3 <- V(ug)$b[ el[,2] ]
