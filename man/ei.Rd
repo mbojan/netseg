@@ -14,7 +14,7 @@ ei(object, ...)
 \method{ei}{igraph}(
   object,
   vattr,
-  directed = is.directed(object),
+  directed = is_directed(object),
   loops = any(is.loop(object)),
   ...
 )

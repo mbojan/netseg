@@ -79,12 +79,12 @@ mixingm <- function(object, ...) UseMethod("mixingm")
 #' @param loops logical, whether loops are allowed. By default it is `TRUE`
 #'   whenever there is at least one loop in `object`.
 #'
-#' @importFrom igraph is_directed is.loop vcount
+#' @importFrom igraph is_directed which_loop vcount
 #'
 #' @export
 mixingm.igraph <- function(object, rattr, cattr=rattr, full=FALSE,
                             directed = is_directed(object),
-                            loops=any(is.loop(object)), ...)
+                            loops=any(which_loop(object)), ...)
 {
   if(igraph::any_multiple(object) && full) {
     stop(paste(

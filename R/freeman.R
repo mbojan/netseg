@@ -101,9 +101,10 @@ freeman.table <- function(object, gsizes=NULL, loops=FALSE, ...)
 #' designating the groups or a vector with the attribute itself
 #'
 #' @method freeman igraph
+#' @importFrom igraph which_loop
 #' @export
 #' @rdname freeman
-freeman.igraph <- function(object, vattr, gsizes=NULL, loops=any(is.loop(object)), ...)
+freeman.igraph <- function(object, vattr, gsizes=NULL, loops=any(which_loop(object)), ...)
 {
     stopifnot(!is_directed(object))
     m <- mixingm(object, vattr, full=TRUE, loops=loops)
