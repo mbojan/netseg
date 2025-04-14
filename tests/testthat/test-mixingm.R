@@ -80,7 +80,7 @@ library(igraph)
 g <- make_graph(c(1,2, 1,3, 1,4, 4,5, 5,6, 6,1))
 V(g)$a <- rep(letters[1:2], each=3)
 V(g)$b <- rep(LETTERS[1:3], each=2)
-el <- get.edgelist(g)
+el <- as_edgelist(g)
 el2 <- as.data.frame(apply(el, 2, function(k) V(g)$a[k] ), stringsAsFactors=FALSE)
 el2$V3 <- V(g)$b[ el[,2] ]
 mm <- table( el2[,1], el2[,2] )
@@ -91,7 +91,7 @@ rm(el, el2)
 
 # Example undirected network
 ug <- simplify(as_undirected(g))
-el <- get.edgelist(g)
+el <- as_edgelist(g)
 el2 <- as.data.frame(apply(el, 2, function(k) V(ug)$a[k] ), stringsAsFactors=FALSE)
 el2$V3 <- V(ug)$b[ el[,2] ]
 umm <- fold(table( el2[,1], el2[,2] ))

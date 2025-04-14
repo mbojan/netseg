@@ -92,9 +92,9 @@ ssib <- function(g, vattr, b)
     ids <- igraph::vertex_attr(g, vattr)
     sub <- igraph::induced_subgraph(g, which(ids == b))
     # get components
-    comps <- igraph::decompose.graph(sub)
+    comps <- igraph::decompose(sub)
     # compute eigen-decomposition
-    e <- lapply(comps, function(k) eigen( igraph::get.adjacency(k, attr="weight")))
+    e <- lapply(comps, function(k) eigen( igraph::as_adjacency_matrix(k, attr="weight")))
     # component SSIs (largest eigenvalue)
     cssi <- sapply(e, function(x) max(Re(x$values)) )
     # eigenvectors of largest eigenvalue
