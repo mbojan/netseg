@@ -15,7 +15,7 @@ ei(object, ...)
   object,
   vattr,
   directed = is_directed(object),
-  loops = any(is.loop(object)),
+  loops = any(which_loop(object)),
   ...
 )
 

@@ -50,8 +50,8 @@ matrix.
 \examples{
 if(requireNamespace("igraph", quietly = TRUE)) {
   # Converting networks to directed
-  coleman(igraph::as.directed(WhiteKinship, "mutual"), "gender")
-  coleman(igraph::as.directed(EF3, "mutual"), "race")
+  coleman(igraph::as_directed(WhiteKinship, "mutual"), "gender")
+  coleman(igraph::as_directed(EF3, "mutual"), "race")
 }
 }
 \references{

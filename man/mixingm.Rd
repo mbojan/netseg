@@ -16,7 +16,7 @@ mixingm(object, ...)
   cattr = rattr,
   full = FALSE,
   directed = is_directed(object),
-  loops = any(is.loop(object)),
+  loops = any(which_loop(object)),
   ...
 )
 

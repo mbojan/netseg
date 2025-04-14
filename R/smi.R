@@ -28,7 +28,7 @@
 #'
 #' @examples
 #' # smi() needs a directed network
-#' smi( igraph::as.directed(WhiteKinship, "mutual"), "gender")
+#' smi( igraph::as_directed(WhiteKinship, "mutual"), "gender")
 
 
 smi <- function(object, ...) UseMethod("smi")
