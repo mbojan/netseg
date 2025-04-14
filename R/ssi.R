@@ -90,7 +90,7 @@ ssib <- function(g, vattr, b)
 {
     # take subgraph of b-nodes
     ids <- igraph::vertex_attr(g, vattr)
-    sub <- igraph::induced.subgraph(g, which(ids == b))
+    sub <- igraph::induced_subgraph(g, which(ids == b))
     # get components
     comps <- igraph::decompose.graph(sub)
     # compute eigen-decomposition
