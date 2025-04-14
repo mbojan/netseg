@@ -1,3 +1,8 @@
+# netseg 1.0-3
+
+- Update function names to catch-up on deprecations in igraph 2.0.0
+
+
 # netseg 1.0-2
 
 - Fix bug in `symmetrize` (#14) for `rule="upper"` and `rule="lower"` reported by @krisher1.
