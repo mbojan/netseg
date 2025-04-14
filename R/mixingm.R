@@ -79,11 +79,11 @@ mixingm <- function(object, ...) UseMethod("mixingm")
 #' @param loops logical, whether loops are allowed. By default it is `TRUE`
 #'   whenever there is at least one loop in `object`.
 #'
-#' @importFrom igraph is.directed is.loop vcount
+#' @importFrom igraph is_directed is.loop vcount
 #'
 #' @export
 mixingm.igraph <- function(object, rattr, cattr=rattr, full=FALSE,
-                            directed = is.directed(object),
+                            directed = is_directed(object),
                             loops=any(is.loop(object)), ...)
 {
   if(igraph::any_multiple(object) && full) {
@@ -96,7 +96,7 @@ mixingm.igraph <- function(object, rattr, cattr=rattr, full=FALSE,
   # get attributes
   if( is.character(rattr) && length(rattr)==1 )
   {
-    ra <- igraph::get.vertex.attribute(object, rattr)
+    ra <- igraph::vertex_attr(object, rattr)
   } else
   {
     stopifnot( length(rattr) == vcount(object))
@@ -104,7 +104,7 @@ mixingm.igraph <- function(object, rattr, cattr=rattr, full=FALSE,
   }
   if( is.character(cattr) && length(cattr)==1 )
   {
-    ca <- igraph::get.vertex.attribute(object, cattr)
+    ca <- igraph::vertex_attr(object, cattr)
   } else
   {
     stopifnot( length(cattr) == vcount(object))

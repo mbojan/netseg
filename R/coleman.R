@@ -71,7 +71,7 @@ coleman.table <- function(object, gsizes=NULL, loops=FALSE, ...)
 #' @export
 coleman.igraph <- function(object, vattr, ...)
 {
-  stopifnot(is.directed(object))
+  stopifnot(is_directed(object))
   object <- mixingm(object, vattr, full=TRUE)
   coleman(object, ...)
 }

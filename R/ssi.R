@@ -80,7 +80,7 @@ ssi <- function(g, vattr)
     for(i in seq(1, igraph::vcount(gg)))
       E(gg)[.from(i)]$weight <- 1/degs[i]
     # get vertex attribute
-    a <- igraph::get.vertex.attribute(gg, vattr)
+    a <- igraph::vertex_attr(gg, vattr)
     l <- unlist(lapply(unique(a), function(val) ssib(g=gg, vattr=vattr, b=val)))
     l[ order(as.numeric(names(l))) ]
 }
@@ -89,7 +89,7 @@ ssi <- function(g, vattr)
 ssib <- function(g, vattr, b)
 {
     # take subgraph of b-nodes
-    ids <- igraph::get.vertex.attribute(g, vattr)
+    ids <- igraph::vertex_attr(g, vattr)
     sub <- igraph::induced.subgraph(g, which(ids == b))
     # get components
     comps <- igraph::decompose.graph(sub)

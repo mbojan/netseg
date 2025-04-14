@@ -47,7 +47,7 @@ ei.table <- function(object, ...)
 #' @param directed logical whether the network is directed
 #' @param loops logical, whether loops are allowed
 #' @export
-ei.igraph <- function(object, vattr, directed=is.directed(object),
+ei.igraph <- function(object, vattr, directed=is_directed(object),
                       loops=any(is.loop(object)), ...)
 {
   m <- mixingm(object, rattr=vattr, directed=directed, loops=loops)
