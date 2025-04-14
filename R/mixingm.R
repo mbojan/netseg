@@ -111,7 +111,7 @@ mixingm.igraph <- function(object, rattr, cattr=rattr, full=FALSE,
     ca <- cattr
   }
   # compute contact layer based on edge list
-  el <- igraph::get.edgelist(object, names=FALSE)
+  el <- igraph::as_edgelist(object, names=FALSE)
   ego <- factor( ra[ el[,1] ], levels=sort(unique(ra)))
   alter <- factor(ca[ el[,2] ], levels=sort(unique(ca)))
   con <- table(ego=ego, alter=alter)
