@@ -77,7 +77,7 @@ test_that("In a directed different-group dyad with loops", {
 
 # Example directed network
 library(igraph)
-g <- graph(c(1,2, 1,3, 1,4, 4,5, 5,6, 6,1))
+g <- make_graph(c(1,2, 1,3, 1,4, 4,5, 5,6, 6,1))
 V(g)$a <- rep(letters[1:2], each=3)
 V(g)$b <- rep(LETTERS[1:3], each=2)
 el <- get.edgelist(g)

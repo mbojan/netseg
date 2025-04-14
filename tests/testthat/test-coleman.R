@@ -4,7 +4,7 @@ test_that("Coleman index works for directed ring network",
           {
             library(igraph)
             s <- rep(1:6, each=2)
-            g <- graph( s[ c(2:length(s), 1) ], directed=TRUE)
+            g <- make_graph( s[ c(2:length(s), 1) ], directed=TRUE)
             V(g)$color <- rep( seq(1, vcount(g)/2), each=2)
             res <- coleman(g, vattr="color")
             eres <- structure(rep(0.375, 3), names=1:3)
