@@ -46,9 +46,11 @@ ei.table <- function(object, ...)
 #'   `object`, vertex attribute for which mixing matrix is to be computed
 #' @param directed logical whether the network is directed
 #' @param loops logical, whether loops are allowed
+#'
+#' @importFrom igraph which_loop
 #' @export
-ei.igraph <- function(object, vattr, directed=is.directed(object),
-                      loops=any(is.loop(object)), ...)
+ei.igraph <- function(object, vattr, directed=is_directed(object),
+                      loops=any(which_loop(object)), ...)
 {
   m <- mixingm(object, rattr=vattr, directed=directed, loops=loops)
   ei(m, ...)

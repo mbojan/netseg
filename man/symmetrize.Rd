@@ -2,7 +2,7 @@
 % Please edit documentation in R/symmetrize.R
 \name{symmetrize}
 \alias{symmetrize}
-\title{(De)symmetrize square numeric matrix}
+\title{Symmetrize square numeric matrix}
 \usage{
 symmetrize(mat, rule = c("upper", "lower", "div", "intdiv"))
 }
@@ -15,7 +15,7 @@ symmetrize(mat, rule = c("upper", "lower", "div", "intdiv"))
 A matrix: symmetrized version of \code{mat}.
 }
 \description{
-(De)symmetrize square binary matrix in various ways.
+Symmetrize square binary matrix in various ways.
 }
 \details{
 Argument \code{mat} is to be a square numeric matrix. The way it is made
@@ -57,5 +57,5 @@ r2
 all.equal(sum(m), sum(r2))
 }
 \seealso{
-\code{\link[=fold]{fold()}}
+\code{\link[=fold]{fold()}}, \code{\link[sna:symmetrize]{sna::symmetrize()}}
 }

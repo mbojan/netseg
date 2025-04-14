@@ -55,7 +55,7 @@ matrix.
 }
 \examples{
 # smi() needs a directed network
-smi( igraph::as.directed(WhiteKinship, "mutual"), "gender")
+smi( igraph::as_directed(WhiteKinship, "mutual"), "gender")
 }
 \references{
 Freshtman, M. (1997) "Cohesive Group Segregation Detection in a

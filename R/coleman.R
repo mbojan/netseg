@@ -22,8 +22,8 @@
 #' @examples
 #' if(requireNamespace("igraph", quietly = TRUE)) {
 #'   # Converting networks to directed
-#'   coleman(igraph::as.directed(WhiteKinship, "mutual"), "gender")
-#'   coleman(igraph::as.directed(EF3, "mutual"), "race")
+#'   coleman(igraph::as_directed(WhiteKinship, "mutual"), "gender")
+#'   coleman(igraph::as_directed(EF3, "mutual"), "race")
 #' }
 
 coleman <- function(object, ...) UseMethod("coleman")
@@ -71,7 +71,7 @@ coleman.table <- function(object, gsizes=NULL, loops=FALSE, ...)
 #' @export
 coleman.igraph <- function(object, vattr, ...)
 {
-  stopifnot(is.directed(object))
+  stopifnot(is_directed(object))
   object <- mixingm(object, vattr, full=TRUE)
   coleman(object, ...)
 }

@@ -42,7 +42,7 @@
 #'   mixingm(net, "type")
 #'   mixingm(net, "type", full=TRUE)
 #'   # as undirected
-#'   mixingm( igraph::as.undirected(net), "type")
+#'   mixingm( igraph::as_undirected(net), "type")
 #'   mixingm(net, "type")
 #'   mixingm(net, "type", full=TRUE)
 #' }
@@ -79,12 +79,12 @@ mixingm <- function(object, ...) UseMethod("mixingm")
 #' @param loops logical, whether loops are allowed. By default it is `TRUE`
 #'   whenever there is at least one loop in `object`.
 #'
-#' @importFrom igraph is.directed is.loop vcount
+#' @importFrom igraph is_directed which_loop vcount
 #'
 #' @export
 mixingm.igraph <- function(object, rattr, cattr=rattr, full=FALSE,
-                            directed = is.directed(object),
-                            loops=any(is.loop(object)), ...)
+                            directed = is_directed(object),
+                            loops=any(which_loop(object)), ...)
 {
   if(igraph::any_multiple(object) && full) {
     stop(paste(
@@ -96,7 +96,7 @@ mixingm.igraph <- function(object, rattr, cattr=rattr, full=FALSE,
   # get attributes
   if( is.character(rattr) && length(rattr)==1 )
   {
-    ra <- igraph::get.vertex.attribute(object, rattr)
+    ra <- igraph::vertex_attr(object, rattr)
   } else
   {
     stopifnot( length(rattr) == vcount(object))
@@ -104,14 +104,14 @@ mixingm.igraph <- function(object, rattr, cattr=rattr, full=FALSE,
   }
   if( is.character(cattr) && length(cattr)==1 )
   {
-    ca <- igraph::get.vertex.attribute(object, cattr)
+    ca <- igraph::vertex_attr(object, cattr)
   } else
   {
     stopifnot( length(cattr) == vcount(object))
     ca <- cattr
   }
   # compute contact layer based on edge list
-  el <- igraph::get.edgelist(object, names=FALSE)
+  el <- igraph::as_edgelist(object, names=FALSE)
   ego <- factor( ra[ el[,1] ], levels=sort(unique(ra)))
   alter <- factor(ca[ el[,2] ], levels=sort(unique(ca)))
   con <- table(ego=ego, alter=alter)

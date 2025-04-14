@@ -3,7 +3,6 @@
 \docType{package}
 \name{netseg-package}
 \alias{netseg-package}
-\alias{_PACKAGE}
 \alias{netseg}
 \title{netseg: Measures of Network Segregation and Homophily}
 \description{

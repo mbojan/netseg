@@ -11,7 +11,7 @@ freeman(object, ...)
 
 \method{freeman}{table}(object, gsizes = NULL, loops = FALSE, ...)
 
-\method{freeman}{igraph}(object, vattr, gsizes = NULL, loops = any(is.loop(object)), ...)
+\method{freeman}{igraph}(object, vattr, gsizes = NULL, loops = any(which_loop(object)), ...)
 
 \method{freeman}{default}(object, ...)
 }

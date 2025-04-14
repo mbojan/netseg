@@ -30,7 +30,7 @@
 #' social interactions. The Quarterly Journal of Economics, 122(2), 441-485.
 #'
 #' @family segregation measures
-#' @importFrom igraph V 'V<-' E 'E<-'
+#' @importFrom igraph V 'V<-' E 'E<-' is_directed
 #' @export
 #' @examples
 #' if(requireNamespace("igraph", quietly = TRUE)) {
@@ -71,16 +71,16 @@
 
 ssi <- function(g, vattr)
 {
-    stopifnot( !igraph::is.directed(g), !igraph::any_multiple(g) )
+    stopifnot( !is_directed(g), !igraph::any_multiple(g) )
     # edge weights are "directed"
-    gg <- igraph::as.directed(g, mode="mutual")
+    gg <- igraph::as_directed(g, mode="mutual")
     V(gg)$id <- seq_along(V(g))
     # add edge weights, these are "directed"
     degs <- igraph::degree(gg, mode="out")
     for(i in seq(1, igraph::vcount(gg)))
       E(gg)[.from(i)]$weight <- 1/degs[i]
     # get vertex attribute
-    a <- igraph::get.vertex.attribute(gg, vattr)
+    a <- igraph::vertex_attr(gg, vattr)
     l <- unlist(lapply(unique(a), function(val) ssib(g=gg, vattr=vattr, b=val)))
     l[ order(as.numeric(names(l))) ]
 }
@@ -89,12 +89,12 @@ ssi <- function(g, vattr)
 ssib <- function(g, vattr, b)
 {
     # take subgraph of b-nodes
-    ids <- igraph::get.vertex.attribute(g, vattr)
-    sub <- igraph::induced.subgraph(g, which(ids == b))
+    ids <- igraph::vertex_attr(g, vattr)
+    sub <- igraph::induced_subgraph(g, which(ids == b))
     # get components
-    comps <- igraph::decompose.graph(sub)
+    comps <- igraph::decompose(sub)
     # compute eigen-decomposition
-    e <- lapply(comps, function(k) eigen( igraph::get.adjacency(k, attr="weight")))
+    e <- lapply(comps, function(k) eigen( igraph::as_adjacency_matrix(k, attr="weight")))
     # component SSIs (largest eigenvalue)
     cssi <- sapply(e, function(x) max(Re(x$values)) )
     # eigenvectors of largest eigenvalue

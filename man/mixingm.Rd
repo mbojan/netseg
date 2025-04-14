@@ -15,8 +15,8 @@ mixingm(object, ...)
   rattr,
   cattr = rattr,
   full = FALSE,
-  directed = is.directed(object),
-  loops = any(is.loop(object)),
+  directed = is_directed(object),
+  loops = any(which_loop(object)),
   ...
 )
 
@@ -111,7 +111,7 @@ if(requireNamespace("igraph", quietly = TRUE)) {
   mixingm(net, "type")
   mixingm(net, "type", full=TRUE)
   # as undirected
-  mixingm( igraph::as.undirected(net), "type")
+  mixingm( igraph::as_undirected(net), "type")
   mixingm(net, "type")
   mixingm(net, "type", full=TRUE)
 }
