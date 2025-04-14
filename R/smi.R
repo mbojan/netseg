@@ -55,10 +55,13 @@ smi.table <- function(object, normalize=TRUE, ...)
 
 #' @rdname smi
 #' @param vattr character, name of the node attribute designating groups
+#'
+#' @importFrom igraph is_directed
+#'
 #' @export
 smi.igraph <- function(object, vattr, ...)
 {
-  stopifnot(is.directed(object))
+  stopifnot(is_directed(object))
   m <- mixingm(object, rattr=vattr, full=TRUE)
   smi(m, ...)
 }

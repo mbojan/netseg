@@ -30,7 +30,7 @@
 #' social interactions. The Quarterly Journal of Economics, 122(2), 441-485.
 #'
 #' @family segregation measures
-#' @importFrom igraph V 'V<-' E 'E<-'
+#' @importFrom igraph V 'V<-' E 'E<-' is_directed
 #' @export
 #' @examples
 #' if(requireNamespace("igraph", quietly = TRUE)) {
@@ -71,7 +71,7 @@
 
 ssi <- function(g, vattr)
 {
-    stopifnot( !igraph::is.directed(g), !igraph::any_multiple(g) )
+    stopifnot( !is_directed(g), !igraph::any_multiple(g) )
     # edge weights are "directed"
     gg <- igraph::as.directed(g, mode="mutual")
     V(gg)$id <- seq_along(V(g))
