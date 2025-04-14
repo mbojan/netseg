@@ -47,8 +47,8 @@
 <span>  <span class="va">rattr</span>,</span>
 <span>  cattr <span class="op">=</span> <span class="va">rattr</span>,</span>
 <span>  full <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>  directed <span class="op">=</span> <span class="fu"><a href="https://r.igraph.org/reference/is.directed.html" class="external-link">is.directed</a></span><span class="op">(</span><span class="va">object</span><span class="op">)</span>,</span>
-<span>  loops <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/any.html" class="external-link">any</a></span><span class="op">(</span><span class="fu"><a href="https://r.igraph.org/reference/is.loop.html" class="external-link">is.loop</a></span><span class="op">(</span><span class="va">object</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  directed <span class="op">=</span> <span class="fu"><a href="https://r.igraph.org/reference/is_directed.html" class="external-link">is_directed</a></span><span class="op">(</span><span class="va">object</span><span class="op">)</span>,</span>
+<span>  loops <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/any.html" class="external-link">any</a></span><span class="op">(</span><span class="fu"><a href="https://r.igraph.org/reference/which_multiple.html" class="external-link">which_loop</a></span><span class="op">(</span><span class="va">object</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  <span class="va">...</span></span>
 <span><span class="op">)</span></span>
 <span></span>
@@ -151,12 +151,10 @@ for tie sender and tie receiver.</p>
 <span class="r-in"><span>  <span class="fu">mixingm</span><span class="op">(</span><span class="va">net</span>, <span class="st">"type"</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="fu">mixingm</span><span class="op">(</span><span class="va">net</span>, <span class="st">"type"</span>, full<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="co"># as undirected</span></span></span>
-<span class="r-in"><span>  <span class="fu">mixingm</span><span class="op">(</span> <span class="fu">igraph</span><span class="fu">::</span><span class="fu"><a href="https://r.igraph.org/reference/as.undirected.html" class="external-link">as.undirected</a></span><span class="op">(</span><span class="va">net</span><span class="op">)</span>, <span class="st">"type"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu">mixingm</span><span class="op">(</span> <span class="fu">igraph</span><span class="fu">::</span><span class="fu"><a href="https://r.igraph.org/reference/as_directed.html" class="external-link">as_undirected</a></span><span class="op">(</span><span class="va">net</span><span class="op">)</span>, <span class="st">"type"</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="fu">mixingm</span><span class="op">(</span><span class="va">net</span>, <span class="st">"type"</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="fu">mixingm</span><span class="op">(</span><span class="va">net</span>, <span class="st">"type"</span>, full<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>`as.undirected()` was deprecated in igraph 2.1.0.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Please use `as_undirected()` instead.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> , , tie = FALSE</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    alter</span>
