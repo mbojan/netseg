@@ -3,7 +3,7 @@ pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
   netseg: netseg.html
-last_built: 2025-04-16T13:47Z
+last_built: 2025-04-16T14:56Z
 urls:
   reference: https://mbojan.github.io/netseg/reference
   article: https://mbojan.github.io/netseg/articles
