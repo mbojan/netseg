@@ -34,13 +34,12 @@ gamix <- function(object, ...) UseMethod("gamix")
 #' @export
 gamix.table <- function(object, ...)
 {
-  if( length(dim(object)) == 3 )
-  {
+  if( length(dim(object)) == 3 ) {
     m <- symmetrize(object[,,2])
-  } else
-  {
+  } else {
     m <- symmetrize(object)
   }
+  diag(m) <- 2 * diag(m)
   p <- sweep(m, 1, rowSums(m), "/")
   w <- eigen(p)$values
   (sum(w) - 1) / (dim(m)[1] - 1)
