@@ -8,3 +8,5 @@
 ^pkgdown$
 ^man-roxygen$
 ^cran-comments\.md$
+^\.positai$
+^\.claude$
