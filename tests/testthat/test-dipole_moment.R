@@ -35,7 +35,7 @@ testthat::test_that("Dipole moment on a symmetric SBM", {
   upper_bound <- mean_score + margin_of_error
 
 
-  testthat::expect_equal(0.2893930981512981, mean_score, tolerance = upper_bound - lower_bound)
+  testthat::expect_equal(0.2893930981512981, mean_score, tolerance = margin_of_error)
   # Generative models are stochastic, hence I am testing whether the calculated score
   # of python's case fall within the 99CI of the generated models in here.
 })
