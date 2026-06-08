@@ -1,5 +1,13 @@
 # Changelog
 
+## netseg 1.0-4
+
+- Fixed bug in
+  [`smi()`](https://mbojan.github.io/netseg/reference/smi.md)
+  ([\#21](https://github.com/mbojan/netseg/issues/21)) related to values
+  on the diagonal of the mixing matrix, reported by
+  [@welkiej7](https://github.com/welkiej7)
+
 ## netseg 1.0-3
 
 CRAN release: 2025-04-14
