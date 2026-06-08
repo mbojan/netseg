@@ -1,3 +1,9 @@
+# netseg 1.0-4
+
+- Fixed bug in `smi()` (#21) related to values on the diagonal of the mixing matrix, reported by @welkiej7
+
+
+
 # netseg 1.0-3
 
 - Update function names to catch-up on deprecations in igraph 2.0.0
