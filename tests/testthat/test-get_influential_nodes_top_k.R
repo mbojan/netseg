@@ -2,7 +2,7 @@
 testthat::test_that("Detect influential nodes in a non-balanced setting",{
   # Since this is not the balanced definition, it should have
   # k_top nodes as the influential nodes.
-  er_toy <- erdos.renyi.game(1000, 0.01)
+  er_toy <- igraph::sample_gnp(1000, 0.01)
   er_toy_degrees <- degree(er_toy)
   k_top <- 10
   mems <- append(rep(1,500), rep(0,500))
@@ -15,7 +15,7 @@ testthat::test_that("Detect influential nodes in a balanced setting", {
   # In this case from each group it should find k_top / group_number influential
   # nodes, we are going to try two groups for sake of simplicity.
 
-  er_toy <- igraph::erdos.renyi.game(1000, 0.01)
+  er_toy <- igraph::sample_gnp(1000, 0.01)
   er_toy_degrees <- igraph::degree(er_toy)
   k_top <- 10
   mems <- rep(0:1, 500)

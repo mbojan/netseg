@@ -215,7 +215,7 @@ boundary_connectivity <- function(membership, graph, null_models = NULL, relax =
     membership <- igraph::vertex_attr(graph, membership)
   }
 
-  if (!is_igraph(graph)) {
+  if (!igraph::is_igraph(graph)) {
     # Type of an igraph object is a list? So I used is_igraph from igraph as a logical check. If you
     # know something better for this please edit this section.
     stop(sprintf("Expected an igraph object for the graph parameter, received %s instead.", class(graph)[1]))

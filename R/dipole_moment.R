@@ -16,7 +16,7 @@ run_label_propagation <- function(graph,
     warning("The input graph is not weakly connected.", call. = FALSE)
   }
 
-  A <- igraph::as_adj(graph, sparse = TRUE)
+  A <- igraph::as_adjacency_matrix(graph, sparse = TRUE)
   if (igraph::is_directed(graph)) {
     if (mode == "in") {
       A <- Matrix::t(A)
@@ -115,7 +115,7 @@ dipole_moment <- function(membership,
                           null_models = NULL) {
 
 
-  if (!is.igraph(graph)) stop("Expected an igraph object for the graph parameter.")
+  if (!igraph::is_igraph(graph)) stop("Expected an igraph object for the graph parameter.")
 
   if (is.character(membership) && length(membership) == 1) {
     if (!membership %in% igraph::vertex_attr_names(graph)) {

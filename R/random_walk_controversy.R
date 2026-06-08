@@ -100,7 +100,7 @@ random_walk_controversy <- function(membership, graph, maximum_walk_length = 100
                                     verbose = TRUE) {
 
 
-  if (!is.igraph(graph)) stop("Expected an igraph object for the graph parameter.")
+  if (!igraph::is_igraph(graph)) stop("Expected an igraph object for the graph parameter.")
 
   if (!igraph::is_connected(graph, mode = "weak") && verbose) {
     warning("Graph is not weakly connected, this
