@@ -50,7 +50,7 @@ testthat::test_that("Boundary Connectivity Calculates the boundary node edge spr
             c(18, 20),
             c(20, 21),
             c(6, 21))
-  g <- graph(edges, directed = FALSE)
+  g <- igraph::graph(edges, directed = FALSE)
   mems <- c(0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1)
   bound_score = boundary_connectivity(mems, g)
   testthat::expect_equal(bound_score, 0.20000831457830937) # I hardcoded the python's output.
@@ -110,9 +110,9 @@ testthat::test_that("Boundary Connectivity Calculates the boundary node edge spr
              c(18, 20),
              c(20, 21),
              c(6, 21))
-  g <- graph(edges, directed = FALSE)
+  g <- igraph::graph(edges, directed = FALSE)
   mems <- c(0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1)
-  g <- set_vertex_attr(g, "membership", value = mems)
+  g <- igraph::set_vertex_attr(g, "membership", value = mems)
   bound_score = boundary_connectivity("membership", g)
   testthat::expect_equal(bound_score, 0.20000831457830937) # I hard coded the python's output.
 })
@@ -169,7 +169,7 @@ testthat::test_that("Detects the boundary nodes according to the strict definiti
              c(18, 20),
              c(20, 21),
              c(6, 21))
-  g <- graph(edges, directed = FALSE)
+  g <- igraph::graph(edges, directed = FALSE)
   mems <- c(0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1)
   bnodes = c( 1,3,6,9,11,12,14,17,20) # Correct boundary nodes.
   bnodes_found <- get_boundary_nodes(g, mems)
@@ -228,7 +228,7 @@ testthat::test_that("Detects the boundary nodes according to the relaxed definit
              c(18, 20),
              c(20, 21),
              c(6, 21))
-  g <- graph(edges, directed = FALSE)
+  g <- igraph::graph(edges, directed = FALSE)
   mems <- c(0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1)
   bnodes = c( 1,3,6,9,11,12,14,17,20,21) # Correct boundary nodes when relaxed.
   bnodes_found <- get_boundary_nodes_relaxed(g, mems)
