@@ -36,7 +36,7 @@ get_boundary_nodes_relaxed <- function(graph, membership, mode = NULL) {
     s <- edges[, 1]
     t <- edges[, 2]
     mask <- membership[s] != membership[t]
-    mutual_mask <- igraph::is_mutual(graph)
+    mutual_mask <- igraph::which_mutual(graph)
 
     valid_inter_edges <- mutual_mask & mask
     candidates <- unique(c(s[valid_inter_edges], t[valid_inter_edges]))
@@ -96,7 +96,7 @@ get_boundary_nodes <- function(graph, membership, mode = NULL) {
     s <- edges[, 1]
     t <- edges[, 2]
     diff_group_mask <- membership[s] != membership[t]
-    mutual_mask <- igraph::is_mutual(graph)
+    mutual_mask <- igraph::which_mutual(graph)
 
     valid_inter_edges <- diff_group_mask & mutual_mask
     candidates <- unique(c(s[valid_inter_edges], t[valid_inter_edges]))

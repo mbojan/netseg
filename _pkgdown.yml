@@ -1,4 +1,3 @@
+url: https://mbojan.github.io/netseg/
 template:
   bootstrap: 5
-  bootswatch: lumen
-  light-switch: true
