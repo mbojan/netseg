@@ -9,6 +9,12 @@ segregation might arise without homophily. This package implements
 descriptive indices measuring homophily/segregation. It is a
 computational companion to Bojanowski and Corten (2014).
 
+For Python users: [Onur
+Bal](https://networkdatascience.ceu.edu/people/onur-bal) developed and
+maintains a Python counterpart to this package. See [Python’s `netseg`
+documentation](https://onurb.codeberg.page/netseg/) and the [sourcecode
+on Codeberg](https://codeberg.org/OnurB/netseg).
+
 ## Installation
 
 Install the released version of netseg from
