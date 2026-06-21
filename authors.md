@@ -10,14 +10,14 @@
 Source:
 [`inst/CITATION`](https://github.com/mbojan/netseg/blob/master/inst/CITATION)
 
-Bojanowski M (2021). *Measures of Network Segregation and Homophily*. R
-package version 1.0-1, <https://mbojan.github.io/netseg/>.
+Bojanowski M (2025). *Measures of Network Segregation and Homophily*. R
+package version 1.0-3, <https://mbojan.github.io/netseg/>.
 
     @Manual{r-netseg,
       title = {Measures of Network Segregation and Homophily},
       author = {Michal Bojanowski},
-      year = {2021},
-      note = {R package version 1.0-1},
+      year = {2025},
+      note = {R package version 1.0-3},
       url = {https://mbojan.github.io/netseg/},
     }
 
