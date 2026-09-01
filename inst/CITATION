@@ -7,7 +7,7 @@ bibentry(
                   comment = c(ORCID = "0000-0001-7503-852X")),
   year = 2025,
   note = "R package version 1.0-3",
-  url = "https://mbojan.github.io/netseg/",
+  url = "https://cran.r-project.org/package=netseg",
   key = 'r-netseg'
 )
 
