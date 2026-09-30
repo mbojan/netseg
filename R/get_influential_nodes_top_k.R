@@ -8,7 +8,8 @@ get_influential_nodes_top_k <- function(graph,
 
   if (k_top >= length(degs)) {
     stop(sprintf("Number of influential nodes required (%d) is more
-                 than the total number of nodes in the graph (%d)", k_top, length(degs)))
+                 than the total number of nodes in the graph (%d)",
+                 k_top, length(degs)))
   } else if (k_top >= length(degs) / 4) {
     # This is only rational I believe, picking quarter of the nodes as
     # influential nodes is not a good practice, raising a warning is
