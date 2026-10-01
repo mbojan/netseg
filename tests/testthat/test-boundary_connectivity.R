@@ -1,7 +1,7 @@
 testthat::context("Testing Boundary Connectivity")
 
 
-testthat::test_that("Testing the correct value for WhiteKinship data",{
+testthat::test_that("boundary_connectivity yields 0.15 for WhiteKinship data",{
 
   bc <- boundary_connectivity("gender",WhiteKinship, relax = FALSE)
   testthat::expect_equal(bc, 0.15)
@@ -13,7 +13,7 @@ testthat::test_that("Testing the correct value for WhiteKinship data",{
 
 })
 
-testthat::test_that("Testing boundary node detection",{
+testthat::test_that("get_boundary_nodes returns correct boundary nodes in WhiteKinship data",{
   bnodes <- get_boundary_nodes(WhiteKinship,
                                igraph::get.vertex.attribute(WhiteKinship,
                                                             "gender"))
@@ -28,7 +28,7 @@ testthat::test_that("Testing boundary node detection",{
 
 })
 
-testthat::test_that("Testing boundary node detection for directed graphs",{
+testthat::test_that("get_boundary_nodes returns correct nodes for directed graphs",{
   # mode definition out test first
   bnodes <- get_boundary_nodes(Classroom,
                                igraph::get.vertex.attribute(Classroom, "gender"),

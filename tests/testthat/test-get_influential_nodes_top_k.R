@@ -1,5 +1,5 @@
 
-testthat::test_that("Detect influential nodes in a non-balanced setting",{
+testthat::test_that("get_influential_nodes returns correct influential nodes in non-balanced setting",{
   # Since this is not the balanced definition, it should have
   # k_top nodes as the influential nodes.
   er_toy <- igraph::sample_gnp(50, 0.01)
@@ -11,7 +11,7 @@ testthat::test_that("Detect influential nodes in a non-balanced setting",{
   testthat::expect_equal(sort(k_top_expected), sort(k_top_found))
 })
 
-testthat::test_that("Detect influential nodes in a balanced setting", {
+testthat::test_that("get_influential_nodes returns correct influential nodes in balanced setting", {
   # In this case from each group it should find k_top / group_number influential
   # nodes, we are going to try two groups for sake of simplicity.
 

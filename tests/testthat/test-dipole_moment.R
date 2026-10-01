@@ -1,4 +1,4 @@
-testthat::test_that("Dipole moment on a symmetric SBM", {
+testthat::test_that("Dipole moment returns expected results on an SBM", {
   set.seed(3)
   n_groups <- 2
   nodes_per_group <- 100
